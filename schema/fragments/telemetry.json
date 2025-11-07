@@ -2,17 +2,82 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://deepadata.com/schema/fragments/telemetry.json",
   "title": "DeepaData EDM v0.3 — Telemetry Fragment",
-  "description": "Defines identity, consent, and provenance envelope for DeepaData emotional memory artifacts.",
+  "description": "Confidence, access stats, and feedback signals for each memory artifact. Fragment is non-normative; canonical contract is defined in schema/edm.v0.3.schema.json.",
   "type": "object",
-  "properties": {},
-  "additionalProperties": true
+  "additionalProperties": false,
+  "properties": {
+    "entry_confidence": {
+      "type": ["number", "null"],
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Extraction confidence for this entry (0–1)."
+    },
+    "extraction_model": {
+      "type": ["string", "null"],
+      "description": "Model or pipeline identifier used to produce this record (e.g., model name/hash)."
+    },
+    "extraction_notes": {
+      "type": ["string", "null"],
+      "description": "Short free-text note about edge cases or manual adjustments."
+    },
+    "retrieval_stats": {
+      "type": ["object", "null"],
+      "description": "Operational access statistics for retrieval events.",
+      "additionalProperties": false,
+      "properties": {
+        "last_accessed_at": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "Most recent retrieval timestamp (UTC ISO-8601)."
+        },
+        "times_accessed": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "description": "Total count of retrievals."
+        },
+        "last_rank": {
+          "type": ["number", "null"],
+          "minimum": 0.0,
+          "description": "Rank position at last retrieval (lower is better)."
+        },
+        "avg_rank": {
+          "type": ["number", "null"],
+          "minimum": 0.0,
+          "description": "Mean rank across retrievals (lower is better)."
+        }
+      }
+    },
+    "feedback": {
+      "type": "array",
+      "description": "Optional list of user/system feedback events applied to this record.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "at": {
+            "type": ["string", "null"],
+            "format": "date-time",
+            "description": "When feedback was recorded (UTC ISO-8601)."
+          },
+          "user_score": {
+            "type": ["number", "null"],
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "User- or rater-provided quality score (0–1)."
+          },
+          "note": {
+            "type": ["string", "null"],
+            "description": "Short free-text note describing the feedback context."
+          },
+          "applied_delta": {
+            "type": ["number", "null"],
+            "minimum": -1.0,
+            "maximum": 1.0,
+            "description": "Adjustment applied to internal weighting or ranking (if any)."
+          }
+        }
+      }
+    }
+  },
+  "$comment": "© 2025 DeepaData Pty Ltd — All Rights Reserved. Closed provenance pre-release. Fragment is informational; canonical contract lives in schema/edm.v0.3.schema.json."
 }
-
-/* 
-----------------------------------------------
-DeepaData EDM v0.3 — Closed Provenance Fragment
-© 2025 DeepaData Pty Ltd — All Rights Reserved.
-This file is part of the DeepaData EDM v0.3 specification.
-Distribution or derivative use prohibited until v1.0 release.
-----------------------------------------------
-*/
