@@ -1,0 +1,6 @@
+{
+  "note": "Non-normative mapping notes for field continuity from v0.2 to v0.3.",
+  "preserved_layers": ["core", "constellation", "milky_way", "gravity"],
+  "added_layers": ["impulse", "meta", "governance", "telemetry", "system", "crosswalks"],
+  "aliases": {}
+}
