@@ -1,6 +1,172 @@
 {
-  "note": "Non-normative mapping notes for field continuity from v0.2 to v0.3.",
-  "preserved_layers": ["core", "constellation", "milky_way", "gravity"],
-  "added_layers": ["impulse", "meta", "governance", "telemetry", "system", "crosswalks"],
-  "aliases": {}
+  "meta": {
+    "source_version": "v0.2",
+    "target_version": "v0.3",
+    "last_updated": "2025-11-07",
+    "provenance_refs": [
+      "deepadata-v1 (EDM v0.1, 2025-04-20)",
+      "deepadata-v2 (EDM v0.2 lineage, 2025-04-29)",
+      "deepadata-v2 (Impulse layer, 2025-10-10)",
+      "deepadata-edm-spec (v0.3 canonical schema)"
+    ]
+  },
+
+  "mappings": {
+    "unchanged": [
+      "core.anchor",
+      "core.spark",
+      "core.wound",
+      "core.fuel",
+      "core.bridge",
+      "core.echo",
+
+      "constellation.emotion_primary",
+      "constellation.emotion_subtone",
+
+      "milky_way.visibility_context",
+      "milky_way.tone_shift",
+
+      "gravity.retrieval_keys",
+
+      "meta.version",
+      "meta.id",
+      "meta.locale",
+      "meta.created_at",
+      "meta.updated_at",
+      "meta.tags",
+      "meta.source.channel",
+      "meta.source.media_format"
+    ],
+
+    "renamed": [
+      { "from": "gravity.weight",  "to": "gravity.emotional_weight" },
+      { "from": "gravity.density", "to": "gravity.emotional_density" },
+      { "from": "gravity.reentry", "to": "gravity.reentry_score" },
+
+      { "from": "impulse.energy",       "to": "impulse.primary_energy" },
+      { "from": "impulse.visibility",   "to": "impulse.social_visibility" },
+
+      { "from": "system.embedding_id",  "to": "system.embeddings[].vector_ref" },
+      { "from": "system.crosswalk_refs","to": "system.crosswalks" }
+    ],
+
+    "moved": [
+      {
+        "from": "governance.compliance_mask",
+        "to": "gravity.compliance_mask",
+        "transform": "string_or_flags → object{exportable:boolean, shareable:boolean, purpose_limited_to:string[]}"
+      },
+      {
+        "from": "crosswalks.*",
+        "to": "system.crosswalks.*",
+        "transform": "flattened list → structured keys (plutchik_primary, geneva_emotion_wheel, DSM5_specifiers, HMD_v2_memory_type, ISO_27557_labels)"
+      }
+    ],
+
+    "introduced": [
+      "core.narrative",
+
+      "constellation.higher_order_emotion",
+      "constellation.meta_emotional_state",
+      "constellation.interpersonal_affect",
+      "constellation.active_motivational_state",
+      "constellation.narrative_arc",
+      "constellation.relational_dynamics",
+      "constellation.temporal_context",
+      "constellation.memory_type",
+      "constellation.archetype_energy",
+      "constellation.symbolic_anchor",
+      "constellation.relational_perspective",
+      "constellation.temporal_rhythm",
+      "constellation.identity_thread",
+      "constellation.meaning_inference",
+      "constellation.transcendent_moment",
+
+      "milky_way.event_type",
+      "milky_way.location_context",
+      "milky_way.associated_people",
+      "milky_way.media_context",
+      "milky_way.memory_layers",
+      "milky_way.time_range.start",
+      "milky_way.time_range.end",
+
+      "gravity.valence",
+      "gravity.viscosity",
+      "gravity.gravity_type",
+      "gravity.tether_type",
+      "gravity.tether_target",
+      "gravity.nearby_themes",
+      "gravity.legacy_embed",
+      "gravity.strength_score",
+      "gravity.entry_strength",
+      "gravity.temporal_decay",
+      "gravity.resilience_markers",
+      "gravity.adaptation_trajectory",
+      "gravity.reinforcement_pulses[]",
+
+      "impulse.primary_energy",
+      "impulse.drive_state",
+      "impulse.motivational_orientation",
+      "impulse.moral_valence",
+      "impulse.temporal_focus",
+      "impulse.directionality",
+      "impulse.social_visibility",
+      "impulse.urgency",
+      "impulse.risk_posture",
+      "impulse.agency_level",
+      "impulse.regulation_state",
+      "impulse.attachment_style",
+      "impulse.coping_style",
+
+      "governance.jurisdiction",
+      "governance.retention_policy.basis",
+      "governance.retention_policy.ttl_days",
+      "governance.retention_policy.on_expiry",
+      "governance.subject_rights.portable",
+      "governance.subject_rights.erasable",
+      "governance.subject_rights.explainable",
+      "governance.k_anonymity.k",
+      "governance.k_anonymity.groups[]",
+
+      "telemetry.entry_confidence",
+      "telemetry.extraction_model",
+      "telemetry.extraction_notes",
+      "telemetry.retrieval_stats.last_accessed_at",
+      "telemetry.retrieval_stats.times_accessed",
+      "telemetry.retrieval_stats.last_rank",
+      "telemetry.retrieval_stats.avg_rank",
+      "telemetry.feedback[]",
+
+      "system.embeddings[]",
+      "system.indices.waypoint_ids[]",
+      "system.indices.sector_weights.emotional",
+      "system.indices.sector_weights.episodic",
+      "system.indices.sector_weights.semantic",
+      "system.indices.sector_weights.procedural",
+      "system.indices.sector_weights.reflective",
+      "system.crosswalks.plutchik_primary",
+      "system.crosswalks.geneva_emotion_wheel",
+      "system.crosswalks.DSM5_specifiers",
+      "system.crosswalks.HMD_v2_memory_type",
+      "system.crosswalks.ISO_27557_labels"
+    ],
+
+    "deprecated": [
+      "gravity.decay",
+      "telemetry.confidence_score",
+      "telemetry.retrieval_count",
+      "telemetry.last_retrieved",
+      "telemetry.feedback_score",
+      "system.embedding_id",
+      "system.crosswalk_refs",
+      "governance.compliance_mask"  /* moved+retyped to gravity.compliance_mask */
+    ]
+  },
+
+  "notes": [
+    "Do NOT move milky_way.visibility_context; it remains in milky_way for v0.3.",
+    "meta.created_at remains created_at; there is no origin_timestamp in v0.3.",
+    "Where transforms are indicated, migration tooling should emit warnings when lossy mapping occurs.",
+    "Arrays listed with [] denote plural collections introduced in v0.3 (e.g., reinforcement_pulses)."
+  ]
 }
