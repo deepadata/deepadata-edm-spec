@@ -2,17 +2,74 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://deepadata.com/schema/fragments/governance.json",
   "title": "DeepaData EDM v0.3 — Governance Fragment",
-  "description": "Defines identity, consent, and provenance envelope for DeepaData emotional memory artifacts.",
+  "description": "Defines retention, rights, and compliance metadata for each memory artifact. This fragment is non-normative; canonical contract resides in schema/edm.v0.3.schema.json.",
   "type": "object",
-  "properties": {},
-  "additionalProperties": true
+  "additionalProperties": false,
+  "properties": {
+    "jurisdiction": {
+      "type": ["string", "null"],
+      "enum": ["GDPR", "CCPA", "HIPAA", "PIPEDA", "LGPD", "None", "Mixed", null],
+      "description": "Regulatory framework applicable to this record."
+    },
+    "retention_policy": {
+      "type": ["object", "null"],
+      "description": "Defines how long the memory may be stored and what happens upon expiry.",
+      "additionalProperties": false,
+      "properties": {
+        "basis": {
+          "type": ["string", "null"],
+          "enum": ["user_defined", "legal", "business_need", null],
+          "description": "Why retention is justified."
+        },
+        "ttl_days": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "description": "Time-to-live in days; null means indefinite within lawful basis."
+        },
+        "on_expiry": {
+          "type": ["string", "null"],
+          "enum": ["soft_delete", "hard_delete", "anonymize", null],
+          "description": "Action taken once TTL elapses."
+        }
+      }
+    },
+    "subject_rights": {
+      "type": ["object", "null"],
+      "description": "Specifies data subject rights available for this record.",
+      "additionalProperties": false,
+      "properties": {
+        "portable": { "type": "boolean", "description": "Whether the record can be exported in structured form." },
+        "erasable": { "type": "boolean", "description": "Whether the record can be fully deleted." },
+        "explainable": { "type": "boolean", "description": "Whether the model’s interpretation is explainable to the user." }
+      }
+    },
+    "k_anonymity": {
+      "type": ["object", "null"],
+      "description": "Defines anonymity grouping and k thresholds for dataset use.",
+      "additionalProperties": false,
+      "properties": {
+        "k": {
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "description": "Minimum group size for anonymity guarantee."
+        },
+        "groups": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true,
+          "description": "Grouping variables (e.g., region, age_band)."
+        }
+      }
+    },
+    "policy_labels": {
+      "type": "array",
+      "description": "Applied sensitivity or compliance labels.",
+      "items": {
+        "type": "string",
+        "enum": ["sensitive", "children", "health", "biometrics", "financial", "none"]
+      },
+      "uniqueItems": true
+    }
+  },
+  "$comment": "© 2025 DeepaData Pty Ltd — All Rights Reserved. Closed provenance pre-release. Fragment is informational; canonical contract lives in schema/edm.v0.3.schema.json."
 }
-
-/* 
-----------------------------------------------
-DeepaData EDM v0.3 — Closed Provenance Fragment
-© 2025 DeepaData Pty Ltd — All Rights Reserved.
-This file is part of the DeepaData EDM v0.3 specification.
-Distribution or derivative use prohibited until v1.0 release.
-----------------------------------------------
-*/
