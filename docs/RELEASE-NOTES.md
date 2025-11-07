@@ -1,3 +1,13 @@
+## EDM v0.3-pre (2025-11-08)
+
+- Canonical schema finalized (**normative**): `schema/edm.v0.3.schema.json`
+- Fragments aligned (informative)
+- Crosswalks added:
+  - `schema/crosswalks/v0.2_to_v0.3.json`
+  - `schema/crosswalks/v0.1_to_v0.2.json`
+- Examples validated against canonical schema (`scripts/validate-examples.mjs` + CI workflow)
+- Provenance chain: **DeepaData-v1 → DeepaData-v2 → deepadata-edm-spec (v0.3)**
+
 # Release Notes — EDM v0.3 (Pre-release)
 
 **2025-11-07**  
