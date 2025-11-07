@@ -1,18 +1,52 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://deepadata.com/schema/fragments/milky_way.json",
-  "title": "DeepaData EDM v0.3 — Milky_Way Fragment",
-  "description": "Defines identity, consent, and provenance envelope for DeepaData emotional memory artifacts.",
+  "title": "DeepaData EDM v0.3 — Milky Way Fragment",
+  "description": "Contextual and relational extensions (event type, place, people, media, visibility, tone, layers, and time range). Fragment is non-normative; canonical definition is in schema/edm.v0.3.schema.json.",
   "type": "object",
-  "properties": {},
-  "additionalProperties": true
+  "additionalProperties": false,
+  "properties": {
+    "event_type": {
+      "type": ["string", "null"],
+      "description": "Short label for the event (e.g., family_expansion, reflection)."
+    },
+    "location_context": {
+      "type": ["string", "null"],
+      "description": "Place derived from text/image (free text or structured)."
+    },
+    "associated_people": {
+      "type": "array",
+      "description": "People involved; Title Case allowed (not enforced).",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "media_context": {
+      "type": ["string", "null"],
+      "description": "Brief media notes (e.g., photo, note, clip) if salient."
+    },
+    "visibility_context": {
+      "type": ["string", "null"],
+      "enum": ["self", "family_only", "inner_circle", "org_only", "public"],
+      "description": "Intended sharing scope of the memory."
+    },
+    "tone_shift": {
+      "type": ["string", "null"],
+      "description": "Observed change in tone (e.g., grief to joy)."
+    },
+    "memory_layers": {
+      "type": ["string", "null"],
+      "enum": ["emotional", "semantic", "procedural", "reflective", "mixed"],
+      "description": "Dominant memory layer classification."
+    },
+    "time_range": {
+      "type": "object",
+      "description": "Optional time bounds for the memory/event.",
+      "additionalProperties": false,
+      "properties": {
+        "start": { "type": ["string", "null"], "format": "date-time" },
+        "end": { "type": ["string", "null"], "format": "date-time" }
+      }
+    }
+  },
+  "$comment": "© 2025 DeepaData Pty Ltd — All Rights Reserved. Closed provenance pre-release. Fragment is informational; canonical contract lives in schema/edm.v0.3.schema.json."
 }
-
-/* 
-----------------------------------------------
-DeepaData EDM v0.3 — Closed Provenance Fragment
-© 2025 DeepaData Pty Ltd — All Rights Reserved.
-This file is part of the DeepaData EDM v0.3 specification.
-Distribution or derivative use prohibited until v1.0 release.
-----------------------------------------------
-*/
