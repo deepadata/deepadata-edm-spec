@@ -98,3 +98,12 @@ The steps below describe the artifact process without exposing runtime internals
      "signature": null,
      "payload": { /* the validated EDM v0.3 object */ }
    }
+
+Provenance Note
+
+This repository forms part of the verified lineage:
+DeepaData-v1 → DeepaData-v2 → DeepaData-EDM-Spec (v0.3)
+and will remain private under closed provenance until formal Zenodo DOI registration.
+
+© 2025 DeepaData Pty Ltd — All Rights Reserved.
+This specification remains under closed provenance until the official v1.0 release.
