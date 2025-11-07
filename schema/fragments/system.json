@@ -2,17 +2,65 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://deepadata.com/schema/fragments/system.json",
   "title": "DeepaData EDM v0.3 — System Fragment",
-  "description": "Defines identity, consent, and provenance envelope for DeepaData emotional memory artifacts.",
+  "description": "Defines embedding, indexing, and crosswalk metadata for EDM v0.3 artifacts. Non-normative; canonical structure resides in schema/edm.v0.3.schema.json.",
   "type": "object",
-  "properties": {},
-  "additionalProperties": true
+  "additionalProperties": false,
+  "properties": {
+    "embeddings": {
+      "type": "array",
+      "description": "References to stored embeddings or vector sectors used by Resonance Recall or external engines.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "provider": {
+            "type": ["string", "null"],
+            "description": "Embedding source or vendor (e.g., openai, vertex, local)."
+          },
+          "sector": {
+            "type": ["string", "null"],
+            "enum": ["episodic", "semantic", "procedural", "emotional", "reflective", null],
+            "description": "Cognitive or emotional sector encoded."
+          },
+          "dim": {
+            "type": ["integer", "null"],
+            "minimum": 1,
+            "description": "Embedding dimensionality."
+          },
+          "quantized": {
+            "type": "boolean",
+            "description": "True if embedding is stored in quantized form."
+          },
+          "vector_ref": {
+            "type": ["string", "null"],
+            "description": "Internal or external reference to vector storage (e.g., vs:rowid)."
+          }
+        }
+      }
+    },
+    "indices": {
+      "type": "object",
+      "description": "Lists vector IDs and relative weighting across memory sectors.",
+      "additionalProperties": false,
+      "properties": {
+        "waypoint_ids": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Unique identifiers for key retrieval waypoints."
+        },
+        "sector_weights": {
+          "type": "object",
+          "description": "Weight multipliers (0–1) per memory sector for balancing retrieval relevance.",
+          "properties": {
+            "episodic": { "type": ["number", "null"], "minimum": 0.0, "maximum": 1.0 },
+            "semantic": { "type": ["number", "null"], "minimum": 0.0, "maximum": 1.0 },
+            "procedural": { "type": ["number", "null"], "minimum": 0.0, "maximum": 1.0 },
+            "emotional": { "type": ["number", "null"], "minimum": 0.0, "maximum": 1.0 },
+            "reflective": { "type": ["number", "null"], "minimum": 0.0, "maximum": 1.0 }
+          }
+        }
+      }
+    },
+   
+  "$comment": "© 2025 DeepaData Pty Ltd — All Rights Reserved. Closed provenance pre-release. Fragment is informational; canonical contract lives in schema/edm.v0.3.schema.json."
 }
-
-/* 
-----------------------------------------------
-DeepaData EDM v0.3 — Closed Provenance Fragment
-© 2025 DeepaData Pty Ltd — All Rights Reserved.
-This file is part of the DeepaData EDM v0.3 specification.
-Distribution or derivative use prohibited until v1.0 release.
-----------------------------------------------
-*/
