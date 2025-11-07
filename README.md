@@ -9,35 +9,45 @@ This repository hosts the **canonical specification** for the Emotional Data Mod
 - **Normative:** `schema/edm.v0.3.schema.json`
 - **Informative (non-normative):** `schema/fragments/*`, `schema/crosswalks/*`, `docs/*`, `examples/*`
 
+---
+
 ## Purpose
 
 Provide a clean, single-file JSON Schema that matches the v0.3 object shape used by our MVP (*System Prompt C* lineage), while preserving provenance from:
 - **DeepaData-v1** (EDM v0.1, April 2025, closed archive)
 - **DeepaData-v2** (EDM v0.2 → v0.3 layers, April–Nov 2025, pre-release)
 
+---
+
 ## Lineage & Status
 
 This repository is the **canonical specification** for the DeepaData Emotional Data Model **EDM v0.3**.
 
-- **Canon:** The single-file JSON Schema in `/schema/edm.v0.3.schema.json` defines all normative keys, types, and constraints.
-- **Runtime Profile (informative):** The “SystemPrompt-C” profile lives in the private `deepadata-mvp` runtime. It is a *valid* way to produce EDM v0.3 records, but the prompt itself is **not** normative and **not** part of the spec.
-- **Provenance:** EDM v0.3 evolves from `deepadata-v1` (EDM v0.1) and `deepadata-v2` (EDM v0.2 → v0.3), with formal migration notes and crosswalks preserved under closed provenance.
+- **Canon:** The single-file JSON Schema in `/schema/edm.v0.3.schema.json` defines all normative keys, types, and constraints.  
+- **Runtime Profile (informative):** The “SystemPrompt-C” profile lives in the private `deepadata-mvp` runtime. It is a *valid* way to produce EDM v0.3 records, but the prompt itself is **not** normative and **not** part of the spec.  
+- **Provenance:** EDM v0.3 evolves from `deepadata-v1` (EDM v0.1) and `deepadata-v2` (EDM v0.2 → v0.3), with formal migration notes and crosswalks preserved under closed provenance.  
 - **License:** All content here is **All Rights Reserved** (closed provenance). An MIT *reference* license is planned post–v1.0 commercial release for the schema text only.
+
+---
 
 ## Scope & Boundaries
 
-- This repo **does not** include runtime code, retrieval logic, Resonance Recall, Resonate Kernel, or generation pipelines.
-- It is **schema + examples** only, kept private until public release.
+- This repo **does not** include runtime code, retrieval logic, Resonance Recall, Resonate Kernel, or generation pipelines.  
+- It is **schema + examples** only, kept private until public release.  
 - Upon v1.0 commercial release, the schema may be re-licensed under MIT (spec only).
 
-## Quick start
+---
 
-- See `docs/OVERVIEW.md` for the schema map and layer intent.
-- See `docs/VALIDATION.md` for validation tips.
-- See `docs/MIGRATION.md` for v0.2 → v0.3 field continuity.
+## Quick Start
+
+- See `docs/OVERVIEW.md` for the schema map and layer intent.  
+- See `docs/VALIDATION.md` for validation tips.  
+- See `docs/MIGRATION.md` for v0.2 → v0.3 field continuity.  
 - See `examples/` for minimal valid `.ddna` artifacts.
 
-  ## Why convert EDM v0.3 → `.ddna`
+---
+
+## Why convert EDM v0.3 → `.ddna`
 
 `EDM v0.3` is the **data model**. `.ddna` is the **portable artifact**.
 
@@ -57,6 +67,8 @@ Packaging an EDM record as `.ddna` enables:
 
 5. **Tooling & Ecosystem** *(roadmap)*  
    Validators, CLI, and SDKs will target `.ddna` as the first-class exchange format for import/export, backup, and dataset curation.
+
+---
 
 ## Packaging EDM v0.3 into `.ddna` (informative)
 
@@ -86,6 +98,3 @@ The steps below describe the artifact process without exposing runtime internals
      "signature": null,
      "payload": { /* the validated EDM v0.3 object */ }
    }
-
-© 2025 DeepaData Pty Ltd — All Rights Reserved.
-
