@@ -61,6 +61,18 @@
         }
       }
     },
-   
+    "crosswalks": {
+      "type": "object",
+      "description": "Mappings to external taxonomies and emotion standards for interoperability.",
+      "additionalProperties": false,
+      "properties": {
+        "plutchik_primary": { "type": ["string", "null"], "description": "Mapped Plutchik primary emotion (if available)." },
+        "geneva_emotion_wheel": { "type": ["string", "null"], "description": "Mapped Geneva Emotion Wheel label." },
+        "DSM5_specifiers": { "type": ["string", "null"], "description": "DSM-5 affective specifier alignment (if relevant)." },
+        "HMD_v2_memory_type": { "type": ["string", "null"], "description": "Human–Machine Dialogue v2 emotional memory type mapping." },
+        "ISO_27557_labels": { "type": ["string", "null"], "description": "ISO 27557:2023 emotional classification label." }
+      }
+    }
+  },
   "$comment": "© 2025 DeepaData Pty Ltd — All Rights Reserved. Closed provenance pre-release. Fragment is informational; canonical contract lives in schema/edm.v0.3.schema.json."
 }
