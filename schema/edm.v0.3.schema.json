@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deepadata.com/schema/edm.v0.3.schema.json",
+  "title": "DeepaData Emotional Data Model (EDM v0.3)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "meta",
+    "core",
+    "constellation",
+    "milky_way",
+    "gravity",
+    "impulse",
+    "governance",
+    "telemetry",
+    "system",
+    "crosswalks"
+  ],
+  "properties": {
+    "meta": { "type": "object" },
+    "core": { "type": "object" },
+    "constellation": { "type": "object" },
+    "milky_way": { "type": "object" },
+    "gravity": { "type": "object" },
+    "impulse": { "type": "object" },
+    "governance": { "type": "object" },
+    "telemetry": { "type": "object" },
+    "system": { "type": "object" },
+    "crosswalks": { "type": "object" }
+  }
+}
