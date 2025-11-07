@@ -1,104 +1,94 @@
-"$comment": "Non-normative fragment. Canonical definition is in edm.v0.3.schema.json"
-
-    "meta": {
-      "type": "object",
-      "description": "Identity, consent, and provenance envelope.",
-      "additionalProperties": false,
-      "required": [
-        "version",
-        "id",
-        "parent_id",
-        "locale",
-        "created_at",
-        "updated_at",
-        "owner_user_id",
-        "visibility",
-        "pii_tier",
-        "consent",
-        "tags",
-        "source"
-      ],
-      "properties": {
-        "version": {
-          "type": "string",
-          "pattern": "^0\\.3$",
-          "description": "Schema version identifier."
-        },
-        "id": {
-          "type": ["string", "null"],
-          "description": "UUID for this memory/event."
-        },
-        "parent_id": {
-          "type": ["string", "null"]
-        },
-        "locale": {
-          "type": ["string", "null"],
-          "description": "BCP-47 (e.g., en-au)."
-        },
-        "created_at": {
-          "type": ["string", "null"],
-          "format": "date-time"
-        },
-        "updated_at": {
-          "type": ["string", "null"],
-          "format": "date-time"
-        },
-        "owner_user_id": {
-          "type": ["string", "null"]
-        },
-        "visibility": {
-          "type": ["string", "null"],
-          "enum": ["private", "shared_with_trusted", "organization", "public", null]
-        },
-        "pii_tier": {
-          "type": ["string", "null"],
-          "enum": ["none", "low", "moderate", "high", "restricted", null]
-        },
-        "consent": {
-          "type": ["object", "null"],
-          "additionalProperties": false,
-          "required": ["basis", "scope", "captured_at", "revoked_at"],
-          "properties": {
-            "basis": { "type": ["string", "null"], "enum": ["contract", "consent", "legitimate_interest", null] },
-            "scope": { "type": ["string", "null"] },
-            "captured_at": { "type": ["string", "null"], "format": "date-time" },
-            "revoked_at": { "type": ["string", "null"], "format": "date-time" }
-          }
-        },
-        "tags": {
-          "type": "array",
-          "items": { "type": "string" }
-        },
-        "source": {
-          "type": ["object", "null"],
-          "additionalProperties": false,
-          "required": ["channel", "app_client_id", "message_id", "media_format", "attribution"],
-          "properties": {
-            "channel": { "type": ["string", "null"], "enum": ["chat", "document", "call", "app_event", "social", "manual", null] },
-            "app_client_id": { "type": ["string", "null"] },
-            "message_id": { "type": ["string", "null"] },
-            "media_format": { "type": ["string", "null"], "enum": ["text", "audio", "image", "video", "mixed", null] },
-            "attribution": { "type": ["string", "null"] }
-          }
-        }
-      }
-    },
-
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://deepadata.com/schema/fragments/meta.json",
   "title": "DeepaData EDM v0.3 — Meta Fragment",
-  "description": "Defines identity, consent, and provenance envelope for DeepaData emotional memory artifacts.",
+  "description": "Identity, consent, and provenance envelope for DeepaData emotional memory artifacts. Fragment is non-normative; canonical definition is in schema/edm.v0.3.schema.json.",
   "type": "object",
-  "properties": {},
-  "additionalProperties": true
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "string",
+      "const": "0.3",
+      "description": "Schema version identifier."
+    },
+    "id": {
+      "type": ["string", "null"],
+      "format": "uuid",
+      "description": "UUID for this memory/event."
+    },
+    "parent_id": {
+      "type": ["string", "null"],
+      "description": "Link to a parent or thread record."
+    },
+    "locale": {
+      "type": ["string", "null"],
+      "description": "BCP-47 language-region tag (e.g., en-au)."
+    },
+    "created_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "UTC ISO-8601 timestamp the record was created."
+    },
+    "updated_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "UTC ISO-8601 timestamp the record was last modified."
+    },
+    "owner_user_id": {
+      "type": ["string", "null"],
+      "description": "Internal user pointer (or null)."
+    },
+    "visibility": {
+      "type": ["string", "null"],
+      "enum": ["private", "shared_with_trusted", "organization", "public"],
+      "description": "Access level for this artifact."
+    },
+    "pii_tier": {
+      "type": ["string", "null"],
+      "enum": ["none", "low", "moderate", "high", "restricted"],
+      "description": "PII sensitivity classification."
+    },
+    "consent": {
+      "type": ["object", "null"],
+      "description": "User consent or legal basis metadata.",
+      "additionalProperties": false,
+      "properties": {
+        "basis": {
+          "type": ["string", "null"],
+          "enum": ["contract", "consent", "legitimate_interest"],
+          "description": "Legal basis."
+        },
+        "scope": { "type": ["string", "null"], "description": "Scope/limits of consent." },
+        "captured_at": { "type": ["string", "null"], "format": "date-time", "description": "When consent was captured." },
+        "revoked_at": { "type": ["string", "null"], "format": "date-time", "description": "When consent was revoked (if applicable)." }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Lowercase topical tokens.",
+      "items": { "type": "string" }
+    },
+    "source": {
+      "type": ["object", "null"],
+      "description": "How and where the memory originated.",
+      "additionalProperties": false,
+      "properties": {
+        "channel": {
+          "type": ["string", "null"],
+          "enum": ["chat", "document", "call", "app_event", "social", "manual"],
+          "description": "Origin channel."
+        },
+        "app_client_id": { "type": ["string", "null"], "description": "Client/app identifier." },
+        "message_id": { "type": ["string", "null"], "description": "Message/event pointer." },
+        "media_format": {
+          "type": ["string", "null"],
+          "enum": ["text", "audio", "image", "video", "mixed"],
+          "description": "Primary media format."
+        },
+        "attribution": { "type": ["string", "null"], "description": "Provenance string or URL." }
+      }
+    }
+  },
+  "required": ["version"],
+  "$comment": "© 2025 DeepaData Pty Ltd — All Rights Reserved. Closed provenance pre-release. Fragment is informational; canonical contract lives in schema/edm.v0.3.schema.json."
 }
-
-/* 
-----------------------------------------------
-DeepaData EDM v0.3 — Closed Provenance Fragment
-© 2025 DeepaData Pty Ltd — All Rights Reserved.
-This file is part of the DeepaData EDM v0.3 specification.
-Distribution or derivative use prohibited until v1.0 release.
-----------------------------------------------
-*/
