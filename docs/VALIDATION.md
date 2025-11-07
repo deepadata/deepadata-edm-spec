@@ -24,3 +24,15 @@ All example files in `examples/*.ddna.json` are validated in CI against the cano
 - 0–1 bounds for confidence/intensity fields.
 
 Push changes to `schema/` or `examples/` and CI will confirm validity automatically.
+
+---
+
+## Validate Locally with Node.js (AJV)
+
+Developers can confirm that any `.ddna` file conforms to the canonical schema using the [AJV](https://ajv.js.org) validator.
+
+### Quick Start
+
+```bash
+npm install ajv ajv-formats
+
