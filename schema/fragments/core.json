@@ -1,3 +1,19 @@
+"$comment": "Non-normative fragment. Canonical definition is in edm.v0.3.schema.json"
+
+    "core": {
+      "type": "object",
+      "description": "Narrative spine — captures semantic anchors and emotional drivers.",
+      "properties": {
+        "anchor": { "type": ["string","null"], "description": "Central subject or theme of the memory." },
+        "spark": { "type": ["string","null"], "description": "Immediate trigger or catalyst for recall." },
+        "wound": { "type": ["string","null"], "description": "Underlying tension, challenge, or vulnerability." },
+        "fuel": { "type": ["string","null"], "description": "Sustaining energy, motivation, or support." },
+        "bridge": { "type": ["string","null"], "description": "Connecting insight or transition between states." },
+        "echo": { "type": ["string","null"], "description": "Lingering emotional aftertone or reflection." }
+      },
+      "additionalProperties": false
+    },
+
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://deepadata.com/schema/fragments/core.json",
