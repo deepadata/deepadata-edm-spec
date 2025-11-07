@@ -1,0 +1,109 @@
+{
+  "meta": {
+    "version": "0.3",
+    "id": null,
+    "locale": "en-au",
+    "created_at": "2025-11-07T10:15:00Z",
+    "updated_at": null,
+    "owner_user_id": null,
+    "visibility": "shared_with_trusted",
+    "pii_tier": "moderate",
+    "consent": { "basis": "consent", "scope": "personal_media", "captured_at": "2025-11-07T10:15:00Z", "revoked_at": null },
+    "tags": ["family","milestone"],
+    "source": { "channel": "chat", "app_client_id": null, "message_id": null, "media_format": "mixed", "attribution": null }
+  },
+  "core": {
+    "anchor": "family tradition",
+    "spark": "received photo",
+    "wound": null,
+    "fuel": "support",
+    "bridge": "returning to dance",
+    "echo": "feeling youthful",
+    "narrative": "We looked at old competition photos together and it felt like coming home. The familiar rhythm, the costumes, and everyone’s smiles brought back a steady joy. It reminded me that support has a long memory. I could feel the thread between then and now, still holding."
+  },
+  "constellation": {
+    "emotion_primary": "joy",
+    "emotion_subtone": ["gratitude","excitement","warmth"],
+    "higher_order_emotion": null,
+    "meta_emotional_state": "acceptance",
+    "interpersonal_affect": "care",
+    "active_motivational_state": "belonging",
+    "narrative_arc": "reflection",
+    "relational_dynamics": "family",
+    "temporal_context": "midlife",
+    "memory_type": "reflection",
+    "archetype_energy": "the_everyperson",
+    "symbolic_anchor": "medals",
+    "relational_perspective": "family",
+    "temporal_rhythm": "recurring",
+    "identity_thread": "tradition keeps us close",
+    "meaning_inference": "rituals create continuity",
+    "transcendent_moment": false
+  },
+  "milky_way": {
+    "event_type": "reflection",
+    "location_context": "living room",
+    "associated_people": ["Mum","Sister"],
+    "media_context": "scanned photo",
+    "visibility_context": "inner_circle",
+    "tone_shift": null,
+    "memory_layers": "emotional",
+    "time_range": { "start": null, "end": null }
+  },
+  "gravity": {
+    "emotional_weight": 0.72,
+    "emotional_density": "medium",
+    "valence": "positive",
+    "viscosity": "enduring",
+    "gravity_type": "social_bond",
+    "tether_type": "ritual",
+    "tether_target": "Physie",
+    "recall_triggers": ["music","medals","uniform"],
+    "retrieval_keys": ["family","dance","ritual","support","continuity"],
+    "nearby_themes": ["identity","nostalgia"],
+    "legacy_embed": false,
+    "reentry_score": 0.64,
+    "strength_score": 0.58,
+    "entry_strength": 0.66,
+    "temporal_decay": "slow",
+    "resilience_markers": ["continuity","social_support"],
+    "adaptation_trajectory": "integrative",
+    "reinforcement_pulses": [],
+    "compliance_mask": { "exportable": true, "shareable": false, "purpose_limited_to": [] }
+  },
+  "impulse": {
+    "primary_energy": "hope",
+    "drive_state": "approach",
+    "motivational_orientation": "belonging",
+    "moral_valence": "prosocial",
+    "temporal_focus": "present",
+    "directionality": "outward",
+    "social_visibility": "dyadic",
+    "urgency": "calm",
+    "risk_posture": "balanced",
+    "agency_level": "medium",
+    "regulation_state": "regulated",
+    "attachment_style": "secure",
+    "coping_style": "seek_support"
+  },
+  "governance": {
+    "jurisdiction": "None",
+    "retention_policy": { "basis": "user_defined", "ttl_days": null, "on_expiry": "soft_delete" },
+    "subject_rights": { "portable": true, "erasable": true, "explainable": false },
+    "k_anonymity": { "k": null, "groups": [] },
+    "policy_labels": []
+  },
+  "telemetry": {
+    "entry_confidence": 0.82,
+    "extraction_model": "gpt-4o",
+    "extraction_notes": null,
+    "retrieval_stats": { "last_accessed_at": null, "times_accessed": 0, "last_rank": null, "avg_rank": null },
+    "feedback": []
+  },
+  "system": {
+    "embeddings": [],
+    "indices": { "waypoint_ids": [], "sector_weights": { "episodic": 0.0, "semantic": 0.0, "procedural": 0.0, "emotional": 0.0, "reflective": 0.0 } },
+    "crosswalks": { "plutchik_primary": null, "geneva_emotion_wheel": null, "DSM5_specifiers": null, "HMD_v2_memory_type": null, "ISO_27557_labels": null }
+  },
+  "crosswalks": {}
+}
