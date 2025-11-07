@@ -1,11 +1,70 @@
-# Migration — EDM v0.2 → v0.3
+# Migration Guide
 
-This document records continuity between v0.2 and v0.3. It is **non-normative**; the canonical source is `schema/edm.v0.3.schema.json`.
+This guide explains how to migrate EDM data and code between schema versions.
 
-## High-level
-- **Preserved:** Core, Constellation, Milky Way, Gravity (field semantics retained for provenance).
-- **Added:** Impulse, Meta, Governance, Telemetry, System, Crosswalks.
-- **No runtime logic** in this spec repo.
+---
 
-## Crosswalks
-See `schema/crosswalks/v0.2_to_v0.3.json` for reference notes (aliases/renames if any).
+## v0.2 → v0.3
+
+**Canonical crosswalk:** [`schema/crosswalks/v0.2_to_v0.3.json`](../schema/crosswalks/v0.2_to_v0.3.json)  
+**Normative schema:** [`schema/edm.v0.3.schema.json`](../schema/edm.v0.3.schema.json)
+
+### What stayed the same (selected)
+- `core`: `anchor`, `spark`, `wound`, `fuel`, `bridge`, `echo`, `narrative`
+- `constellation`: `emotion_primary`, `emotion_subtone`, `identity_thread`, `meaning_inference`, `relational_perspective`, `symbolic_anchor`, `temporal_rhythm`, `transcendent_moment`, `narrative_arc`, `temporal_context`, `relational_dynamics`, `memory_type`, `archetype_energy`
+- `milky_way`: `visibility_context`, `tone_shift`, `associated_people`, `location_context`, `media_context`, `memory_layers`
+- `gravity`: `emotional_weight`, `recall_triggers`, `legacy_embed`, `reentry_score`, `tether_type`, `tether_target`, `strength_score`, `emotional_density`, `valence`, `viscosity`, `gravity_type`, `temporal_decay`
+- `meta`: `version`, `id`, `locale`, `created_at`, `updated_at`, `tags`
+- `meta.source`: `channel`, `media_format`
+
+### Renamed
+- `impulse.visibility` → `impulse.social_visibility`
+- `system.crosswalk_refs` → `system.crosswalks`
+
+### Moved / Retyped
+- `governance.compliance_mask` → `gravity.compliance_mask`
+  - **transform:** string/flags → object `{ exportable:boolean, shareable:boolean, purpose_limited_to:string[] }`
+- `crosswalks.*` → `system.crosswalks.*`
+  - **transform:** flattened → structured keys (`plutchik_primary`, `geneva_emotion_wheel`, `DSM5_specifiers`, `HMD_v2_memory_type`, `ISO_27557_labels`)
+
+### Introduced (new in v0.3)
+- `constellation`: `higher_order_emotion`, `meta_emotional_state`, `interpersonal_affect`, `active_motivational_state`
+- `milky_way`: `event_type`, `time_range.start`, `time_range.end`
+- `gravity`: `entry_strength`, `resilience_markers[]`, `adaptation_trajectory`, `reinforcement_pulses[]`, `compliance_mask`
+- `impulse`: `primary_energy`, `drive_state`, `motivational_orientation`, `moral_valence`, `temporal_focus`, `directionality`, `social_visibility`, `urgency`, `risk_posture`, `agency_level`, `regulation_state`, `attachment_style`, `coping_style`
+- `governance`: `jurisdiction`, `retention_policy.{basis,ttl_days,on_expiry}`, `subject_rights.{portable,erasable,explainable}`, `k_anonymity.{k,groups[]}`
+- `telemetry`: `entry_confidence`, `extraction_model`, `extraction_notes`, `retrieval_stats.{last_accessed_at,times_accessed,last_rank,avg_rank}`, `feedback[]`
+- `system`: `embeddings[]`, `indices.waypoint_ids[]`, `indices.sector_weights.{emotional,episodic,semantic,procedural,reflective}`, `crosswalks.{plutchik_primary,geneva_emotion_wheel,DSM5_specifiers,HMD_v2_memory_type,ISO_27557_labels}`
+
+### Deprecated
+- `system.embedding_id`
+- `system.crosswalk_refs`
+
+---
+
+## Migration tips
+
+1. **Validate first**  
+   Use the canonical schema and the repo’s validation script/CI to see where objects fail before migrating.
+
+2. **Apply the crosswalk**  
+   - Copy unchanged fields as-is.  
+   - Apply `renamed` and `moved` mappings.  
+   - Initialize new fields to `null`, `[]`, or sensible defaults per schema when absent.
+
+3. **Watch transforms**  
+   Any lossy conversion (e.g., retyping `compliance_mask`) should emit warnings in your migration tooling and be captured in logs.
+
+4. **Re-validate**  
+   Run validation again after migration. All top-level domains must exist even if values are `null`.
+
+---
+
+## v0.1 → v0.2
+
+**Canonical crosswalk:** [`schema/crosswalks/v0.1_to_v0.2.json`](../schema/crosswalks/v0.1_to_v0.2.json)
+
+Summary:
+- Moved several affective fields from `core` into `constellation` (e.g., `emotion_primary`, `narrative_arc`, `temporal_context`, `relational_dynamics`, `memory_type`, `media_format`).
+- Introduced/standardized gravity metrics (`emotional_weight`, `emotional_density`, `valence`, `viscosity`, `temporal_decay`, `reentry_score`, `strength_score`, `tether_type`, `tether_target`, `recall_triggers`), replacing earlier V1 “gravity” descriptors.
+- See the crosswalk file for the exact field-by-field mapping.
