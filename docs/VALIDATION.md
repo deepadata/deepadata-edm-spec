@@ -10,3 +10,17 @@ The normative schema is `schema/edm.v0.3.schema.json`.
 ## Tooling (examples)
 - Node (ajv), Python (jsonschema), or any Draft 2020-12 compatible validator.
 - Keep validators in downstream apps (this repo is spec-only).
+
+# Validation of `.ddna` Examples
+
+All example files in `examples/*.ddna.json` are validated in CI against the canonical schema:
+
+- **Normative schema:** `schema/edm.v0.3.schema.json`
+- **CI workflow:** `.github/workflows/validate-examples.yml`
+
+**What is enforced**
+- All top-level domains exist (unknowns may be `null`).
+- ISO-8601 timestamps.
+- 0–1 bounds for confidence/intensity fields.
+
+Push changes to `schema/` or `examples/` and CI will confirm validity automatically.
