@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+title: "DeepaData — Emotional Data Model (EDM v0.3 Specification)"
+message: "Please cite this repository if you reference EDM v0.3."
+type: software
+authors:
+  - family-names: Harvey
+    given-names: Jason
+    affiliation: DeepaData Pty Ltd
+repository-code: https://github.com/deepadata/deepadata-edm-spec
+version: "0.3-pre"
+date-released: "2025-11-07"
+license: "Proprietary (All Rights Reserved)"
+preferred-citation:
+  type: article
+  title: "DeepaData — Emotional Data Model (EDM v0.3 Specification)"
+  authors:
+    - family-names: Harvey
+      given-names: Jason
+  year: 2025
