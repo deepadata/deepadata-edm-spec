@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://deepadata.com/schema/fragments/meta.json",
+  "$id": "https://deepadata.com/schema/fragments/milky_way.json",
   "title": "DeepaData EDM v0.3 — Milky_Way Fragment",
   "description": "Defines identity, consent, and provenance envelope for DeepaData emotional memory artifacts.",
   "type": "object",
