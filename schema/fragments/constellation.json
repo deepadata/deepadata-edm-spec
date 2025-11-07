@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deepadata.com/schema/fragments/meta.json",
+  "title": "DeepaData EDM v0.3 — Constellation Fragment",
+  "description": "Defines identity, consent, and provenance envelope for DeepaData emotional memory artifacts.",
+  "type": "object",
+  "properties": {},
+  "additionalProperties": true
+}
+
+/* 
+----------------------------------------------
+DeepaData EDM v0.3 — Closed Provenance Fragment
+© 2025 DeepaData Pty Ltd — All Rights Reserved.
+This file is part of the DeepaData EDM v0.3 specification.
+Distribution or derivative use prohibited until v1.0 release.
+----------------------------------------------
+*/
