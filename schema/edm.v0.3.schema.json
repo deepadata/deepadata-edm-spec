@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://deepadata.com/schema/edm.v0.3.schema.json",
   "title": "DeepaData Emotional Data Model (EDM v0.3)",
-  "description": "Canonical specification of the DeepaData Emotional Data Model (EDM v0.3). This schema defines the normalized structure of emotional memory artifacts (.ddna) under closed provenance. All keys are required; null or empty arrays are permitted values when unknown.",
+  "description": "Canonical specification of the DeepaData Emotional Data Model (EDM v0.3). All top-level domains are required; unknown values should be set to null or empty arrays. Closed provenance pre-release.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -20,162 +20,438 @@
   "properties": {
     "meta": {
       "type": "object",
-      "description": "Identity, consent, and provenance envelope for the memory record.",
+      "description": "Identity, consent, and provenance envelope.",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "id",
+        "parent_id",
+        "locale",
+        "created_at",
+        "updated_at",
+        "owner_user_id",
+        "visibility",
+        "pii_tier",
+        "consent",
+        "tags",
+        "source"
+      ],
       "properties": {
-        "version": { "type": "string", "pattern": "^0\\.3$", "description": "Schema version identifier." },
-        "id": { "type": ["string","null"], "description": "Unique UUID for this record." },
-        "locale": { "type": ["string","null"], "description": "BCP-47 language-region tag, e.g., en-au." },
-        "created_at": { "type": ["string","null"], "format": "date-time", "description": "Timestamp memory was created (UTC ISO-8601)." },
-        "updated_at": { "type": ["string","null"], "format": "date-time", "description": "Last modification timestamp (UTC ISO-8601)." },
-        "visibility": { "type": ["string","null"], "enum": ["private","shared_with_trusted","organization","public"], "description": "Access level for this memory artifact." },
-        "pii_tier": { "type": ["string","null"], "enum": ["none","low","moderate","high","restricted"], "description": "Personal-identifiable-information sensitivity classification." },
-        "consent": {
-          "type": ["object","null"],
-          "description": "User consent or legal basis metadata.",
-          "properties": {
-            "basis": { "type": ["string","null"], "enum": ["contract","consent","legitimate_interest",null] },
-            "scope": { "type": ["string","null"] },
-            "captured_at": { "type": ["string","null"], "format": "date-time" },
-            "revoked_at": { "type": ["string","null"], "format": "date-time" }
-          },
-          "additionalProperties": false
+        "version": {
+          "type": "string",
+          "pattern": "^0\\.3$",
+          "description": "Schema version identifier."
         },
-        "tags": { "type": "array", "items": { "type": "string" }, "description": "Lower-case topical or thematic tags." },
-        "source": {
-          "type": ["object","null"],
-          "description": "Defines how and where the memory originated.",
+        "id": {
+          "type": ["string", "null"],
+          "description": "UUID for this memory/event."
+        },
+        "parent_id": {
+          "type": ["string", "null"]
+        },
+        "locale": {
+          "type": ["string", "null"],
+          "description": "BCP-47 (e.g., en-au)."
+        },
+        "created_at": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "owner_user_id": {
+          "type": ["string", "null"]
+        },
+        "visibility": {
+          "type": ["string", "null"],
+          "enum": ["private", "shared_with_trusted", "organization", "public", null]
+        },
+        "pii_tier": {
+          "type": ["string", "null"],
+          "enum": ["none", "low", "moderate", "high", "restricted", null]
+        },
+        "consent": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["basis", "scope", "captured_at", "revoked_at"],
           "properties": {
-            "channel": { "type": ["string","null"], "enum": ["chat","document","call","app_event","social","manual",null] },
-            "media_format": { "type": ["string","null"], "enum": ["text","audio","image","video","mixed",null] },
-            "app_client_id": { "type": ["string","null"] },
-            "message_id": { "type": ["string","null"] },
-            "attribution": { "type": ["string","null"] }
-          },
-          "additionalProperties": false
+            "basis": { "type": ["string", "null"], "enum": ["contract", "consent", "legitimate_interest", null] },
+            "scope": { "type": ["string", "null"] },
+            "captured_at": { "type": ["string", "null"], "format": "date-time" },
+            "revoked_at": { "type": ["string", "null"], "format": "date-time" }
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "source": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["channel", "app_client_id", "message_id", "media_format", "attribution"],
+          "properties": {
+            "channel": { "type": ["string", "null"], "enum": ["chat", "document", "call", "app_event", "social", "manual", null] },
+            "app_client_id": { "type": ["string", "null"] },
+            "message_id": { "type": ["string", "null"] },
+            "media_format": { "type": ["string", "null"], "enum": ["text", "audio", "image", "video", "mixed", null] },
+            "attribution": { "type": ["string", "null"] }
+          }
         }
-      },
-      "required": ["version"]
+      }
     },
 
     "core": {
       "type": "object",
-      "description": "Narrative spine — captures semantic anchors and emotional drivers.",
+      "description": "Narrative spine.",
+      "additionalProperties": false,
+      "required": ["anchor", "spark", "wound", "fuel", "bridge", "echo", "narrative"],
       "properties": {
-        "anchor": { "type": ["string","null"], "description": "Central subject or theme of the memory." },
-        "spark": { "type": ["string","null"], "description": "Immediate trigger or catalyst for recall." },
-        "wound": { "type": ["string","null"], "description": "Underlying tension, challenge, or vulnerability." },
-        "fuel": { "type": ["string","null"], "description": "Sustaining energy, motivation, or support." },
-        "bridge": { "type": ["string","null"], "description": "Connecting insight or transition between states." },
-        "echo": { "type": ["string","null"], "description": "Lingering emotional aftertone or reflection." }
-      },
-      "additionalProperties": false
+        "anchor": { "type": ["string", "null"] },
+        "spark": { "type": ["string", "null"] },
+        "wound": { "type": ["string", "null"] },
+        "fuel": { "type": ["string", "null"] },
+        "bridge": { "type": ["string", "null"] },
+        "echo": { "type": ["string", "null"] },
+        "narrative": { "type": ["string", "null"] }
+      }
     },
 
     "constellation": {
       "type": "object",
-      "description": "Emotional interpretation layer linking primary emotion, subtones, and relational context.",
+      "description": "Emotional interpretation and relational context.",
+      "additionalProperties": false,
+      "required": [
+        "emotion_primary",
+        "emotion_subtone",
+        "higher_order_emotion",
+        "meta_emotional_state",
+        "interpersonal_affect",
+        "active_motivational_state",
+        "narrative_arc",
+        "relational_dynamics",
+        "temporal_context",
+        "memory_type",
+        "archetype_energy",
+        "symbolic_anchor",
+        "relational_perspective",
+        "temporal_rhythm",
+        "identity_thread",
+        "meaning_inference",
+        "transcendent_moment"
+      ],
       "properties": {
-        "emotion_primary": { "type": ["string","null"], "description": "Dominant emotion category (e.g., joy, anger, fear, sadness, surprise, trust)." },
-        "emotion_subtone": { "type": "array", "items": { "type": "string" }, "description": "Secondary tonal qualifiers (e.g., grateful, regretful, hopeful)." },
-        "higher_order_emotion": { "type": ["string","null"], "description": "Integrated affective cluster such as pride, shame, compassion." },
-        "meta_emotional_state": { "type": ["string","null"], "enum": ["acceptance","conflict","curiosity","integration",null], "description": "Reflective stance or meta-awareness of emotion." }
-      },
-      "additionalProperties": false
+        "emotion_primary": { "type": ["string", "null"] },
+        "emotion_subtone": { "type": "array", "items": { "type": "string" } },
+        "higher_order_emotion": { "type": ["string", "null"] },
+        "meta_emotional_state": { "type": ["string", "null"] },
+        "interpersonal_affect": { "type": ["string", "null"] },
+        "active_motivational_state": { "type": ["string", "null"] },
+        "narrative_arc": { "type": ["string", "null"] },
+        "relational_dynamics": { "type": ["string", "null"] },
+        "temporal_context": { "type": ["string", "null"] },
+        "memory_type": { "type": ["string", "null"] },
+        "archetype_energy": { "type": ["string", "null"] },
+        "symbolic_anchor": { "type": ["string", "null"] },
+        "relational_perspective": { "type": ["string", "null"] },
+        "temporal_rhythm": { "type": ["string", "null"] },
+        "identity_thread": { "type": ["string", "null"] },
+        "meaning_inference": { "type": ["string", "null"] },
+        "transcendent_moment": { "type": "boolean" }
+      }
     },
 
     "milky_way": {
       "type": "object",
-      "description": "Contextual and relational extensions (time, place, participants, tone).",
+      "description": "Context and participants.",
+      "additionalProperties": false,
+      "required": [
+        "event_type",
+        "location_context",
+        "associated_people",
+        "media_context",
+        "visibility_context",
+        "tone_shift",
+        "memory_layers",
+        "time_range"
+      ],
       "properties": {
-        "temporal_context": { "type": ["string","null"], "format": "date-time", "description": "When event occurred or is recalled." },
-        "location": { "type": ["string","null"], "description": "Free-text or geo-tag for where event took place." },
-        "tone_shift": { "type": ["string","null"], "description": "Change in tone or sentiment during reflection." },
-        "visibility_context": { "type": ["string","null"], "enum": ["private","intimate","shared","public",null], "description": "How openly this memory is or was shared." }
-      },
-      "additionalProperties": false
+        "event_type": { "type": ["string", "null"] },
+        "location_context": { "type": ["string", "null"] },
+        "associated_people": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "media_context": { "type": ["string", "null"] },
+        "visibility_context": { "type": ["string", "null"] },
+        "tone_shift": { "type": ["string", "null"] },
+        "memory_layers": { "type": ["string", "null"] },
+        "time_range": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["start", "end"],
+          "properties": {
+            "start": { "type": ["string", "null"], "format": "date-time" },
+            "end": { "type": ["string", "null"], "format": "date-time" }
+          }
+        }
+      }
     },
 
     "gravity": {
       "type": "object",
-      "description": "Resonance and weighting system governing retrieval priority and decay mapping.",
+      "description": "Resonance fields and retrieval hooks.",
+      "additionalProperties": false,
+      "required": [
+        "emotional_weight",
+        "emotional_density",
+        "valence",
+        "viscosity",
+        "gravity_type",
+        "tether_type",
+        "tether_target",
+        "recall_triggers",
+        "retrieval_keys",
+        "nearby_themes",
+        "legacy_embed",
+        "reentry_score",
+        "strength_score",
+        "entry_strength",
+        "temporal_decay",
+        "resilience_markers",
+        "adaptation_trajectory",
+        "reinforcement_pulses",
+        "compliance_mask"
+      ],
       "properties": {
-        "weight": { "type": ["number","null"], "minimum": 0.0, "maximum": 1.0, "description": "Relative emotional significance (0–1)." },
-        "density": { "type": ["number","null"], "minimum": 0.0, "maximum": 1.0, "description": "How emotionally concentrated or intense this memory feels." },
-        "decay": { "type": ["number","null"], "minimum": 0.0, "maximum": 1.0, "description": "For temporal fading; lower = more persistent." },
-        "reentry": { "type": ["number","null"], "minimum": 0.0, "maximum": 1.0, "description": "Likelihood of resurfacing during recall loops." },
-        "retrieval_keys": { "type": "array", "items": { "type": "string" }, "description": "Compact keywords to enable vector or sparse recall." }
-      },
-      "additionalProperties": false
+        "emotional_weight": { "type": ["number", "null"], "minimum": 0.0, "maximum": 1.0 },
+        "emotional_density": { "type": ["string", "null"] },
+        "valence": { "type": ["string", "null"] },
+        "viscosity": { "type": ["string", "null"] },
+        "gravity_type": { "type": ["string", "null"] },
+        "tether_type": { "type": ["string", "null"] },
+        "tether_target": { "type": ["string", "null"] },
+        "recall_triggers": { "type": "array", "items": { "type": "string" } },
+        "retrieval_keys": { "type": "array", "items": { "type": "string" } },
+        "nearby_themes": { "type": "array", "items": { "type": "string" } },
+        "legacy_embed": { "type": "boolean" },
+        "reentry_score": { "type": ["number", "null"], "minimum": 0.0, "maximum": 1.0 },
+        "strength_score": { "type": ["number", "null"], "minimum": 0.0, "maximum": 1.0 },
+        "entry_strength": { "type": ["number", "null"], "minimum": 0.0, "maximum": 1.0 },
+        "temporal_decay": { "type": ["string", "null"] },
+        "resilience_markers": { "type": "array", "items": { "type": "string" } },
+        "adaptation_trajectory": { "type": ["string", "null"] },
+        "reinforcement_pulses": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["at", "delta", "reason", "source"],
+            "properties": {
+              "at": { "type": ["string", "null"], "format": "date-time" },
+              "delta": { "type": ["number", "null"] },
+              "reason": { "type": ["string", "null"] },
+              "source": { "type": ["string", "null"] }
+            }
+          }
+        },
+        "compliance_mask": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["exportable", "shareable", "purpose_limited_to"],
+          "properties": {
+            "exportable": { "type": "boolean" },
+            "shareable": { "type": "boolean" },
+            "purpose_limited_to": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
     },
 
     "impulse": {
       "type": "object",
-      "description": "Motivational drive state underlying the memory (why it mattered or prompted action).",
+      "description": "Motivational/drive state.",
+      "additionalProperties": false,
+      "required": [
+        "primary_energy",
+        "drive_state",
+        "motivational_orientation",
+        "moral_valence",
+        "temporal_focus",
+        "directionality",
+        "social_visibility",
+        "urgency",
+        "risk_posture",
+        "agency_level",
+        "regulation_state",
+        "attachment_style",
+        "coping_style"
+      ],
       "properties": {
-        "primary_energy": { "type": ["string","null"], "description": "Primal affective axis (curiosity, fear, care, anger, desire, duty)." },
-        "drive_state": { "type": ["string","null"], "description": "Approach, explore, protect, repair, confront, or withdraw orientation." },
-        "motivational_orientation": { "type": ["string","null"], "description": "Goal family: mastery, belonging, meaning, safety, justice." },
-        "urgency": { "type": ["string","null"], "enum": ["calm","elevated","pressing","acute",null], "description": "Perceived immediacy of need or impulse." },
-        "risk_posture": { "type": ["string","null"], "enum": ["cautious","balanced","bold",null], "description": "Comfort with uncertainty or exposure." },
-        "agency_level": { "type": ["string","null"], "enum": ["low","low_medium","medium","medium_high","high",null], "description": "Perceived personal control or efficacy." },
-        "regulation_state": { "type": ["string","null"], "enum": ["dysregulated","wavering","regulated",null], "description": "Emotional regulation balance during recall." },
-        "attachment_style": { "type": ["string","null"], "enum": ["secure","anxious","avoidant","disorganized",null] },
-        "coping_style": { "type": ["string","null"], "enum": ["reframe_meaning","seek_support","distract","ritualize","confront","detach",null] },
-        "moral_valence": { "type": ["string","null"], "enum": ["benevolent","restorative","duty_bound","self_protective","retributive","transgressive","neutral",null] },
-        "temporal_focus": { "type": ["string","null"], "enum": ["past","present","future","blended",null] },
-        "directionality": { "type": ["string","null"], "enum": ["inward","outward","shared",null] },
-        "social_visibility": { "type": ["string","null"], "enum": ["private","intimate","public",null] }
-      },
-      "additionalProperties": false
+        "primary_energy": { "type": ["string", "null"] },
+        "drive_state": { "type": ["string", "null"] },
+        "motivational_orientation": { "type": ["string", "null"] },
+        "moral_valence": { "type": ["string", "null"] },
+        "temporal_focus": { "type": ["string", "null"] },
+        "directionality": { "type": ["string", "null"] },
+        "social_visibility": { "type": ["string", "null"] },
+        "urgency": { "type": ["string", "null"] },
+        "risk_posture": { "type": ["string", "null"] },
+        "agency_level": { "type": ["string", "null"] },
+        "regulation_state": { "type": ["string", "null"] },
+        "attachment_style": { "type": ["string", "null"] },
+        "coping_style": { "type": ["string", "null"] }
+      }
     },
 
     "governance": {
       "type": "object",
-      "description": "Retention, rights, and compliance framework for this record.",
+      "description": "Compliance, retention, and rights.",
+      "additionalProperties": false,
+      "required": [
+        "jurisdiction",
+        "retention_policy",
+        "subject_rights",
+        "k_anonymity",
+        "policy_labels"
+      ],
       "properties": {
-        "retention_policy": { "type": ["string","null"], "description": "Duration or condition for memory storage." },
-        "policy_labels": { "type": "array", "items": { "type": "string" }, "description": "Applied governance or consent labels." },
-        "compliance_mask": { "type": ["string","null"], "description": "Encoded policy mask for export/sharing restrictions." }
-      },
-      "additionalProperties": false
+        "jurisdiction": { "type": ["string", "null"] },
+        "retention_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["basis", "ttl_days", "on_expiry"],
+          "properties": {
+            "basis": { "type": ["string", "null"], "enum": ["user_defined", "legal", "business_need", null] },
+            "ttl_days": { "type": ["number", "null"] },
+            "on_expiry": { "type": ["string", "null"], "enum": ["soft_delete", "hard_delete", "anonymize", null] }
+          }
+        },
+        "subject_rights": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["portable", "erasable", "explainable"],
+          "properties": {
+            "portable": { "type": "boolean" },
+            "erasable": { "type": "boolean" },
+            "explainable": { "type": "boolean" }
+          }
+        },
+        "k_anonymity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["k", "groups"],
+          "properties": {
+            "k": { "type": ["number", "null"] },
+            "groups": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "policy_labels": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
     },
 
     "telemetry": {
       "type": "object",
-      "description": "Feedback and confidence tracking for retrieval events.",
+      "description": "Extraction confidence, retrieval stats, and feedback.",
+      "additionalProperties": false,
+      "required": ["entry_confidence", "extraction_model", "extraction_notes", "retrieval_stats", "feedback"],
       "properties": {
-        "confidence_score": { "type": ["number","null"], "minimum": 0.0, "maximum": 1.0, "description": "Confidence in model recall relevance." },
-        "retrieval_count": { "type": ["integer","null"], "minimum": 0, "description": "Number of times this record was retrieved." },
-        "last_retrieved": { "type": ["string","null"], "format": "date-time", "description": "Timestamp of last retrieval event." },
-        "feedback_score": { "type": ["number","null"], "minimum": 0.0, "maximum": 1.0, "description": "User or model feedback metric." }
-      },
-      "additionalProperties": false
+        "entry_confidence": { "type": ["number", "null"], "minimum": 0.0, "maximum": 1.0 },
+        "extraction_model": { "type": ["string", "null"] },
+        "extraction_notes": { "type": ["string", "null"] },
+        "retrieval_stats": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["last_accessed_at", "times_accessed", "last_rank", "avg_rank"],
+          "properties": {
+            "last_accessed_at": { "type": ["string", "null"], "format": "date-time" },
+            "times_accessed": { "type": ["number", "null"] },
+            "last_rank": { "type": ["number", "null"] },
+            "avg_rank": { "type": ["number", "null"] }
+          }
+        },
+        "feedback": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["at", "user_score", "note", "applied_delta"],
+            "properties": {
+              "at": { "type": ["string", "null"], "format": "date-time" },
+              "user_score": { "type": ["number", "null"], "minimum": 0.0, "maximum": 1.0 },
+              "note": { "type": ["string", "null"] },
+              "applied_delta": { "type": ["number", "null"] }
+            }
+          }
+        }
+      }
     },
 
     "system": {
       "type": "object",
-      "description": "Embedding and index layer for search and crosswalk interoperability.",
+      "description": "Embeddings, indices, and crosswalk references.",
+      "additionalProperties": false,
+      "required": ["embeddings", "indices", "crosswalks"],
       "properties": {
-        "embedding_id": { "type": ["string","null"], "description": "External embedding vector ID if stored separately." },
-        "indices": { "type": "array", "items": { "type": "string" }, "description": "List of vector or keyword indices associated with this record." },
-        "crosswalk_refs": { "type": "array", "items": { "type": "string" }, "description": "References to external ontologies or schema mappings." }
-      },
-      "additionalProperties": false
+        "embeddings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["provider", "sector", "dim", "quantized", "vector_ref"],
+            "properties": {
+              "provider": { "type": ["string", "null"] },
+              "sector": { "type": ["string", "null"] },
+              "dim": { "type": ["number", "null"] },
+              "quantized": { "type": ["boolean", "null"] },
+              "vector_ref": { "type": ["string", "null"] }
+            }
+          }
+        },
+        "indices": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["waypoint_ids", "sector_weights"],
+          "properties": {
+            "waypoint_ids": { "type": "array", "items": { "type": "string" } },
+            "sector_weights": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["episodic", "semantic", "procedural", "emotional", "reflective"],
+              "properties": {
+                "episodic": { "type": ["number", "null"] },
+                "semantic": { "type": ["number", "null"] },
+                "procedural": { "type": ["number", "null"] },
+                "emotional": { "type": ["number", "null"] },
+                "reflective": { "type": ["number", "null"] }
+              }
+            }
+          }
+        },
+        "crosswalks": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["plutchik_primary", "geneva_emotion_wheel", "DSM5_specifiers", "HMD_v2_memory_type", "ISO_27557_labels"],
+          "properties": {
+            "plutchik_primary": { "type": ["string", "null"] },
+            "geneva_emotion_wheel": { "type": ["string", "null"] },
+            "DSM5_specifiers": { "type": ["string", "null"] },
+            "HMD_v2_memory_type": { "type": ["string", "null"] },
+            "ISO_27557_labels": { "type": ["string", "null"] }
+          }
+        }
+      }
     },
 
     "crosswalks": {
       "type": "object",
-      "description": "Interoperability mappings between EDM versions and emotion standards.",
-      "properties": {
-        "plutchik": { "type": ["string","null"], "description": "Mapped Plutchik wheel emotion (if applicable)." },
-        "geneva": { "type": ["string","null"], "description": "Mapped Geneva Emotion Model reference." },
-        "dsm5": { "type": ["string","null"], "description": "DSM-5 affective equivalence (if applicable)." },
-        "hmd_v2": { "type": ["string","null"], "description": "Human-Machine Dialogue (HMD-v2) emotional mapping." },
-        "iso_27557": { "type": ["string","null"], "description": "Mapping to ISO 27557 emotion taxonomy." }
-      },
+      "description": "Top-level convenience holder for version crosswalk data (non-normative).",
       "additionalProperties": false
     }
   },
-
-  "$comment": "© 2025 DeepaData Pty Ltd — All Rights Reserved. Closed provenance pre-release. MIT license planned post-v1.0 for schema text only."
+  "$comment": "© 2025 DeepaData Pty Ltd — All Rights Reserved. Closed provenance pre-release. MIT reference license planned post–v1.0 for the schema text only."
 }
