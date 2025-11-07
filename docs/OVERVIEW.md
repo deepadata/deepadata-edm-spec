@@ -1,3 +1,12 @@
+## Normative vs Informative
+
+- **Normative** — `schema/edm.v0.3.schema.json`  
+  The single source of truth. Automated validation MUST use this file.
+
+- **Informative** — everything else (docs, fragments, examples, reference pages).  
+  These exist to help humans understand and implement the model but do not replace the canonical schema.
+
+
 # EDM v0.3 — Overview
 
 EDM v0.3 converges DeepaData’s emotional architecture into a modular JSON object with coordinated domains:
