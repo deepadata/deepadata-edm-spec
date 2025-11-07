@@ -2,6 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://deepadata.com/schema/edm.v0.3.schema.json",
   "title": "DeepaData Emotional Data Model (EDM v0.3)",
+  "description": "Canonical specification of the DeepaData Emotional Data Model (EDM v0.3). This schema defines the normalized structure of emotional memory artifacts (.ddna) under closed provenance. All keys are required; null or empty arrays are permitted values when unknown.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -17,15 +18,164 @@
     "crosswalks"
   ],
   "properties": {
-    "meta": { "type": "object" },
-    "core": { "type": "object" },
-    "constellation": { "type": "object" },
-    "milky_way": { "type": "object" },
-    "gravity": { "type": "object" },
-    "impulse": { "type": "object" },
-    "governance": { "type": "object" },
-    "telemetry": { "type": "object" },
-    "system": { "type": "object" },
-    "crosswalks": { "type": "object" }
-  }
+    "meta": {
+      "type": "object",
+      "description": "Identity, consent, and provenance envelope for the memory record.",
+      "properties": {
+        "version": { "type": "string", "pattern": "^0\\.3$", "description": "Schema version identifier." },
+        "id": { "type": ["string","null"], "description": "Unique UUID for this record." },
+        "locale": { "type": ["string","null"], "description": "BCP-47 language-region tag, e.g., en-au." },
+        "created_at": { "type": ["string","null"], "format": "date-time", "description": "Timestamp memory was created (UTC ISO-8601)." },
+        "updated_at": { "type": ["string","null"], "format": "date-time", "description": "Last modification timestamp (UTC ISO-8601)." },
+        "visibility": { "type": ["string","null"], "enum": ["private","shared_with_trusted","organization","public"], "description": "Access level for this memory artifact." },
+        "pii_tier": { "type": ["string","null"], "enum": ["none","low","moderate","high","restricted"], "description": "Personal-identifiable-information sensitivity classification." },
+        "consent": {
+          "type": ["object","null"],
+          "description": "User consent or legal basis metadata.",
+          "properties": {
+            "basis": { "type": ["string","null"], "enum": ["contract","consent","legitimate_interest",null] },
+            "scope": { "type": ["string","null"] },
+            "captured_at": { "type": ["string","null"], "format": "date-time" },
+            "revoked_at": { "type": ["string","null"], "format": "date-time" }
+          },
+          "additionalProperties": false
+        },
+        "tags": { "type": "array", "items": { "type": "string" }, "description": "Lower-case topical or thematic tags." },
+        "source": {
+          "type": ["object","null"],
+          "description": "Defines how and where the memory originated.",
+          "properties": {
+            "channel": { "type": ["string","null"], "enum": ["chat","document","call","app_event","social","manual",null] },
+            "media_format": { "type": ["string","null"], "enum": ["text","audio","image","video","mixed",null] },
+            "app_client_id": { "type": ["string","null"] },
+            "message_id": { "type": ["string","null"] },
+            "attribution": { "type": ["string","null"] }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": ["version"]
+    },
+
+    "core": {
+      "type": "object",
+      "description": "Narrative spine — captures semantic anchors and emotional drivers.",
+      "properties": {
+        "anchor": { "type": ["string","null"], "description": "Central subject or theme of the memory." },
+        "spark": { "type": ["string","null"], "description": "Immediate trigger or catalyst for recall." },
+        "wound": { "type": ["string","null"], "description": "Underlying tension, challenge, or vulnerability." },
+        "fuel": { "type": ["string","null"], "description": "Sustaining energy, motivation, or support." },
+        "bridge": { "type": ["string","null"], "description": "Connecting insight or transition between states." },
+        "echo": { "type": ["string","null"], "description": "Lingering emotional aftertone or reflection." }
+      },
+      "additionalProperties": false
+    },
+
+    "constellation": {
+      "type": "object",
+      "description": "Emotional interpretation layer linking primary emotion, subtones, and relational context.",
+      "properties": {
+        "emotion_primary": { "type": ["string","null"], "description": "Dominant emotion category (e.g., joy, anger, fear, sadness, surprise, trust)." },
+        "emotion_subtone": { "type": "array", "items": { "type": "string" }, "description": "Secondary tonal qualifiers (e.g., grateful, regretful, hopeful)." },
+        "higher_order_emotion": { "type": ["string","null"], "description": "Integrated affective cluster such as pride, shame, compassion." },
+        "meta_emotional_state": { "type": ["string","null"], "enum": ["acceptance","conflict","curiosity","integration",null], "description": "Reflective stance or meta-awareness of emotion." }
+      },
+      "additionalProperties": false
+    },
+
+    "milky_way": {
+      "type": "object",
+      "description": "Contextual and relational extensions (time, place, participants, tone).",
+      "properties": {
+        "temporal_context": { "type": ["string","null"], "format": "date-time", "description": "When event occurred or is recalled." },
+        "location": { "type": ["string","null"], "description": "Free-text or geo-tag for where event took place." },
+        "tone_shift": { "type": ["string","null"], "description": "Change in tone or sentiment during reflection." },
+        "visibility_context": { "type": ["string","null"], "enum": ["private","intimate","shared","public",null], "description": "How openly this memory is or was shared." }
+      },
+      "additionalProperties": false
+    },
+
+    "gravity": {
+      "type": "object",
+      "description": "Resonance and weighting system governing retrieval priority and decay mapping.",
+      "properties": {
+        "weight": { "type": ["number","null"], "minimum": 0.0, "maximum": 1.0, "description": "Relative emotional significance (0–1)." },
+        "density": { "type": ["number","null"], "minimum": 0.0, "maximum": 1.0, "description": "How emotionally concentrated or intense this memory feels." },
+        "decay": { "type": ["number","null"], "minimum": 0.0, "maximum": 1.0, "description": "For temporal fading; lower = more persistent." },
+        "reentry": { "type": ["number","null"], "minimum": 0.0, "maximum": 1.0, "description": "Likelihood of resurfacing during recall loops." },
+        "retrieval_keys": { "type": "array", "items": { "type": "string" }, "description": "Compact keywords to enable vector or sparse recall." }
+      },
+      "additionalProperties": false
+    },
+
+    "impulse": {
+      "type": "object",
+      "description": "Motivational drive state underlying the memory (why it mattered or prompted action).",
+      "properties": {
+        "primary_energy": { "type": ["string","null"], "description": "Primal affective axis (curiosity, fear, care, anger, desire, duty)." },
+        "drive_state": { "type": ["string","null"], "description": "Approach, explore, protect, repair, confront, or withdraw orientation." },
+        "motivational_orientation": { "type": ["string","null"], "description": "Goal family: mastery, belonging, meaning, safety, justice." },
+        "urgency": { "type": ["string","null"], "enum": ["calm","elevated","pressing","acute",null], "description": "Perceived immediacy of need or impulse." },
+        "risk_posture": { "type": ["string","null"], "enum": ["cautious","balanced","bold",null], "description": "Comfort with uncertainty or exposure." },
+        "agency_level": { "type": ["string","null"], "enum": ["low","low_medium","medium","medium_high","high",null], "description": "Perceived personal control or efficacy." },
+        "regulation_state": { "type": ["string","null"], "enum": ["dysregulated","wavering","regulated",null], "description": "Emotional regulation balance during recall." },
+        "attachment_style": { "type": ["string","null"], "enum": ["secure","anxious","avoidant","disorganized",null] },
+        "coping_style": { "type": ["string","null"], "enum": ["reframe_meaning","seek_support","distract","ritualize","confront","detach",null] },
+        "moral_valence": { "type": ["string","null"], "enum": ["benevolent","restorative","duty_bound","self_protective","retributive","transgressive","neutral",null] },
+        "temporal_focus": { "type": ["string","null"], "enum": ["past","present","future","blended",null] },
+        "directionality": { "type": ["string","null"], "enum": ["inward","outward","shared",null] },
+        "social_visibility": { "type": ["string","null"], "enum": ["private","intimate","public",null] }
+      },
+      "additionalProperties": false
+    },
+
+    "governance": {
+      "type": "object",
+      "description": "Retention, rights, and compliance framework for this record.",
+      "properties": {
+        "retention_policy": { "type": ["string","null"], "description": "Duration or condition for memory storage." },
+        "policy_labels": { "type": "array", "items": { "type": "string" }, "description": "Applied governance or consent labels." },
+        "compliance_mask": { "type": ["string","null"], "description": "Encoded policy mask for export/sharing restrictions." }
+      },
+      "additionalProperties": false
+    },
+
+    "telemetry": {
+      "type": "object",
+      "description": "Feedback and confidence tracking for retrieval events.",
+      "properties": {
+        "confidence_score": { "type": ["number","null"], "minimum": 0.0, "maximum": 1.0, "description": "Confidence in model recall relevance." },
+        "retrieval_count": { "type": ["integer","null"], "minimum": 0, "description": "Number of times this record was retrieved." },
+        "last_retrieved": { "type": ["string","null"], "format": "date-time", "description": "Timestamp of last retrieval event." },
+        "feedback_score": { "type": ["number","null"], "minimum": 0.0, "maximum": 1.0, "description": "User or model feedback metric." }
+      },
+      "additionalProperties": false
+    },
+
+    "system": {
+      "type": "object",
+      "description": "Embedding and index layer for search and crosswalk interoperability.",
+      "properties": {
+        "embedding_id": { "type": ["string","null"], "description": "External embedding vector ID if stored separately." },
+        "indices": { "type": "array", "items": { "type": "string" }, "description": "List of vector or keyword indices associated with this record." },
+        "crosswalk_refs": { "type": "array", "items": { "type": "string" }, "description": "References to external ontologies or schema mappings." }
+      },
+      "additionalProperties": false
+    },
+
+    "crosswalks": {
+      "type": "object",
+      "description": "Interoperability mappings between EDM versions and emotion standards.",
+      "properties": {
+        "plutchik": { "type": ["string","null"], "description": "Mapped Plutchik wheel emotion (if applicable)." },
+        "geneva": { "type": ["string","null"], "description": "Mapped Geneva Emotion Model reference." },
+        "dsm5": { "type": ["string","null"], "description": "DSM-5 affective equivalence (if applicable)." },
+        "hmd_v2": { "type": ["string","null"], "description": "Human-Machine Dialogue (HMD-v2) emotional mapping." },
+        "iso_27557": { "type": ["string","null"], "description": "Mapping to ISO 27557 emotion taxonomy." }
+      },
+      "additionalProperties": false
+    }
+  },
+
+  "$comment": "© 2025 DeepaData Pty Ltd — All Rights Reserved. Closed provenance pre-release. MIT license planned post-v1.0 for schema text only."
 }
