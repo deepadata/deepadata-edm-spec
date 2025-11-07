@@ -1,0 +1,35 @@
+name: Validate .ddna examples
+
+on:
+  push:
+    paths:
+      - "schema/**"
+      - "examples/**"
+      - "scripts/validate-examples.mjs"
+      - ".github/workflows/validate-examples.yml"
+  pull_request:
+    paths:
+      - "schema/**"
+      - "examples/**"
+      - "scripts/validate-examples.mjs"
+      - ".github/workflows/validate-examples.yml"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install validation deps (AJV)
+        run: |
+          npm init -y >/dev/null 2>&1 || true
+          npm i ajv@^8.17.1 ajv-formats@^3.0.1 globby@^14.0.1
+
+      - name: Run validator
+        run: node scripts/validate-examples.mjs
