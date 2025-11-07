@@ -1,3 +1,45 @@
+"$comment": "Non-normative fragment. Canonical definition is in edm.v0.3.schema.json"
+
+"meta": {
+      "type": "object",
+      "description": "Identity, consent, and provenance envelope for the memory record.",
+      "properties": {
+        "version": { "type": "string", "pattern": "^0\\.3$", "description": "Schema version identifier." },
+        "id": { "type": ["string","null"], "description": "Unique UUID for this record." },
+        "locale": { "type": ["string","null"], "description": "BCP-47 language-region tag, e.g., en-au." },
+        "created_at": { "type": ["string","null"], "format": "date-time", "description": "Timestamp memory was created (UTC ISO-8601)." },
+        "updated_at": { "type": ["string","null"], "format": "date-time", "description": "Last modification timestamp (UTC ISO-8601)." },
+        "visibility": { "type": ["string","null"], "enum": ["private","shared_with_trusted","organization","public"], "description": "Access level for this memory artifact." },
+        "pii_tier": { "type": ["string","null"], "enum": ["none","low","moderate","high","restricted"], "description": "Personal-identifiable-information sensitivity classification." },
+        "consent": {
+          "type": ["object","null"],
+          "description": "User consent or legal basis metadata.",
+          "properties": {
+            "basis": { "type": ["string","null"], "enum": ["contract","consent","legitimate_interest",null] },
+            "scope": { "type": ["string","null"] },
+            "captured_at": { "type": ["string","null"], "format": "date-time" },
+            "revoked_at": { "type": ["string","null"], "format": "date-time" }
+          },
+          "additionalProperties": false
+        },
+        "tags": { "type": "array", "items": { "type": "string" }, "description": "Lower-case topical or thematic tags." },
+        "source": {
+          "type": ["object","null"],
+          "description": "Defines how and where the memory originated.",
+          "properties": {
+            "channel": { "type": ["string","null"], "enum": ["chat","document","call","app_event","social","manual",null] },
+            "media_format": { "type": ["string","null"], "enum": ["text","audio","image","video","mixed",null] },
+            "app_client_id": { "type": ["string","null"] },
+            "message_id": { "type": ["string","null"] },
+            "attribution": { "type": ["string","null"] }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": ["version"]
+    },
+
+
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://deepadata.com/schema/fragments/meta.json",
