@@ -1,18 +1,76 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://deepadata.com/schema/fragments/impuse.json",
+  "$id": "https://deepadata.com/schema/fragments/impulse.json",
   "title": "DeepaData EDM v0.3 — Impulse Fragment",
-  "description": "Defines identity, consent, and provenance envelope for DeepaData emotional memory artifacts.",
+  "description": "Motivational drive-state layer (why now). Non-normative fragment; canonical contract is in schema/edm.v0.3.schema.json.",
   "type": "object",
-  "properties": {},
-  "additionalProperties": true
+  "additionalProperties": false,
+  "properties": {
+    "primary_energy": {
+      "type": ["string", "null"],
+      "enum": ["hope", "love", "compassion", "curiosity", "determination", "grief", "anger", "fear", "joy", null],
+      "description": "Primal affective axis."
+    },
+    "drive_state": {
+      "type": ["string", "null"],
+      "enum": ["approach", "avoid", "persevere", "rest", "reappraise", null],
+      "description": "Immediate behavioral orientation."
+    },
+    "motivational_orientation": {
+      "type": ["string", "null"],
+      "enum": ["belonging", "meaning", "mastery", "autonomy", "safety", "status", null],
+      "description": "Goal family toward which energy points."
+    },
+    "moral_valence": {
+      "type": ["string", "null"],
+      "enum": ["prosocial", "self_care", "neutral", "ambivalent", null],
+      "description": "Ethical coloration of the impulse."
+    },
+    "temporal_focus": {
+      "type": ["string", "null"],
+      "enum": ["past", "present", "future", "cyclical", null],
+      "description": "Time horizon salient to the impulse."
+    },
+    "directionality": {
+      "type": ["string", "null"],
+      "enum": ["inward", "outward", "both", null],
+      "description": "Where the impulse is directed."
+    },
+    "social_visibility": {
+      "type": ["string", "null"],
+      "enum": ["private", "dyadic", "group", "collective", "public", null],
+      "description": "Social scale at which it manifests."
+    },
+    "urgency": {
+      "type": ["string", "null"],
+      "enum": ["calm", "elevated", "urgent", null],
+      "description": "Perceived immediacy."
+    },
+    "risk_posture": {
+      "type": ["string", "null"],
+      "enum": ["averse", "balanced", "seeking", null],
+      "description": "Comfort with exposure/uncertainty."
+    },
+    "agency_level": {
+      "type": ["string", "null"],
+      "enum": ["low", "medium", "high", null],
+      "description": "Perceived ability to act."
+    },
+    "regulation_state": {
+      "type": ["string", "null"],
+      "enum": ["dysregulated", "partially_regulated", "regulated", null],
+      "description": "Affect regulation at recall."
+    },
+    "attachment_style": {
+      "type": ["string", "null"],
+      "enum": ["secure", "anxious", "avoidant", "disorganized", "situational", null],
+      "description": "If relational patterns are salient."
+    },
+    "coping_style": {
+      "type": ["string", "null"],
+      "enum": ["ritualize", "problem_solve", "reframe_meaning", "seek_support", "distract", "suppress", null],
+      "description": "Dominant coping pattern in context."
+    }
+  },
+  "$comment": "© 2025 DeepaData Pty Ltd — All Rights Reserved. Closed provenance pre-release. Fragment is informational; canonical contract lives in schema/edm.v0.3.schema.json."
 }
-
-/* 
-----------------------------------------------
-DeepaData EDM v0.3 — Closed Provenance Fragment
-© 2025 DeepaData Pty Ltd — All Rights Reserved.
-This file is part of the DeepaData EDM v0.3 specification.
-Distribution or derivative use prohibited until v1.0 release.
-----------------------------------------------
-*/
