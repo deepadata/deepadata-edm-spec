@@ -11,7 +11,7 @@ This repository hosts the **canonical specification** for the Emotional Data Mod
 
 ## Purpose
 
-Provide a clean, single-file JSON Schema that matches the v0.3 object shape used by our MVP (see *System Prompt C* lineage), while preserving provenance from:
+Provide a clean, single-file JSON Schema that matches the v0.3 object shape used by our MVP (*System Prompt C* lineage), while preserving provenance from:
 - **DeepaData-v1** (EDM v0.1, April 2025, closed archive)
 - **DeepaData-v2** (EDM v0.2 → v0.3 layers, April–Nov 2025, pre-release)
 
@@ -29,3 +29,4 @@ Provide a clean, single-file JSON Schema that matches the v0.3 object shape used
 - See `examples/` for minimal valid `.ddna` artifacts.
 
 © 2025 DeepaData Pty Ltd — All Rights Reserved.
+
