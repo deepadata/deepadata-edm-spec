@@ -2,17 +2,135 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://deepadata.com/schema/fragments/gravity.json",
   "title": "DeepaData EDM v0.3 — Gravity Fragment",
-  "description": "Defines identity, consent, and provenance envelope for DeepaData emotional memory artifacts.",
+  "description": "Defines resonance, weighting, and emotional decay parameters governing recall priority, tethering, and reentry likelihood. Fragment is non-normative; canonical definition is in schema/edm.v0.3.schema.json.",
   "type": "object",
-  "properties": {},
-  "additionalProperties": true
+  "additionalProperties": false,
+  "properties": {
+    "emotional_weight": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Felt intensity of emotional significance (0–1)."
+    },
+    "emotional_density": {
+      "type": ["string", "null"],
+      "enum": ["low", "medium", "high"],
+      "description": "Concentration of emotional content."
+    },
+    "valence": {
+      "type": ["string", "null"],
+      "enum": ["positive", "negative", "mixed", "neutral"],
+      "description": "Overall emotional polarity."
+    },
+    "viscosity": {
+      "type": ["string", "null"],
+      "enum": ["fleeting", "durable", "enduring"],
+      "description": "How long emotional charge persists over time."
+    },
+    "gravity_type": {
+      "type": ["string", "null"],
+      "enum": ["symbolic_resonance", "episodic_pull", "social_bond", "identity_thread"],
+      "description": "Nature of the gravitational pull influencing recall."
+    },
+    "tether_type": {
+      "type": ["string", "null"],
+      "enum": ["tradition", "person", "place", "ritual", "object", "story", "practice", "none"],
+      "description": "What the memory is anchored to."
+    },
+    "tether_target": {
+      "type": ["string", "null"],
+      "description": "Specific name or reference target (Title Case allowed)."
+    },
+    "recall_triggers": {
+      "type": "array",
+      "description": "Sensory or symbolic cues that reawaken recall.",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "retrieval_keys": {
+      "type": "array",
+      "description": "Compact hooks for indexing and search retrieval (3–8 recommended).",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "nearby_themes": {
+      "type": "array",
+      "description": "Adjacent thematic associations to expand recall radius.",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "legacy_embed": {
+      "type": "boolean",
+      "description": "Indicates whether this memory is intended for long-term or posthumous embedding."
+    },
+    "reentry_score": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Likelihood of resurfacing during future recall cycles (0–1)."
+    },
+    "strength_score": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Relative emotional binding strength (0–1)."
+    },
+    "entry_strength": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Initial impact strength of memory imprint (0–1)."
+    },
+    "temporal_decay": {
+      "type": ["string", "null"],
+      "enum": ["fast", "medium", "slow"],
+      "description": "Rate of emotional fade or persistence."
+    },
+    "resilience_markers": {
+      "type": "array",
+      "description": "Signals of adaptation or emotional stability derived from recall context.",
+      "items": {
+        "type": "string",
+        "enum": ["continuity", "optimism", "reframing", "social_support", "self_efficacy"]
+      },
+      "uniqueItems": true
+    },
+    "adaptation_trajectory": {
+      "type": ["string", "null"],
+      "enum": ["stable", "integrative", "oscillating", "unresolved"],
+      "description": "Overall course of emotional adaptation."
+    },
+    "reinforcement_pulses": {
+      "type": "array",
+      "description": "History of reinforcing events (optional).",
+      "items": {
+        "type": "object",
+        "properties": {
+          "at": { "type": ["string", "null"], "format": "date-time" },
+          "delta": { "type": "number", "minimum": -1.0, "maximum": 1.0 },
+          "reason": { "type": ["string", "null"] },
+          "source": { "type": ["string", "null"] }
+        },
+        "additionalProperties": false
+      }
+    },
+    "compliance_mask": {
+      "type": "object",
+      "description": "Data sharing/export restrictions derived from governance.",
+      "additionalProperties": false,
+      "properties": {
+        "exportable": { "type": "boolean" },
+        "shareable": { "type": "boolean" },
+        "purpose_limited_to": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["personalization", "research", "archival", "training"]
+          },
+          "uniqueItems": true
+        }
+      }
+    }
+  },
+  "$comment": "© 2025 DeepaData Pty Ltd — All Rights Reserved. Closed provenance pre-release. Fragment is informational; canonical contract lives in schema/edm.v0.3.schema.json."
 }
-
-/* 
-----------------------------------------------
-DeepaData EDM v0.3 — Closed Provenance Fragment
-© 2025 DeepaData Pty Ltd — All Rights Reserved.
-This file is part of the DeepaData EDM v0.3 specification.
-Distribution or derivative use prohibited until v1.0 release.
-----------------------------------------------
-*/
