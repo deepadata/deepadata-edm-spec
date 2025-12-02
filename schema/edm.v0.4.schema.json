@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://deepadata.io/schemas/edm/v0.4.0/edm.schema.json",
+  "$id": "https://deepadata.com/schemas/edm/v0.4.0/edm.schema.json",
   "title": "Emotional Data Model (EDM) v0.4.0",
   "description": "A protocol-level representation and persistence architecture for governed emotional data. EDM v0.4.0 defines a domain-complete manifold for encoding affective context as a stable, machine-interpretable, and sovereignty-preserving data object.",
   "type": "object",
