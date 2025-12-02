@@ -1,94 +1,148 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://deepadata.com/schema/fragments/meta.json",
-  "title": "DeepaData EDM v0.3 — Meta Fragment",
-  "description": "Identity, consent, and provenance envelope for DeepaData emotional memory artifacts. Fragment is non-normative; canonical definition is in schema/edm.v0.3.schema.json.",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EDM META Domain",
   "type": "object",
-  "additionalProperties": false,
   "properties": {
-    "version": {
-      "type": "string",
-      "const": "0.3",
-      "description": "Schema version identifier."
-    },
     "id": {
-      "type": ["string", "null"],
-      "format": "uuid",
-      "description": "UUID for this memory/event."
+      "description": "Unique identifier for the EDM artifact. Required for provenance, linking, auditing, and .ddna envelope binding.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x_constraints": "UUID v4. Immutable."
     },
-    "parent_id": {
-      "type": ["string", "null"],
-      "description": "Link to a parent or thread record."
-    },
-    "locale": {
-      "type": ["string", "null"],
-      "description": "BCP-47 language-region tag (e.g., en-au)."
+    "version": {
+      "description": "Declares which EDM schema this artifact conforms to and enables safe validation and migration.",
+      "type": "string",
+      "x_constraints": "MUST match \"0.4.x\"."
     },
     "created_at": {
-      "type": ["string", "null"],
-      "format": "date-time",
-      "description": "UTC ISO-8601 timestamp the record was created."
+      "description": "Marks when the artifact was extracted. Anchors temporal provenance.",
+      "type": "string",
+      "x_constraints": "ISO-8601 UTC timestamp. Required."
     },
     "updated_at": {
-      "type": ["string", "null"],
-      "format": "date-time",
-      "description": "UTC ISO-8601 timestamp the record was last modified."
+      "description": "Optional timestamp for post-extraction updates. Never replaces created_at.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x_constraints": "ISO-8601 UTC timestamp."
+    },
+    "locale": {
+      "description": "Linguistic and cultural context of the source content.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x_constraints": "BCP-47 language tag (e.g., \"en-au\", \"en-us\"), lowercase."
     },
     "owner_user_id": {
-      "type": ["string", "null"],
-      "description": "Internal user pointer (or null)."
+      "description": "The artifact owner identifier. AuraID enables cross-vendor identity resolution; vendor-specific IDs limit portability. MUST be null in stateless mode.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x_constraints": "AuraID (recommended), UUID, or free-text; null for stateless."
+    },
+    "parent_id": {
+      "description": "Links this artifact to its parent in multi-step extractions or threaded sequences.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x_constraints": "UUID."
     },
     "visibility": {
-      "type": ["string", "null"],
-      "enum": ["private", "shared_with_trusted", "organization", "public"],
-      "description": "Access level for this artifact."
+      "description": "Determines who may view or process the artifact.",
+      "type": "string",
+      "enum": [
+        "private",
+        "shared",
+        "public."
+      ],
+      "x_constraints": "private, shared, public."
     },
     "pii_tier": {
-      "type": ["string", "null"],
-      "enum": ["none", "low", "moderate", "high", "restricted"],
-      "description": "PII sensitivity classification."
+      "description": "Classification of personal or sensitive content. Controls retention, masking, and export rules.",
+      "type": "string",
+      "enum": [
+        "none",
+        "low",
+        "moderate",
+        "high",
+        "extreme."
+      ],
+      "x_constraints": "none, low, moderate, high, extreme."
     },
-    "consent": {
-      "type": ["object", "null"],
-      "description": "User consent or legal basis metadata.",
-      "additionalProperties": false,
-      "properties": {
-        "basis": {
-          "type": ["string", "null"],
-          "enum": ["contract", "consent", "legitimate_interest"],
-          "description": "Legal basis."
-        },
-        "scope": { "type": ["string", "null"], "description": "Scope/limits of consent." },
-        "captured_at": { "type": ["string", "null"], "format": "date-time", "description": "When consent was captured." },
-        "revoked_at": { "type": ["string", "null"], "format": "date-time", "description": "When consent was revoked (if applicable)." }
-      }
+    "source_type": {
+      "description": "The medium from which the artifact was extracted.",
+      "type": "string",
+      "enum": [
+        "text",
+        "audio",
+        "image",
+        "video",
+        "mixed."
+      ],
+      "x_constraints": "text, audio, image, video, mixed."
+    },
+    "source_context": {
+      "description": "Optional narrative describing the input scenario.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x_constraints": "Free-text (e.g., \"therapy session\", \"journaling\", \"voice memo\")."
+    },
+    "consent_basis": {
+      "description": "Legal basis for storing and processing emotional data.",
+      "type": "string",
+      "enum": [
+        "consent",
+        "contract",
+        "legitimate_interest",
+        "none."
+      ],
+      "x_constraints": "consent, contract, legitimate_interest, none."
+    },
+    "consent_scope": {
+      "description": "What the user consented to.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x_constraints": "Free-text (e.g., \"memory storage\", \"reflection\", \"therapeutic use\")."
+    },
+    "consent_revoked_at": {
+      "description": "If populated, the artifact becomes non-retrievable and non-exportable, except minimal audit form.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x_constraints": "ISO-8601 UTC timestamp."
     },
     "tags": {
+      "description": "Optional user-defined labels for organizing or filtering artifacts.",
       "type": "array",
-      "description": "Lowercase topical tokens.",
-      "items": { "type": "string" }
-    },
-    "source": {
-      "type": ["object", "null"],
-      "description": "How and where the memory originated.",
-      "additionalProperties": false,
-      "properties": {
-        "channel": {
-          "type": ["string", "null"],
-          "enum": ["chat", "document", "call", "app_event", "social", "manual"],
-          "description": "Origin channel."
-        },
-        "app_client_id": { "type": ["string", "null"], "description": "Client/app identifier." },
-        "message_id": { "type": ["string", "null"], "description": "Message/event pointer." },
-        "media_format": {
-          "type": ["string", "null"],
-          "enum": ["text", "audio", "image", "video", "mixed"],
-          "description": "Primary media format."
-        },
-        "attribution": { "type": ["string", "null"], "description": "Provenance string or URL." }
+      "enum": [
+        "Short tokens",
+        "lowercase recommended."
+      ],
+      "x_constraints": "Short tokens, lowercase recommended.",
+      "items": {
+        "type": "string"
       }
     }
   },
-  "required": ["version"],
-  "$comment": "© 2025 DeepaData Pty Ltd — All Rights Reserved. Closed provenance pre-release. Fragment is informational; canonical contract lives in schema/edm.v0.3.schema.json."
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "created_at",
+    "visibility",
+    "pii_tier",
+    "source_type",
+    "consent_basis",
+    "tags"
+  ]
 }

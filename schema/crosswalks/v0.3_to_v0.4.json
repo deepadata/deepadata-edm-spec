@@ -1,0 +1,185 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EDM v0.3 to v0.4 Migration Crosswalk",
+  "description": "Complete mapping of field changes, deletions, and domain reorganization from EDM v0.3.x to v0.4.0",
+  "version_from": "0.3.x",
+  "version_to": "0.4.0",
+  "migration_date": "2025-12-04",
+  "breaking_changes": true,
+  
+  "summary": {
+    "total_fields_v03": 102,
+    "total_fields_v04": 96,
+    "fields_deleted": 6,
+    "fields_moved": 6,
+    "fields_renamed": 0,
+    "fields_added": 0,
+    "domains_added": 0,
+    "domains_reorganized": 2
+  },
+  
+  "deleted_fields": {
+    "description": "These 6 fields have been removed in v0.4.0. Migration scripts should drop these fields.",
+    "fields": [
+      {
+        "field": "meta.session_id",
+        "reason": "Redundant with created_at + parent_id combination",
+        "migration_action": "DROP - temporal sequencing handled by created_at; threading handled by parent_id"
+      },
+      {
+        "field": "constellation.affective_clarity",
+        "reason": "Pre-v0.4 field, unclear definition and population",
+        "migration_action": "DROP - no equivalent in v0.4"
+      },
+      {
+        "field": "constellation.active_motivational_state",
+        "reason": "Redundant with IMPULSE domain (motivational_orientation + drive_state)",
+        "migration_action": "MAP to impulse.motivational_orientation if present, otherwise DROP"
+      },
+      {
+        "field": "milky_way.media_context",
+        "reason": "Unclear purpose, overlapped with media_format",
+        "migration_action": "DROP - context captured in constellation.media_format"
+      },
+      {
+        "field": "milky_way.memory_layers",
+        "reason": "Unclear origin and definition",
+        "migration_action": "DROP - no equivalent in v0.4"
+      },
+      {
+        "field": "gravity.tether_target",
+        "reason": "Redundant with core.anchor",
+        "migration_action": "MAP to core.anchor if present, otherwise DROP"
+      }
+    ]
+  },
+  
+  "moved_fields": {
+    "description": "These 6 fields moved from META to the new GOVERNANCE domain",
+    "from_domain": "meta",
+    "to_domain": "governance",
+    "fields": [
+      {
+        "field": "jurisdiction",
+        "migration_action": "MOVE meta.jurisdiction → governance.jurisdiction"
+      },
+      {
+        "field": "retention_policy",
+        "migration_action": "MOVE meta.retention_policy → governance.retention_policy (now structured object)"
+      },
+      {
+        "field": "exportability",
+        "migration_action": "MOVE meta.exportability → governance.exportability"
+      },
+      {
+        "field": "subject_rights",
+        "migration_action": "MOVE meta.subject_rights → governance.subject_rights (now structured object)"
+      },
+      {
+        "field": "masking_rules",
+        "migration_action": "MOVE meta.masking_rules → governance.masking_rules"
+      },
+      {
+        "field": "policy_labels",
+        "migration_action": "MOVE meta.policy_labels → governance.policy_labels (if existed in v0.3)"
+      }
+    ]
+  },
+  
+  "new_governance_fields": {
+    "description": "New fields added to GOVERNANCE domain in v0.4.0",
+    "fields": [
+      {
+        "field": "governance.k_anonymity",
+        "type": "object",
+        "default_value": null,
+        "migration_action": "SET to null for all v0.3 artifacts"
+      }
+    ]
+  },
+  
+  "domain_changes": {
+    "meta": {
+      "fields_before": 21,
+      "fields_after": 15,
+      "changes": "Removed session_id; moved 6 governance fields to GOVERNANCE domain"
+    },
+    "core": {
+      "fields_before": 7,
+      "fields_after": 7,
+      "changes": "No changes - all fields preserved"
+    },
+    "constellation": {
+      "fields_before": 20,
+      "fields_after": 18,
+      "changes": "Removed affective_clarity and active_motivational_state"
+    },
+    "milky_way": {
+      "fields_before": 7,
+      "fields_after": 5,
+      "changes": "Removed media_context and memory_layers"
+    },
+    "gravity": {
+      "fields_before": 16,
+      "fields_after": 15,
+      "changes": "Removed tether_target"
+    },
+    "impulse": {
+      "fields_before": 12,
+      "fields_after": 12,
+      "changes": "No changes - all fields preserved"
+    },
+    "governance": {
+      "fields_before": 0,
+      "fields_after": 12,
+      "changes": "NEW DOMAIN - split from META, now required top-level domain"
+    },
+    "telemetry": {
+      "fields_before": 4,
+      "fields_after": 4,
+      "changes": "No changes - all fields preserved"
+    },
+    "system": {
+      "fields_before": 3,
+      "fields_after": 3,
+      "changes": "No changes - now explicitly required (was implicit in v0.3)"
+    },
+    "crosswalks": {
+      "fields_before": 5,
+      "fields_after": 5,
+      "changes": "No changes - all fields preserved"
+    }
+  },
+  
+  "field_description_updates": {
+    "description": "All field descriptions updated to concise format with concrete examples",
+    "change": "Descriptions reduced ~40% in token count while improving clarity",
+    "format_before": "Long descriptive paragraphs without examples",
+    "format_after": "1-2 sentence description + concrete examples in constraints",
+    "example": {
+      "field": "core.anchor",
+      "before": "The central person, object, idea, or symbolic focus around which the emotional experience revolves...",
+      "after": "Central person, object, or theme of the experience. Constraints: 1–5 words (e.g., 'grandmother', 'dad's toolbox', 'childhood home')."
+    }
+  },
+  
+  "migration_script_template": {
+    "description": "Pseudocode for migrating v0.3 artifacts to v0.4",
+    "steps": [
+      "1. VALIDATE: Confirm artifact.meta.version matches '0.3.x'",
+      "2. DELETE: Remove 6 deleted fields (session_id, affective_clarity, active_motivational_state, media_context, memory_layers, tether_target)",
+      "3. CREATE: Initialize new governance object",
+      "4. MOVE: Transfer 6 fields from meta to governance",
+      "5. UPDATE: Set artifact.meta.version to '0.4.0'",
+      "6. VALIDATE: Run v0.4 schema validation",
+      "7. OPTIONAL: Update artifact.meta.updated_at timestamp"
+    ]
+  },
+  
+  "compatibility_notes": {
+    "forward_compatibility": "v0.3 artifacts can be migrated to v0.4 with minimal data loss (only deleted fields)",
+    "backward_compatibility": "v0.4 artifacts CANNOT be safely downgraded to v0.3 due to GOVERNANCE domain split",
+    "stateless_mode": "Both v0.3 and v0.4 support stateless mode; migration preserves this configuration",
+    "validation": "v0.4 schema is stricter; some v0.3 artifacts with loose field population may fail validation"
+  }
+}

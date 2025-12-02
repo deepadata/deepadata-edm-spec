@@ -1,19 +1,55 @@
 cff-version: 1.2.0
-title: "DeepaData — Emotional Data Model (EDM v0.3 Specification)"
-message: "Please cite this repository if you reference EDM v0.3."
+title: 'Emotional Data Model (EDM) v0.4: A Protocol for Governed Affective Context'
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
 type: software
 authors:
-  - family-names: Harvey
-    given-names: Jason
+  - given-names: Jason
+    family-names: Harvey
+    email: jason@deepadata.io
     affiliation: DeepaData Pty Ltd
-repository-code: https://github.com/deepadata/deepadata-edm-spec
-version: "0.3-pre"
-date-released: "2025-11-07"
-license: "Proprietary (All Rights Reserved)"
-preferred-citation:
-  type: article
-  title: "DeepaData — Emotional Data Model (EDM v0.3 Specification)"
-  authors:
-    - family-names: Harvey
-      given-names: Jason
-  year: 2025
+    orcid: 'https://orcid.org/0000-0000-0000-0000'
+repository-code: 'https://github.com/deepadata/deepadata-edm-spec'
+url: 'https://deepadata.io'
+abstract: >-
+  The Emotional Data Model (EDM) v0.4 defines a governed,
+  schema-bound representational architecture for encoding
+  affective context as a stable, machine-interpretable data
+  object. EDM specifies domain-complete structures for
+  narrative anchors, affective topology, salience geometry,
+  contextual framing, and in-band governance, ensuring
+  long-range interpretability without reliance on inference
+  or behavioral semantics.  The schema mandates a
+  domain-complete manifold comprising ten top-level domains,
+  enabling sovereignty, transportability, and cross-vendor
+  interoperability for emotional data in AI systems.
+keywords:
+  - emotional data
+  - affective computing
+  - AI governance
+  - data sovereignty
+  - schema specification
+  - emotional AI
+  - affective regulation
+  - data interoperability
+  - privacy by design
+  - GDPR compliance
+license: MIT
+version: 0.4.0
+doi: 10.5281/zenodo.XXXXXXX
+date-released: '2025-12-04'
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.XXXXXXX
+    description: Zenodo DOI for v0.4.0 release
+references:
+  - type: software
+    title: 'Emotional Data Model (EDM) Whitepaper v0.4'
+    authors:
+      - family-names: Harvey
+        given-names: Jason
+    year: 2025
+    publisher:
+      name: Zenodo
+    doi: 10.5281/zenodo.YYYYYYY

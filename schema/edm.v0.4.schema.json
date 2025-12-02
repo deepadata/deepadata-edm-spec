@@ -1,0 +1,145 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://deepadata.io/schemas/edm/v0.4.0/edm.schema.json",
+  "title": "Emotional Data Model (EDM) v0.4.0",
+  "description": "A protocol-level representation and persistence architecture for governed emotional data. EDM v0.4.0 defines a domain-complete manifold for encoding affective context as a stable, machine-interpretable, and sovereignty-preserving data object.",
+  "type": "object",
+  "required": [
+    "meta",
+    "core",
+    "constellation",
+    "milky_way",
+    "gravity",
+    "impulse",
+    "governance",
+    "telemetry",
+    "system",
+    "crosswalks"
+  ],
+  "properties": {
+    "meta": {
+      "description": "Identity, provenance, and consent metadata. Establishes artifact origin, ownership, and legal basis.",
+      "type": "object",
+      "required": ["version", "created_at", "visibility", "pii_tier", "source_type", "consent_basis"],
+      "properties": {
+        "id": {
+          "type": ["string", "null"],
+          "description": "Unique identifier for the EDM artifact. Required for provenance, linking, auditing, and .ddna envelope binding.",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "version": {
+          "type": "string",
+          "description": "Declares which EDM schema this artifact conforms to and enables safe validation and migration.",
+          "pattern": "^0\\.4\\.[0-9]+$"
+        },
+        "created_at": {
+          "type": "string",
+          "description": "Marks when the artifact was extracted. Anchors temporal provenance.",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": ["string", "null"],
+          "description": "Optional timestamp for post-extraction updates. Never replaces created_at.",
+          "format": "date-time"
+        },
+        "locale": {
+          "type": ["string", "null"],
+          "description": "Linguistic and cultural context of the source content.",
+          "pattern": "^[a-z]{2}(-[a-z]{2})?$"
+        },
+        "owner_user_id": {
+          "type": ["string", "null"],
+          "description": "The artifact owner identifier. AuraID enables cross-vendor identity resolution; vendor-specific IDs limit portability. MUST be null in stateless mode."
+        },
+        "parent_id": {
+          "type": ["string", "null"],
+          "description": "Links this artifact to its parent in multi-step extractions or threaded sequences.",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "visibility": {
+          "type": "string",
+          "description": "Determines who may view or process the artifact.",
+          "enum": ["private", "shared", "public"]
+        },
+        "pii_tier": {
+          "type": "string",
+          "description": "Classification of personal or sensitive content. Controls retention, masking, and export rules.",
+          "enum": ["none", "low", "moderate", "high", "extreme"]
+        },
+        "source_type": {
+          "type": "string",
+          "description": "The medium from which the artifact was extracted.",
+          "enum": ["text", "audio", "image", "video", "mixed"]
+        },
+        "source_context": {
+          "type": ["string", "null"],
+          "description": "Optional narrative describing the input scenario."
+        },
+        "consent_basis": {
+          "type": "string",
+          "description": "Legal basis for storing and processing emotional data.",
+          "enum": ["consent", "contract", "legitimate_interest", "none"]
+        },
+        "consent_scope": {
+          "type": ["string", "null"],
+          "description": "What the user consented to."
+        },
+        "consent_revoked_at": {
+          "type": ["string", "null"],
+          "description": "If populated, the artifact becomes non-retrievable and non-exportable, except minimal audit form.",
+          "format": "date-time"
+        },
+        "tags": {
+          "type": "array",
+          "description": "Optional user-defined labels for organizing or filtering artifacts.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "core": {
+      "$ref": "fragments/core.json"
+    },
+    "constellation": {
+      "$ref": "fragments/constellation.json"
+    },
+    "milky_way": {
+      "$ref": "fragments/milky_way.json"
+    },
+    "gravity": {
+      "$ref": "fragments/gravity.json"
+    },
+    "impulse": {
+      "$ref": "fragments/impulse.json"
+    },
+    "governance": {
+      "$ref": "fragments/governance.json"
+    },
+    "telemetry": {
+      "$ref": "fragments/telemetry.json"
+    },
+    "system": {
+      "$ref": "fragments/system.json"
+    },
+    "crosswalks": {
+      "$ref": "fragments/crosswalks.json"
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "version_info": {
+      "version": "0.4.0",
+      "released": "2025-12-04",
+      "status": "stable",
+      "breaking_changes_from_v03": [
+        "Removed 6 fields: session_id, media_context, affective_clarity, memory_layers, tether_target, active_motivational_state",
+        "Split META domain: moved 6 fields to new GOVERNANCE domain",
+        "Updated field descriptions to concise format with examples",
+        "GOVERNANCE domain is now a required top-level domain (was scattered in META)",
+        "SYSTEM domain is now explicitly required (was implicit)"
+      ]
+    }
+  }
+}

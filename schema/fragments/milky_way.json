@@ -1,52 +1,56 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://deepadata.com/schema/fragments/milky_way.json",
-  "title": "DeepaData EDM v0.3 — Milky Way Fragment",
-  "description": "Contextual and relational extensions (event type, place, people, media, visibility, tone, layers, and time range). Fragment is non-normative; canonical definition is in schema/edm.v0.3.schema.json.",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EDM MILKY_WAY Domain",
   "type": "object",
-  "additionalProperties": false,
   "properties": {
     "event_type": {
-      "type": ["string", "null"],
-      "description": "Short label for the event (e.g., family_expansion, reflection)."
+      "description": "Type of event or situation.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x_constraints": "Free text (e.g., \"family gathering\", \"farewell\", \"birthday\", \"reunion\")."
     },
     "location_context": {
-      "type": ["string", "null"],
-      "description": "Place derived from text/image (free text or structured)."
+      "description": "Place or spatial context of the experience.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x_constraints": "Free text (e.g., \"grandmother's kitchen\", \"beach\", \"hospital\")."
     },
     "associated_people": {
+      "description": "Individuals referenced in or connected to the experience.",
       "type": "array",
-      "description": "People involved; Title Case allowed (not enforced).",
-      "items": { "type": "string", "minLength": 1 },
-      "uniqueItems": true
-    },
-    "media_context": {
-      "type": ["string", "null"],
-      "description": "Brief media notes (e.g., photo, note, clip) if salient."
+      "x_constraints": "Names or roles, properly cased (e.g., \"Sarah\", \"my father\", \"the nurse\").",
+      "items": {
+        "type": "string"
+      }
     },
     "visibility_context": {
-      "type": ["string", "null"],
-      "enum": ["self", "family_only", "inner_circle", "org_only", "public"],
-      "description": "Intended sharing scope of the memory."
+      "description": "Defines the intended visibility or sharing scope of the moment.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "private",
+        "family_only",
+        "shared_publicly."
+      ],
+      "x_constraints": "private, family_only, shared_publicly."
     },
     "tone_shift": {
-      "type": ["string", "null"],
-      "description": "Observed change in tone (e.g., grief to joy)."
-    },
-    "memory_layers": {
-      "type": ["string", "null"],
-      "enum": ["emotional", "semantic", "procedural", "reflective", "mixed"],
-      "description": "Dominant memory layer classification."
-    },
-    "time_range": {
-      "type": "object",
-      "description": "Optional time bounds for the memory/event.",
-      "additionalProperties": false,
-      "properties": {
-        "start": { "type": ["string", "null"], "format": "date-time" },
-        "end": { "type": ["string", "null"], "format": "date-time" }
-      }
+      "description": "Directional emotional change during the experience.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x_constraints": "Free text (e.g., \"loss to gratitude\", \"fear to relief\", \"joy to sadness\")."
     }
   },
-  "$comment": "© 2025 DeepaData Pty Ltd — All Rights Reserved. Closed provenance pre-release. Fragment is informational; canonical contract lives in schema/edm.v0.3.schema.json."
+  "additionalProperties": false,
+  "required": [
+    "associated_people"
+  ]
 }

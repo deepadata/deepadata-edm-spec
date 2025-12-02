@@ -1,75 +1,133 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://deepadata.com/schema/fragments/governance.json",
-  "title": "DeepaData EDM v0.3 — Governance Fragment",
-  "description": "Defines retention, rights, and compliance metadata for each memory artifact. This fragment is non-normative; canonical contract resides in schema/edm.v0.3.schema.json.",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EDM GOVERNANCE Domain",
   "type": "object",
-  "additionalProperties": false,
   "properties": {
     "jurisdiction": {
-      "type": ["string", "null"],
-      "enum": ["GDPR", "CCPA", "HIPAA", "PIPEDA", "LGPD", "None", "Mixed", null],
-      "description": "Regulatory framework applicable to this record."
+      "description": "The regulatory regime governing this artifact. Determines applicable rights, obligations, and compliance conditions.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "GDPR",
+        "CCPA",
+        "HIPAA",
+        "PIPEDA",
+        "LGPD",
+        "None",
+        "Mixed."
+      ],
+      "x_constraints": "GDPR, CCPA, HIPAA, PIPEDA, LGPD, None, Mixed."
     },
-    "retention_policy": {
-      "type": ["object", "null"],
-      "description": "Defines how long the memory may be stored and what happens upon expiry.",
-      "additionalProperties": false,
-      "properties": {
-        "basis": {
-          "type": ["string", "null"],
-          "enum": ["user_defined", "legal", "business_need", null],
-          "description": "Why retention is justified."
-        },
-        "ttl_days": {
-          "type": ["integer", "null"],
-          "minimum": 0,
-          "description": "Time-to-live in days; null means indefinite within lawful basis."
-        },
-        "on_expiry": {
-          "type": ["string", "null"],
-          "enum": ["soft_delete", "hard_delete", "anonymize", null],
-          "description": "Action taken once TTL elapses."
-        }
-      }
+    "retention_policy.basis": {
+      "description": "The rationale determining how long this artifact may be retained.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "user_defined",
+        "legal",
+        "business_need."
+      ],
+      "x_constraints": "user_defined, legal, business_need."
     },
-    "subject_rights": {
-      "type": ["object", "null"],
-      "description": "Specifies data subject rights available for this record.",
-      "additionalProperties": false,
-      "properties": {
-        "portable": { "type": "boolean", "description": "Whether the record can be exported in structured form." },
-        "erasable": { "type": "boolean", "description": "Whether the record can be fully deleted." },
-        "explainable": { "type": "boolean", "description": "Whether the model’s interpretation is explainable to the user." }
-      }
+    "retention_policy.ttl_days": {
+      "description": "Time-to-live in days for the artifact. Defines retention boundaries enforced by engines and storage layers.",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x_constraints": "Non-negative integer or null."
     },
-    "k_anonymity": {
-      "type": ["object", "null"],
-      "description": "Defines anonymity grouping and k thresholds for dataset use.",
-      "additionalProperties": false,
-      "properties": {
-        "k": {
-          "type": ["integer", "null"],
-          "minimum": 1,
-          "description": "Minimum group size for anonymity guarantee."
-        },
-        "groups": {
-          "type": "array",
-          "items": { "type": "string" },
-          "uniqueItems": true,
-          "description": "Grouping variables (e.g., region, age_band)."
-        }
+    "retention_policy.on_expiry": {
+      "description": "Required action once retention elapses.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "soft_delete",
+        "hard_delete",
+        "anonymize."
+      ],
+      "x_constraints": "soft_delete, hard_delete, anonymize."
+    },
+    "subject_rights.portable": {
+      "description": "Whether the artifact is eligible for portability requests under governing law.",
+      "type": "boolean",
+      "x_constraints": "true or false."
+    },
+    "subject_rights.erasable": {
+      "description": "Whether the artifact must be erasable on user request or under statutory obligations.",
+      "type": "boolean",
+      "x_constraints": "true or false."
+    },
+    "subject_rights.explainable": {
+      "description": "Whether systems must provide interpretability or explanation when computing with this artifact.",
+      "type": "boolean",
+      "x_constraints": "true or false."
+    },
+    "exportability": {
+      "description": "Controls whether the artifact may be exported in .ddna format.",
+      "type": "string",
+      "enum": [
+        "allowed",
+        "restricted",
+        "forbidden."
+      ],
+      "x_constraints": "allowed, restricted, forbidden."
+    },
+    "k_anonymity.k": {
+      "description": "Minimum k-anonymity grouping requirement for safe aggregation, export, or research use.",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x_constraints": "Integer \u2265 1 or null."
+    },
+    "k_anonymity.groups": {
+      "description": "Attribute groups that contribute to anonymity constraints.",
+      "type": "array",
+      "x_constraints": "Quasi-identifier group names (e.g., \"region\", \"age_band\").",
+      "items": {
+        "type": "string"
       }
     },
     "policy_labels": {
+      "description": "Classification labels identifying sensitive categories that invoke stricter governance and export limits.",
       "type": "array",
-      "description": "Applied sensitivity or compliance labels.",
+      "enum": [
+        "sensitive",
+        "children",
+        "health",
+        "biometrics",
+        "financial",
+        "none."
+      ],
+      "x_constraints": "sensitive, children, health, biometrics, financial, none.",
       "items": {
-        "type": "string",
-        "enum": ["sensitive", "children", "health", "biometrics", "financial", "none"]
-      },
-      "uniqueItems": true
+        "type": "string"
+      }
+    },
+    "masking_rules": {
+      "description": "Redaction requirements for identity, location, or narrative details during display or export.",
+      "type": "array",
+      "x_constraints": "Mask type specifications.",
+      "items": {
+        "type": "string"
+      }
     }
   },
-  "$comment": "© 2025 DeepaData Pty Ltd — All Rights Reserved. Closed provenance pre-release. Fragment is informational; canonical contract lives in schema/edm.v0.3.schema.json."
+  "additionalProperties": false,
+  "required": [
+    "subject_rights.portable",
+    "subject_rights.erasable",
+    "subject_rights.explainable",
+    "exportability",
+    "k_anonymity.groups",
+    "policy_labels",
+    "masking_rules"
+  ]
 }

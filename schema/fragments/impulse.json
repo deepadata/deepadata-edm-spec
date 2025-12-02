@@ -1,76 +1,169 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://deepadata.com/schema/fragments/impulse.json",
-  "title": "DeepaData EDM v0.3 — Impulse Fragment",
-  "description": "Motivational drive-state layer (why now). Non-normative fragment; canonical contract is in schema/edm.v0.3.schema.json.",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EDM IMPULSE Domain",
   "type": "object",
-  "additionalProperties": false,
   "properties": {
     "primary_energy": {
-      "type": ["string", "null"],
-      "enum": ["hope", "love", "compassion", "curiosity", "determination", "grief", "anger", "fear", "joy", null],
-      "description": "Primal affective axis."
+      "description": "Dominant emotional or motivational energy in the moment.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x_constraints": "Lowercase (e.g., \"curiosity\", \"fear\", \"compassion\", \"longing\")."
     },
     "drive_state": {
-      "type": ["string", "null"],
-      "enum": ["approach", "avoid", "persevere", "rest", "reappraise", null],
-      "description": "Immediate behavioral orientation."
+      "description": "The behavioral direction or movement expressed through the emotional response.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "explore",
+        "approach",
+        "avoid",
+        "repair",
+        "persevere",
+        "share."
+      ],
+      "x_constraints": "explore, approach, avoid, repair, persevere, share."
     },
     "motivational_orientation": {
-      "type": ["string", "null"],
-      "enum": ["belonging", "meaning", "mastery", "autonomy", "safety", "status", null],
-      "description": "Goal family toward which energy points."
-    },
-    "moral_valence": {
-      "type": ["string", "null"],
-      "enum": ["prosocial", "self_care", "neutral", "ambivalent", null],
-      "description": "Ethical coloration of the impulse."
+      "description": "The foundational motivational domain guiding the individual's internal stance.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "belonging",
+        "safety",
+        "mastery",
+        "meaning",
+        "autonomy."
+      ],
+      "x_constraints": "belonging, safety, mastery, meaning, autonomy."
     },
     "temporal_focus": {
-      "type": ["string", "null"],
-      "enum": ["past", "present", "future", "cyclical", null],
-      "description": "Time horizon salient to the impulse."
+      "description": "The temporal direction toward which the motivational energy is oriented.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "past",
+        "present",
+        "future."
+      ],
+      "x_constraints": "past, present, future."
     },
     "directionality": {
-      "type": ["string", "null"],
-      "enum": ["inward", "outward", "both", null],
-      "description": "Where the impulse is directed."
+      "description": "Whether the impulse is self-directed, relational, or expansive beyond self.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "inward",
+        "outward",
+        "transcendent."
+      ],
+      "x_constraints": "inward, outward, transcendent."
     },
     "social_visibility": {
-      "type": ["string", "null"],
-      "enum": ["private", "dyadic", "group", "collective", "public", null],
-      "description": "Social scale at which it manifests."
+      "description": "The social scope within which the impulse is expressed.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "private",
+        "relational",
+        "collective."
+      ],
+      "x_constraints": "private, relational, collective."
     },
     "urgency": {
-      "type": ["string", "null"],
-      "enum": ["calm", "elevated", "urgent", null],
-      "description": "Perceived immediacy."
+      "description": "The intensity or immediacy of the motivational state.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "calm",
+        "elevated",
+        "pressing",
+        "acute."
+      ],
+      "x_constraints": "calm, elevated, pressing, acute."
     },
     "risk_posture": {
-      "type": ["string", "null"],
-      "enum": ["averse", "balanced", "seeking", null],
-      "description": "Comfort with exposure/uncertainty."
+      "description": "The stance toward uncertainty or potential risk embedded in the moment.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "cautious",
+        "balanced",
+        "bold."
+      ],
+      "x_constraints": "cautious, balanced, bold."
     },
     "agency_level": {
-      "type": ["string", "null"],
-      "enum": ["low", "medium", "high", null],
-      "description": "Perceived ability to act."
+      "description": "The perceived ability to act or influence the situation.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "low",
+        "medium",
+        "high."
+      ],
+      "x_constraints": "low, medium, high."
     },
     "regulation_state": {
-      "type": ["string", "null"],
-      "enum": ["dysregulated", "partially_regulated", "regulated", null],
-      "description": "Affect regulation at recall."
+      "description": "The stability or turbulence of emotional self-regulation.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "regulated",
+        "wavering",
+        "dysregulated."
+      ],
+      "x_constraints": "regulated, wavering, dysregulated."
     },
     "attachment_style": {
-      "type": ["string", "null"],
-      "enum": ["secure", "anxious", "avoidant", "disorganized", "situational", null],
-      "description": "If relational patterns are salient."
+      "description": "The relational attachment pattern influencing the emotional expression.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "secure",
+        "anxious",
+        "avoidant",
+        "disorganized."
+      ],
+      "x_constraints": "secure, anxious, avoidant, disorganized."
     },
     "coping_style": {
-      "type": ["string", "null"],
-      "enum": ["ritualize", "problem_solve", "reframe_meaning", "seek_support", "distract", "suppress", null],
-      "description": "Dominant coping pattern in context."
+      "description": "The primary strategy used to manage or integrate the emotional experience.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "reframe_meaning",
+        "seek_support",
+        "distract",
+        "ritualize",
+        "confront",
+        "detach."
+      ],
+      "x_constraints": "reframe_meaning, seek_support, distract, ritualize, confront, detach."
     }
   },
-  "$comment": "© 2025 DeepaData Pty Ltd — All Rights Reserved. Closed provenance pre-release. Fragment is informational; canonical contract lives in schema/edm.v0.3.schema.json."
+  "additionalProperties": false
 }
