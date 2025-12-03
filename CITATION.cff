@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: 'Emotional Data Model (EDM) v0.4: A Protocol for Governed Affective Context'
+title: 'Emotional Data Model (EDM) v0.4.0: A Protocol for Governed Affective Context'
 message: >-
   If you use this software, please cite it using the
   metadata from this file.
@@ -7,11 +7,11 @@ type: software
 authors:
   - given-names: Jason
     family-names: Harvey
-    email: jason@deepadata.io
+    email: jason@deepadata.com
     affiliation: DeepaData Pty Ltd
     orcid: 'https://orcid.org/0000-0000-0000-0000'
 repository-code: 'https://github.com/deepadata/deepadata-edm-spec'
-url: 'https://deepadata.io'
+url: 'https://deepadata.com'
 abstract: >-
   The Emotional Data Model (EDM) v0.4 defines a governed,
   schema-bound representational architecture for encoding

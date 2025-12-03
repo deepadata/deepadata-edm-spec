@@ -1,6 +1,6 @@
-# Validation — EDM v0.3
+# Validation — EDM v0.4.0
 
-The normative schema is `schema/edm.v0.3.schema.json`.
+The normative schema is `schema/edm.v0.4.schema.json`.
 
 ## Quick checks
 - All top-level keys exist (even if null/empty).
@@ -15,7 +15,7 @@ The normative schema is `schema/edm.v0.3.schema.json`.
 
 All example files in `examples/*.ddna.json` are validated in CI against the canonical schema:
 
-- **Normative schema:** `schema/edm.v0.3.schema.json`
+- **Normative schema:** `schema/edm.v0.4.schema.json`
 - **CI workflow:** `.github/workflows/validate-examples.yml`
 
 **What is enforced**

@@ -4,6 +4,41 @@ This guide explains how to migrate EDM data and code between schema versions.
 
 ---
 
+## v0.3 → v0.4
+
+**Canonical crosswalk:** [`schema/crosswalks/v0.3_to_v0.4.json`](../schema/crosswalks/v0.3_to_v0.4.json)  
+**Normative schema:** [`schema/edm.v0.4.schema.json`](../schema/edm.v0.4.schema.json)
+
+### Summary of Changes
+
+**6 fields deleted:**
+- `meta.session_id` - Redundant with created_at + parent_id
+- `constellation.affective_clarity` - Unclear definition
+- `constellation.active_motivational_state` - Redundant with IMPULSE domain
+- `milky_way.media_context` - Overlaps with media_format
+- `milky_way.memory_layers` - Unclear origin
+- `gravity.tether_target` - Redundant with core.anchor
+
+**New domain:**
+- `governance` - Now a required top-level domain (split from META)
+
+**6 fields moved from META to GOVERNANCE:**
+- `jurisdiction`
+- `retention_policy`
+- `exportability`
+- `subject_rights`
+- `masking_rules`
+- `policy_labels`
+
+**New in GOVERNANCE:**
+- `k_anonymity` - K-anonymity tracking
+
+### Migration Steps
+
+See the detailed migration guide: [`docs/V04_MIGRATION_GUIDE.md`](V04_MIGRATION_GUIDE.md)
+
+---
+
 ## v0.2 → v0.3
 
 **Canonical crosswalk:** [`schema/crosswalks/v0.2_to_v0.3.json`](../schema/crosswalks/v0.2_to_v0.3.json)  

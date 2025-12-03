@@ -1,7 +1,7 @@
 # DeepaData — EDM v0.4 (Specification)
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-Closed_Provenance-red.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-0.4.0-green.svg)](https://github.com/deepadata/deepadata-edm-spec/releases/tag/v0.4.0)
 
 **Status:** Stable, Production-Ready (Released December 4, 2025)
@@ -267,9 +267,12 @@ This is a formal specification repository. For discussions or issues:
 
 ## License
 
-**MIT License** - See [LICENSE](LICENSE) file for details.
+**Closed Provenance (Pre-v1.0)** - See [LICENSE](LICENSE) file for details.
 
-EDM is an open specification. The schema is freely available for implementation across any platform or vendor.
+   This specification is proprietary to DeepaData Pty Ltd until v1.0 release.
+   At v1.0, a reference implementation will be made available under MIT license.
+
+   For licensing inquiries: jason@deepadata.com
 
 ---
 
