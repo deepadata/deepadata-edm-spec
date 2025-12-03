@@ -37,51 +37,24 @@ This repository contains:
 
 ---
 
-## Quick Start
+## Access & Availability
 
-### Installation
+**Status:** Closed Provenance (Pre-v1.0)
 
-```bash
-# Clone the repository
-git clone https://github.com/deepadata/deepadata-edm-spec.git
-cd deepadata-edm-spec
+This specification is currently available for:
+- **Review & Research**: The whitepaper and schema documentation are publicly accessible
+- **Technical Evaluation**: Contact us for evaluation access to the schema and validation tools
+- **Partnership Discussions**: Enterprise and research collaboration opportunities
 
-# Validate an artifact
-npm install -g ajv-cli
-ajv validate -s schema/edm.v0.4.schema.json -d examples/simple_memory.ddna.json
-```
+**At v1.0 Release**, a reference implementation will be made available under MIT license for open interoperability.
 
-### Using in Your Project
+### Current Access Options:
 
-**JavaScript/TypeScript:**
-```javascript
-import edmSchema from 'deepadata-edm-spec/schema/edm.v0.4.schema.json';
-import Ajv from 'ajv';
-
-const ajv = new Ajv();
-const validate = ajv.compile(edmSchema);
-
-if (validate(artifact)) {
-  console.log('✅ Valid EDM v0.4 artifact');
-} else {
-  console.error('❌ Validation failed:', validate.errors);
-}
-```
-
-**Python:**
-```python
-import json
-import jsonschema
-
-with open('schema/edm.v0.4.schema.json') as f:
-    schema = json.load(f)
-
-with open('artifact.json') as f:
-    artifact = json.load(f)
-
-jsonschema.validate(instance=artifact, schema=schema)
-print("✅ Valid EDM v0.4 artifact")
-```
+- 📄 **Read the Whitepaper**: [EDM v0.4.0 Whitepaper](https://github.com/deepadata/deepadata-edm-spec/releases/tag/v0.4.0) | [Zenodo DOI: 10.5281/zenodo.XXXXXXX](https://doi.org/10.5281/zenodo.XXXXXXX)
+- 📋 **View Schema Documentation**: [docs/OVERVIEW.md](docs/OVERVIEW.md)
+- 📖 **Explore Examples**: [examples/](examples/) directory contains reference artifacts
+- 💬 **Request Evaluation Access**: jason@deepadata.com
+- 🤝 **Licensing & Partnership Inquiries**: info@deepadata.com
 
 ---
 
@@ -134,7 +107,7 @@ deepadata-edm-spec/
 │   └── validate.js                   # Validation utilities
 ├── CHANGELOG.md                      # Version history
 ├── CITATION.cff                      # Citation metadata
-├── LICENSE                           # MIT License
+├── LICENSE                           # Closed Provenance License
 └── README.md                         # This file
 ```
 
