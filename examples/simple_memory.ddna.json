@@ -1,12 +1,118 @@
 {
-  "meta": { "version": "0.3", "id": null, "locale": "en-au", "created_at": null, "updated_at": null, "owner_user_id": null, "visibility": "private", "pii_tier": "low", "consent": { "basis": null, "scope": null, "captured_at": null, "revoked_at": null }, "tags": [], "source": { "channel": "manual", "app_client_id": null, "message_id": null, "media_format": "text", "attribution": null } },
-  "core": { "anchor": "", "spark": null, "wound": null, "fuel": null, "bridge": null, "echo": null, "narrative": "" },
-  "constellation": { "emotion_primary": "", "emotion_subtone": [], "higher_order_emotion": null, "meta_emotional_state": null, "interpersonal_affect": null, "active_motivational_state": null, "narrative_arc": null, "relational_dynamics": "", "temporal_context": "", "memory_type": "", "archetype_energy": null, "symbolic_anchor": null, "relational_perspective": "", "temporal_rhythm": "", "identity_thread": null, "meaning_inference": null, "transcendent_moment": false },
-  "milky_way": { "event_type": "", "location_context": null, "associated_people": [], "media_context": null, "visibility_context": "", "tone_shift": null, "memory_layers": "", "time_range": { "start": null, "end": null } },
-  "gravity": { "emotional_weight": 0.0, "emotional_density": "", "valence": "", "viscosity": "", "gravity_type": "", "tether_type": null, "tether_target": null, "recall_triggers": [], "retrieval_keys": [], "nearby_themes": [], "legacy_embed": false, "reentry_score": 0.0, "strength_score": 0.0, "entry_strength": 0.0, "temporal_decay": "", "resilience_markers": [], "adaptation_trajectory": "", "reinforcement_pulses": [], "compliance_mask": { "exportable": true, "shareable": false, "purpose_limited_to": [] } },
-  "impulse": { "primary_energy": "", "drive_state": "", "motivational_orientation": "", "moral_valence": "", "temporal_focus": "", "directionality": "", "social_visibility": "", "urgency": "", "risk_posture": "", "agency_level": "", "regulation_state": "", "attachment_style": "", "coping_style": "" },
-  "governance": { "jurisdiction": "", "retention_policy": { "basis": null, "ttl_days": null, "on_expiry": null }, "subject_rights": { "portable": false, "erasable": false, "explainable": false }, "k_anonymity": { "k": null, "groups": [] }, "policy_labels": [] },
-  "telemetry": { "entry_confidence": 0.0, "extraction_model": null, "extraction_notes": null, "retrieval_stats": { "last_accessed_at": null, "times_accessed": 0, "last_rank": null, "avg_rank": null }, "feedback": [] },
-  "system": { "embeddings": [], "indices": { "waypoint_ids": [], "sector_weights": { "episodic": 0.0, "semantic": 0.0, "procedural": 0.0, "emotional": 0.0, "reflective": 0.0 } }, "crosswalks": { "plutchik_primary": null, "geneva_emotion_wheel": null, "DSM5_specifiers": null, "HMD_v2_memory_type": null, "ISO_27557_labels": null } },
-  "crosswalks": {}
+  "meta": {
+    "version": "0.4.0",
+    "id": null,
+    "locale": "en-au",
+    "created_at": null,
+    "updated_at": null,
+    "owner_user_id": null,
+    "visibility": "private",
+    "pii_tier": "low",
+    "source_type": "text",
+    "source_context": "manual entry",
+    "consent_basis": "none",
+    "consent_scope": null,
+    "consent_revoked_at": null,
+    "tags": []
+  },
+  "core": {
+    "anchor": "",
+    "spark": null,
+    "wound": null,
+    "fuel": null,
+    "bridge": null,
+    "echo": null,
+    "narrative": ""
+  },
+  "constellation": {
+    "emotion_primary": "",
+    "emotion_subtone": [],
+    "higher_order_emotion": null,
+    "meta_emotional_state": null,
+    "interpersonal_affect": null,
+    "narrative_arc": null,
+    "relational_dynamics": "",
+    "temporal_context": "",
+    "memory_type": "",
+    "media_format": "text",
+    "narrative_archetype": null,
+    "symbolic_anchor": null,
+    "relational_perspective": "",
+    "temporal_rhythm": "",
+    "identity_thread": null,
+    "expressed_insight": null,
+    "transformational_pivot": null,
+    "somatic_signature": null
+  },
+  "milky_way": {
+    "event_type": "",
+    "location_context": null,
+    "associated_people": [],
+    "visibility_context": "",
+    "tone_shift": null
+  },
+  "gravity": {
+    "emotional_weight": 0.0,
+    "emotional_density": "",
+    "valence": "",
+    "viscosity": "",
+    "gravity_type": "",
+    "tether_type": null,
+    "recall_triggers": [],
+    "retrieval_keys": [],
+    "nearby_themes": [],
+    "legacy_embed": false,
+    "recurrence_pattern": null,
+    "strength_score": 0.0,
+    "temporal_decay": "",
+    "resilience_markers": [],
+    "adaptation_trajectory": ""
+  },
+  "impulse": {
+    "primary_energy": "",
+    "drive_state": "",
+    "motivational_orientation": "",
+    "temporal_focus": "",
+    "directionality": "",
+    "social_visibility": "",
+    "urgency": "",
+    "risk_posture": "",
+    "agency_level": "",
+    "regulation_state": "",
+    "attachment_style": "",
+    "coping_style": ""
+  },
+  "governance": {
+    "jurisdiction": null,
+    "retention_policy": null,
+    "exportability": null,
+    "subject_rights": null,
+    "k_anonymity": null,
+    "policy_labels": [],
+    "masking_rules": null
+  },
+  "telemetry": {
+    "extraction_confidence": 0.0,
+    "extraction_model": null,
+    "extraction_time": null,
+    "extraction_flags": []
+  },
+  "system": {
+    "embeddings": [],
+    "indices": {
+      "waypoint_ids": [],
+      "sector_weights": {
+        "episodic": 0.0,
+        "semantic": 0.0,
+        "procedural": 0.0,
+        "emotional": 0.0,
+        "reflective": 0.0
+      }
+    }
+  },
+  "crosswalks": {
+    "source_ids": {},
+    "external_refs": {},
+    "compatibility_tags": []
+  }
 }
