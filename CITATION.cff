@@ -1,7 +1,9 @@
 cff-version: 1.2.0
 title: 'Emotional Data Model (EDM) v0.4.0: A Protocol for Governed Affective Context'
 message: >-
-  If you use this software, please cite it using the
+  This repository is under CLOSED PROVENANCE. No permission is
+  granted for copying, reproduction, or commercial use without
+  license. If you reference this work, please cite it using the
   metadata from this file.
 type: software
 authors:
@@ -19,7 +21,7 @@ abstract: >-
   narrative anchors, affective topology, salience geometry,
   contextual framing, and in-band governance, ensuring
   long-range interpretability without reliance on inference
-  or behavioral semantics.  The schema mandates a
+  or behavioral semantics. The schema mandates a
   domain-complete manifold comprising ten top-level domains,
   enabling sovereignty, transportability, and cross-vendor
   interoperability for emotional data in AI systems.
@@ -34,14 +36,8 @@ keywords:
   - data interoperability
   - privacy by design
   - GDPR compliance
-license: MIT
 version: 0.4.0
-doi: 10.5281/zenodo.XXXXXXX
 date-released: '2025-12-04'
-identifiers:
-  - type: doi
-    value: 10.5281/zenodo.XXXXXXX
-    description: Zenodo DOI for v0.4.0 release
 references:
   - type: software
     title: 'Emotional Data Model (EDM) Whitepaper v0.4'
@@ -51,4 +47,3 @@ references:
     year: 2025
     publisher:
       name: Zenodo
-    doi: 10.5281/zenodo.YYYYYYY
