@@ -1,10 +1,21 @@
 # DeepaData — EDM v0.4 (Specification)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17808652.svg)](https://doi.org/10.5281/zenodo.17808652)
 [![License](https://img.shields.io/badge/license-Closed_Provenance-red.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-0.4.0-green.svg)](https://github.com/deepadata/deepadata-edm-spec/releases/tag/v0.4.0)
 
 **Status:** Stable, Production-Ready (Released December 4, 2025)
+
+---
+
+## 📄 Official Publication
+
+The EDM v0.4.0 whitepaper is officially published on Zenodo:
+
+**Citation:**
+> Harvey, J. (2025). Emotional Data Model (EDM) v0.4.0 (Version v2). Zenodo. https://doi.org/10.5281/zenodo.17808652
+
+**Full Whitepaper:** [Download PDF from Zenodo](https://zenodo.org/records/17808878)
 
 ---
 
@@ -37,24 +48,51 @@ This repository contains:
 
 ---
 
-## Access & Availability
+## Quick Start
 
-**Status:** Closed Provenance (Pre-v1.0)
+### Installation
 
-This specification is currently available for:
-- **Review & Research**: The whitepaper and schema documentation are publicly accessible
-- **Technical Evaluation**: Contact us for evaluation access to the schema and validation tools
-- **Partnership Discussions**: Enterprise and research collaboration opportunities
+```bash
+# Clone the repository
+git clone https://github.com/deepadata/deepadata-edm-spec.git
+cd deepadata-edm-spec
 
-**At v1.0 Release**, a reference implementation will be made available under MIT license for open interoperability.
+# Validate an artifact
+npm install -g ajv-cli
+ajv validate -s schema/edm.v0.4.schema.json -d examples/simple_memory.ddna.json
+```
 
-### Current Access Options:
+### Using in Your Project
 
-- 📄 **Read the Whitepaper**: [EDM v0.4.0 Whitepaper](https://github.com/deepadata/deepadata-edm-spec/releases/tag/v0.4.0) | [Zenodo DOI: 10.5281/zenodo.XXXXXXX](https://doi.org/10.5281/zenodo.XXXXXXX)
-- 📋 **View Schema Documentation**: [docs/OVERVIEW.md](docs/OVERVIEW.md)
-- 📖 **Explore Examples**: [examples/](examples/) directory contains reference artifacts
-- 💬 **Request Evaluation Access**: jason@deepadata.com
-- 🤝 **Licensing & Partnership Inquiries**: info@deepadata.com
+**JavaScript/TypeScript:**
+```javascript
+import edmSchema from 'deepadata-edm-spec/schema/edm.v0.4.schema.json';
+import Ajv from 'ajv';
+
+const ajv = new Ajv();
+const validate = ajv.compile(edmSchema);
+
+if (validate(artifact)) {
+  console.log('✅ Valid EDM v0.4 artifact');
+} else {
+  console.error('❌ Validation failed:', validate.errors);
+}
+```
+
+**Python:**
+```python
+import json
+import jsonschema
+
+with open('schema/edm.v0.4.schema.json') as f:
+    schema = json.load(f)
+
+with open('artifact.json') as f:
+    artifact = json.load(f)
+
+jsonschema.validate(instance=artifact, schema=schema)
+print("✅ Valid EDM v0.4 artifact")
+```
 
 ---
 
@@ -143,6 +181,7 @@ function migrateV03ToV04(artifact) {
 - **[Migration Guide](docs/V04_MIGRATION_GUIDE.md)** - v0.3 → v0.4 upgrade instructions
 - **[Validation Guide](docs/VALIDATION.md)** - How to validate artifacts
 - **[Changelog](CHANGELOG.md)** - Version history and breaking changes
+- **[Whitepaper](https://zenodo.org/records/17808878)** - Full technical specification (PDF)
 
 ---
 
@@ -205,11 +244,11 @@ If you use EDM in your research, please cite:
 ```bibtex
 @software{harvey2025edm,
   author = {Harvey, Jason},
-  title = {Emotional Data Model (EDM) v0.4: A Protocol for Governed Affective Context},
+  title = {Emotional Data Model (EDM) v0.4.0},
   year = {2025},
   publisher = {Zenodo},
-  version = {0.4.0},
-  doi = {10.5281/zenodo.XXXXXXX},
+  version = {v0.4.0},
+  doi = {10.5281/zenodo.17808652},
   url = {https://github.com/deepadata/deepadata-edm-spec}
 }
 ```
@@ -220,7 +259,7 @@ Or use the automatically generated citation from [CITATION.cff](CITATION.cff).
 
 ## Releases
 
-- **v0.4.0** (2025-12-04) - Current stable release - [Zenodo DOI: 10.5281/zenodo.XXXXXXX]
+- **v0.4.0** (2025-12-04) - Current stable release - [Zenodo DOI: 10.5281/zenodo.17808652](https://doi.org/10.5281/zenodo.17808652)
 - **v0.3.x** (2024-2025) - Legacy (security updates only)
 - **v0.2.x** (2024) - Deprecated
 
@@ -234,7 +273,7 @@ This is a formal specification repository. For discussions or issues:
 
 1. Open an [Issue](https://github.com/deepadata/deepadata-edm-spec/issues)
 2. Review [existing discussions](https://github.com/deepadata/deepadata-edm-spec/discussions)
-3. Contact: jason@deepadata.io
+3. Contact: jason@deepadata.com
 
 ---
 
@@ -242,10 +281,10 @@ This is a formal specification repository. For discussions or issues:
 
 **Closed Provenance (Pre-v1.0)** - See [LICENSE](LICENSE) file for details.
 
-   This specification is proprietary to DeepaData Pty Ltd until v1.0 release.
-   At v1.0, a reference implementation will be made available under MIT license.
+This specification is proprietary to DeepaData Pty Ltd until v1.0 release.
+At v1.0, a reference implementation will be made available under MIT license.
 
-   For licensing inquiries: jason@deepadata.com
+For licensing inquiries: jason@deepadata.com
 
 ---
 
@@ -257,18 +296,18 @@ DeepaData develops advanced emotional data systems for AI, including:
 - **ResK** - Resonance Kernel (affective regulation architecture)
 - **AuraID** - Cross-vendor emotional identity layer
 
-Website: [deepadata.io](https://deepadata.io)  
+Website: [deepadata.com](https://deepadata.com)  
 GitHub: [@deepadata](https://github.com/deepadata)
 
 ---
 
 ## Links
 
-- **Whitepaper:** [Zenodo Link TBD]
+- **Whitepaper:** [Zenodo Record](https://zenodo.org/records/17808878)
+- **DOI:** [10.5281/zenodo.17808652](https://doi.org/10.5281/zenodo.17808652)
 - **Repository:** https://github.com/deepadata/deepadata-edm-spec
 - **Issues:** https://github.com/deepadata/deepadata-edm-spec/issues
 - **Documentation:** [docs/](docs/)
-- **Zenodo:** [10.5281/zenodo.XXXXXXX]
 
 ---
 

@@ -1,49 +1,38 @@
 cff-version: 1.2.0
-title: 'Emotional Data Model (EDM) v0.4.0: A Protocol for Governed Affective Context'
-message: >-
-  This repository is under CLOSED PROVENANCE. No permission is
-  granted for copying, reproduction, or commercial use without
-  license. If you reference this work, please cite it using the
-  metadata from this file.
-type: software
+message: "If you use this specification, please cite it as below."
 authors:
-  - given-names: Jason
-    family-names: Harvey
-    email: jason@deepadata.com
-    affiliation: DeepaData Pty Ltd
-repository-code: 'https://github.com/deepadata/deepadata-edm-spec'
-url: 'https://deepadata.com'
-abstract: >-
-  The Emotional Data Model (EDM) v0.4 defines a governed,
-  schema-bound representational architecture for encoding
-  affective context as a stable, machine-interpretable data
-  object. EDM specifies domain-complete structures for
-  narrative anchors, affective topology, salience geometry,
-  contextual framing, and in-band governance, ensuring
-  long-range interpretability without reliance on inference
-  or behavioral semantics. The schema mandates a
-  domain-complete manifold comprising ten top-level domains,
-  enabling sovereignty, transportability, and cross-vendor
-  interoperability for emotional data in AI systems.
+  - family-names: "Harvey"
+    given-names: "Jason"
+    affiliation: "DeepaData Pty Ltd"
+    email: "jason@deepadata.com"
+title: "Emotional Data Model (EDM) v0.4.0"
+version: v0.4.0
+doi: 10.5281/zenodo.17808652
+date-released: 2025-12-04
+url: "https://github.com/deepadata/deepadata-edm-spec"
+license: "LicenseRef-Closed-Provenance-Pre-v1.0"
+repository-code: "https://github.com/deepadata/deepadata-edm-spec"
+type: software
 keywords:
   - emotional data
   - affective computing
-  - AI governance
-  - data sovereignty
-  - schema specification
-  - emotional AI
-  - affective regulation
-  - data interoperability
-  - privacy by design
-  - GDPR compliance
-version: 0.4.0
-date-released: '2025-12-04'
+  - AI memory
+  - data governance
+  - emotional intelligence
+  - representational architecture
+  - affective context
+  - sovereign data
+  - EDM
+  - emotional data model
+  - AI emotional memory
+  - affective AI
 references:
-  - type: software
-    title: 'Emotional Data Model (EDM) Whitepaper v0.4'
+  - type: article
     authors:
-      - family-names: Harvey
-        given-names: Jason
+      - family-names: "Harvey"
+        given-names: "Jason"
+    title: "Emotional Data Model (EDM) v0.4.0: A protocol-level representation and persistence architecture for governed emotional data"
     year: 2025
-    publisher:
-      name: Zenodo
+    publisher: "Zenodo"
+    doi: "10.5281/zenodo.17808652"
+    url: "https://zenodo.org/records/17808878"
