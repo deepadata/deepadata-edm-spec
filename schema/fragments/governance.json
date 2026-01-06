@@ -4,7 +4,7 @@
   "type": "object",
   "properties": {
     "jurisdiction": {
-      "description": "The regulatory regime governing this artifact. Determines applicable rights, obligations, and compliance conditions.",
+      "description": "The regulatory regime governing this artifact. Determines applicable rights, obligations, and compliance conditions",
       "type": [
         "string",
         "null"
@@ -16,12 +16,12 @@
         "PIPEDA",
         "LGPD",
         "None",
-        "Mixed."
+        "Mixed"
       ],
-      "x_constraints": "GDPR, CCPA, HIPAA, PIPEDA, LGPD, None, Mixed."
+      "x_constraints": "GDPR, CCPA, HIPAA, PIPEDA, LGPD, None, Mixed"
     },
     "retention_policy.basis": {
-      "description": "The rationale determining how long this artifact may be retained.",
+      "description": "The rationale determining how long this artifact may be retained",
       "type": [
         "string",
         "null"
@@ -29,20 +29,20 @@
       "enum": [
         "user_defined",
         "legal",
-        "business_need."
+        "business_need"
       ],
-      "x_constraints": "user_defined, legal, business_need."
+      "x_constraints": "user_defined, legal, business_need"
     },
     "retention_policy.ttl_days": {
-      "description": "Time-to-live in days for the artifact. Defines retention boundaries enforced by engines and storage layers.",
+      "description": "Time-to-live in days for the artifact. Defines retention boundaries enforced by engines and storage layers",
       "type": [
         "number",
         "null"
       ],
-      "x_constraints": "Non-negative integer or null."
+      "x_constraints": "Non-negative integer or null"
     },
     "retention_policy.on_expiry": {
-      "description": "Required action once retention elapses.",
+      "description": "Required action once retention elapses",
       "type": [
         "string",
         "null"
@@ -50,53 +50,53 @@
       "enum": [
         "soft_delete",
         "hard_delete",
-        "anonymize."
+        "anonymize"
       ],
-      "x_constraints": "soft_delete, hard_delete, anonymize."
+      "x_constraints": "soft_delete, hard_delete, anonymize"
     },
     "subject_rights.portable": {
-      "description": "Whether the artifact is eligible for portability requests under governing law.",
+      "description": "Whether the artifact is eligible for portability requests under governing law",
       "type": "boolean",
-      "x_constraints": "true or false."
+      "x_constraints": "true or false"
     },
     "subject_rights.erasable": {
-      "description": "Whether the artifact must be erasable on user request or under statutory obligations.",
+      "description": "Whether the artifact must be erasable on user request or under statutory obligations",
       "type": "boolean",
-      "x_constraints": "true or false."
+      "x_constraints": "true or false"
     },
     "subject_rights.explainable": {
-      "description": "Whether systems must provide interpretability or explanation when computing with this artifact.",
+      "description": "Whether systems must provide interpretability or explanation when computing with this artifact",
       "type": "boolean",
-      "x_constraints": "true or false."
+      "x_constraints": "true or false"
     },
     "exportability": {
-      "description": "Controls whether the artifact may be exported in .ddna format.",
+      "description": "Controls whether the artifact may be exported in .ddna format",
       "type": "string",
       "enum": [
         "allowed",
         "restricted",
-        "forbidden."
+        "forbidden"
       ],
-      "x_constraints": "allowed, restricted, forbidden."
+      "x_constraints": "allowed, restricted, forbidden"
     },
     "k_anonymity.k": {
-      "description": "Minimum k-anonymity grouping requirement for safe aggregation, export, or research use.",
+      "description": "Minimum k-anonymity grouping requirement for safe aggregation, export, or research use",
       "type": [
         "number",
         "null"
       ],
-      "x_constraints": "Integer \u2265 1 or null."
+      "x_constraints": "Integer \u2265 1 or null"
     },
     "k_anonymity.groups": {
-      "description": "Attribute groups that contribute to anonymity constraints.",
+      "description": "Attribute groups that contribute to anonymity constraints",
       "type": "array",
-      "x_constraints": "Quasi-identifier group names (e.g., \"region\", \"age_band\").",
+      "x_constraints": "Quasi-identifier group names (e.g., \"region\", \"age_band\")",
       "items": {
         "type": "string"
       }
     },
     "policy_labels": {
-      "description": "Classification labels identifying sensitive categories that invoke stricter governance and export limits.",
+      "description": "Classification labels identifying sensitive categories that invoke stricter governance and export limits",
       "type": "array",
       "enum": [
         "sensitive",
@@ -104,17 +104,17 @@
         "health",
         "biometrics",
         "financial",
-        "none."
+        "none"
       ],
-      "x_constraints": "sensitive, children, health, biometrics, financial, none.",
+      "x_constraints": "sensitive, children, health, biometrics, financial, none",
       "items": {
         "type": "string"
       }
     },
     "masking_rules": {
-      "description": "Redaction requirements for identity, location, or narrative details during display or export.",
+      "description": "Redaction requirements for identity, location, or narrative details during display or export",
       "type": "array",
-      "x_constraints": "Mask type specifications.",
+      "x_constraints": "Mask type specifications",
       "items": {
         "type": "string"
       }

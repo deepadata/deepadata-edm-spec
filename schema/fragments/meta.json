@@ -4,49 +4,49 @@
   "type": "object",
   "properties": {
     "id": {
-      "description": "Unique identifier for the EDM artifact. Required for provenance, linking, auditing, and .ddna envelope binding.",
+      "description": "Unique identifier for the EDM artifact. Required for provenance, linking, auditing, and .ddna envelope binding",
       "type": [
         "string",
         "null"
       ],
-      "x_constraints": "UUID v4. Immutable."
+      "x_constraints": "UUID v4. Immutable"
     },
     "version": {
-      "description": "Declares which EDM schema this artifact conforms to and enables safe validation and migration.",
+      "description": "Declares which EDM schema this artifact conforms to and enables safe validation and migration",
       "type": "string",
       "x_constraints": "MUST match \"0.4.x\"."
     },
     "created_at": {
-      "description": "Marks when the artifact was extracted. Anchors temporal provenance.",
+      "description": "Marks when the artifact was extracted. Anchors temporal provenance",
       "type": "string",
-      "x_constraints": "ISO-8601 UTC timestamp. Required."
+      "x_constraints": "ISO-8601 UTC timestamp. Required"
     },
     "updated_at": {
-      "description": "Optional timestamp for post-extraction updates. Never replaces created_at.",
+      "description": "Optional timestamp for post-extraction updates. Never replaces created_at",
       "type": [
         "string",
         "null"
       ],
-      "x_constraints": "ISO-8601 UTC timestamp."
+      "x_constraints": "ISO-8601 UTC timestamp"
     },
     "locale": {
-      "description": "Linguistic and cultural context of the source content.",
+      "description": "Linguistic and cultural context of the source content",
       "type": [
         "string",
         "null"
       ],
-      "x_constraints": "BCP-47 language tag (e.g., \"en-au\", \"en-us\"), lowercase."
+      "x_constraints": "BCP-47 language tag (e.g., \"en-au\", \"en-us\"), lowercase"
     },
     "owner_user_id": {
-      "description": "The artifact owner identifier. AuraID enables cross-vendor identity resolution; vendor-specific IDs limit portability. MUST be null in stateless mode.",
+      "description": "The artifact owner identifier. AuraID enables cross-vendor identity resolution; vendor-specific IDs limit portability. MUST be null in stateless mode",
       "type": [
         "string",
         "null"
       ],
-      "x_constraints": "AuraID (recommended), UUID, or free-text; null for stateless."
+      "x_constraints": "AuraID (recommended), UUID, or free-text; null for stateless"
     },
     "parent_id": {
-      "description": "Links this artifact to its parent in multi-step extractions or threaded sequences.",
+      "description": "Links this artifact to its parent in multi-step extractions or threaded sequences",
       "type": [
         "string",
         "null"
@@ -54,82 +54,82 @@
       "x_constraints": "UUID."
     },
     "visibility": {
-      "description": "Determines who may view or process the artifact.",
+      "description": "Determines who may view or process the artifact",
       "type": "string",
       "enum": [
         "private",
         "shared",
-        "public."
+        "public"
       ],
-      "x_constraints": "private, shared, public."
+      "x_constraints": "private, shared, public"
     },
     "pii_tier": {
-      "description": "Classification of personal or sensitive content. Controls retention, masking, and export rules.",
+      "description": "Classification of personal or sensitive content. Controls retention, masking, and export rules",
       "type": "string",
       "enum": [
         "none",
         "low",
         "moderate",
         "high",
-        "extreme."
+        "extreme"
       ],
-      "x_constraints": "none, low, moderate, high, extreme."
+      "x_constraints": "none, low, moderate, high, extreme"
     },
     "source_type": {
-      "description": "The medium from which the artifact was extracted.",
+      "description": "The medium from which the artifact was extracted",
       "type": "string",
       "enum": [
         "text",
         "audio",
         "image",
         "video",
-        "mixed."
+        "mixed"
       ],
-      "x_constraints": "text, audio, image, video, mixed."
+      "x_constraints": "text, audio, image, video, mixed"
     },
     "source_context": {
-      "description": "Optional narrative describing the input scenario.",
+      "description": "Optional narrative describing the input scenario",
       "type": [
         "string",
         "null"
       ],
-      "x_constraints": "Free-text (e.g., \"therapy session\", \"journaling\", \"voice memo\")."
+      "x_constraints": "Free-text (e.g., \"therapy session\", \"journaling\", \"voice memo\")"
     },
     "consent_basis": {
-      "description": "Legal basis for storing and processing emotional data.",
+      "description": "Legal basis for storing and processing emotional data",
       "type": "string",
       "enum": [
         "consent",
         "contract",
         "legitimate_interest",
-        "none."
+        "none"
       ],
-      "x_constraints": "consent, contract, legitimate_interest, none."
+      "x_constraints": "consent, contract, legitimate_interest, none"
     },
     "consent_scope": {
-      "description": "What the user consented to.",
+      "description": "What the user consented to",
       "type": [
         "string",
         "null"
       ],
-      "x_constraints": "Free-text (e.g., \"memory storage\", \"reflection\", \"therapeutic use\")."
+      "x_constraints": "Free-text (e.g., \"memory storage\", \"reflection\", \"therapeutic use\")"
     },
     "consent_revoked_at": {
-      "description": "If populated, the artifact becomes non-retrievable and non-exportable, except minimal audit form.",
+      "description": "If populated, the artifact becomes non-retrievable and non-exportable, except minimal audit form",
       "type": [
         "string",
         "null"
       ],
-      "x_constraints": "ISO-8601 UTC timestamp."
+      "x_constraints": "ISO-8601 UTC timestamp"
     },
     "tags": {
-      "description": "Optional user-defined labels for organizing or filtering artifacts.",
+      "description": "Optional user-defined labels for organizing or filtering artifacts",
       "type": "array",
       "enum": [
         "Short tokens",
-        "lowercase recommended."
+        "lowercase recommended"
       ],
-      "x_constraints": "Short tokens, lowercase recommended.",
+      "x_constraints": "Short tokens, lowercase recommended",
       "items": {
         "type": "string"
       }

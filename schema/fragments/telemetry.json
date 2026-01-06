@@ -4,28 +4,28 @@
   "type": "object",
   "properties": {
     "entry_confidence": {
-      "description": "Confidence score assigned by the extractor for the accuracy of the EDM representation.",
+      "description": "Confidence score assigned by the extractor for the accuracy of the EDM representation",
       "type": "number",
-      "x_constraints": "0.0\u20131.0."
+      "x_constraints": "0.0\u20131.0"
     },
     "extraction_model": {
-      "description": "Identifier of the model or engine used for extraction.",
+      "description": "Identifier of the model or engine used for extraction",
       "type": [
         "string",
         "null"
       ],
-      "x_constraints": "Free text (e.g., \"DeepaTagger-v0.4\", \"GPT-4\")."
+      "x_constraints": "Free text (e.g., \"DeepaTagger-v0.4\", \"GPT-4\")"
     },
     "extraction_notes": {
-      "description": "Optional notes about extraction quality or contextual factors.",
+      "description": "Optional notes about extraction quality or contextual factors",
       "type": [
         "string",
         "null"
       ],
-      "x_constraints": "Free text."
+      "x_constraints": "Free text"
     },
     "alignment_delta": {
-      "description": "Measured deviation between the artifact's encoded affective state and the system's response coherence, used to regulate resonance weighting.",
+      "description": "Measured deviation between the artifact's encoded affective state and the system's response coherence, used to regulate resonance weighting",
       "type": [
         "number",
         "null"
@@ -33,9 +33,9 @@
       "enum": [
         "-1.0 to +1.0; positive indicates over-alignment",
         "negative indicates under-alignment",
-        "near-zero indicates equilibrium."
+        "near-zero indicates equilibrium"
       ],
-      "x_constraints": "-1.0 to +1.0; positive indicates over-alignment, negative indicates under-alignment, near-zero indicates equilibrium."
+      "x_constraints": "-1.0 to +1.0; positive indicates over-alignment, negative indicates under-alignment, near-zero indicates equilibrium"
     }
   },
   "additionalProperties": false,

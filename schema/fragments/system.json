@@ -4,39 +4,39 @@
   "type": "object",
   "properties": {
     "embeddings": {
-      "description": "Embedding references associated with this artifact. Provides stable pointers without embedding raw data.",
+      "description": "Embedding references associated with this artifact. Provides stable pointers without embedding raw data",
       "type": "array",
       "enum": [
         "Each object must include: provider",
         "sector",
         "dim",
         "quantized",
-        "vector_ref. No inline vectors permitted."
+        "vector_ref. No inline vectors permitted"
       ],
-      "x_constraints": "Each object must include: provider, sector, dim, quantized, vector_ref. No inline vectors permitted.",
+      "x_constraints": "Each object must include: provider, sector, dim, quantized, vector_ref. No inline vectors permitted",
       "items": {
         "type": "string"
       }
     },
     "indices.waypoint_ids": {
-      "description": "Identifiers for retrieval or resonance \"waypoints\" associated with this artifact.",
+      "description": "Identifiers for retrieval or resonance \"waypoints\" associated with this artifact",
       "type": "array",
-      "x_constraints": "Strings only; no null entries.",
+      "x_constraints": "Strings only; no null entries",
       "items": {
         "type": "string"
       }
     },
     "indices.sector_weights": {
-      "description": "Weight distribution across memory sectors used by recall engines.",
+      "description": "Weight distribution across memory sectors used by recall engines",
       "type": "object",
       "enum": [
         "Must include keys: episodic",
         "semantic",
         "procedural",
         "emotional",
-        "reflective. Values 0.0\u20131.0."
+        "reflective. Values 0.0\u20131.0"
       ],
-      "x_constraints": "Must include keys: episodic, semantic, procedural, emotional, reflective. Values 0.0\u20131.0."
+      "x_constraints": "Must include keys: episodic, semantic, procedural, emotional, reflective. Values 0.0\u20131.0"
     }
   },
   "additionalProperties": false,

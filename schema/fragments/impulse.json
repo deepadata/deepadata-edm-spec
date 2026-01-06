@@ -4,15 +4,15 @@
   "type": "object",
   "properties": {
     "primary_energy": {
-      "description": "Dominant emotional or motivational energy in the moment.",
+      "description": "Dominant emotional or motivational energy in the moment",
       "type": [
         "string",
         "null"
       ],
-      "x_constraints": "Lowercase (e.g., \"curiosity\", \"fear\", \"compassion\", \"longing\")."
+      "x_constraints": "Lowercase (e.g., \"curiosity\", \"fear\", \"compassion\", \"longing\")"
     },
     "drive_state": {
-      "description": "The behavioral direction or movement expressed through the emotional response.",
+      "description": "The behavioral direction or movement expressed through the emotional response",
       "type": [
         "string",
         "null"
@@ -23,12 +23,12 @@
         "avoid",
         "repair",
         "persevere",
-        "share."
+        "share"
       ],
-      "x_constraints": "explore, approach, avoid, repair, persevere, share."
+      "x_constraints": "explore, approach, avoid, repair, persevere, share"
     },
     "motivational_orientation": {
-      "description": "The foundational motivational domain guiding the individual's internal stance.",
+      "description": "The foundational motivational domain guiding the individual's internal stance",
       "type": [
         "string",
         "null"
@@ -38,12 +38,12 @@
         "safety",
         "mastery",
         "meaning",
-        "autonomy."
+        "autonomy"
       ],
-      "x_constraints": "belonging, safety, mastery, meaning, autonomy."
+      "x_constraints": "belonging, safety, mastery, meaning, autonomy"
     },
     "temporal_focus": {
-      "description": "The temporal direction toward which the motivational energy is oriented.",
+      "description": "The temporal direction toward which the motivational energy is oriented",
       "type": [
         "string",
         "null"
@@ -51,12 +51,12 @@
       "enum": [
         "past",
         "present",
-        "future."
+        "future"
       ],
-      "x_constraints": "past, present, future."
+      "x_constraints": "past, present, future"
     },
     "directionality": {
-      "description": "Whether the impulse is self-directed, relational, or expansive beyond self.",
+      "description": "Whether the impulse is self-directed, relational, or expansive beyond self",
       "type": [
         "string",
         "null"
@@ -64,12 +64,12 @@
       "enum": [
         "inward",
         "outward",
-        "transcendent."
+        "transcendent"
       ],
-      "x_constraints": "inward, outward, transcendent."
+      "x_constraints": "inward, outward, transcendent"
     },
     "social_visibility": {
-      "description": "The social scope within which the impulse is expressed.",
+      "description": "The social scope within which the impulse is expressed",
       "type": [
         "string",
         "null"
@@ -77,12 +77,12 @@
       "enum": [
         "private",
         "relational",
-        "collective."
+        "collective"
       ],
-      "x_constraints": "private, relational, collective."
+      "x_constraints": "private, relational, collective"
     },
     "urgency": {
-      "description": "The intensity or immediacy of the motivational state.",
+      "description": "The intensity or immediacy of the motivational state",
       "type": [
         "string",
         "null"
@@ -91,12 +91,12 @@
         "calm",
         "elevated",
         "pressing",
-        "acute."
+        "acute"
       ],
-      "x_constraints": "calm, elevated, pressing, acute."
+      "x_constraints": "calm, elevated, pressing, acute"
     },
     "risk_posture": {
-      "description": "The stance toward uncertainty or potential risk embedded in the moment.",
+      "description": "The stance toward uncertainty or potential risk embedded in the moment",
       "type": [
         "string",
         "null"
@@ -104,12 +104,12 @@
       "enum": [
         "cautious",
         "balanced",
-        "bold."
+        "bold"
       ],
-      "x_constraints": "cautious, balanced, bold."
+      "x_constraints": "cautious, balanced, bold"
     },
     "agency_level": {
-      "description": "The perceived ability to act or influence the situation.",
+      "description": "The perceived ability to act or influence the situation",
       "type": [
         "string",
         "null"
@@ -117,12 +117,12 @@
       "enum": [
         "low",
         "medium",
-        "high."
+        "high"
       ],
-      "x_constraints": "low, medium, high."
+      "x_constraints": "low, medium, high"
     },
     "regulation_state": {
-      "description": "The stability or turbulence of emotional self-regulation.",
+      "description": "The stability or turbulence of emotional self-regulation",
       "type": [
         "string",
         "null"
@@ -130,12 +130,12 @@
       "enum": [
         "regulated",
         "wavering",
-        "dysregulated."
+        "dysregulated"
       ],
-      "x_constraints": "regulated, wavering, dysregulated."
+      "x_constraints": "regulated, wavering, dysregulated"
     },
     "attachment_style": {
-      "description": "The relational attachment pattern influencing the emotional expression.",
+      "description": "The relational attachment pattern influencing the emotional expression",
       "type": [
         "string",
         "null"
@@ -144,12 +144,12 @@
         "secure",
         "anxious",
         "avoidant",
-        "disorganized."
+        "disorganized"
       ],
-      "x_constraints": "secure, anxious, avoidant, disorganized."
+      "x_constraints": "secure, anxious, avoidant, disorganized"
     },
     "coping_style": {
-      "description": "The primary strategy used to manage or integrate the emotional experience.",
+      "description": "The primary strategy used to manage or integrate the emotional experience",
       "type": [
         "string",
         "null"
@@ -160,9 +160,9 @@
         "distract",
         "ritualize",
         "confront",
-        "detach."
+        "detach"
       ],
-      "x_constraints": "reframe_meaning, seek_support, distract, ritualize, confront, detach."
+      "x_constraints": "reframe_meaning, seek_support, distract, ritualize, confront, detach"
     }
   },
   "additionalProperties": false
