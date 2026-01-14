@@ -23,6 +23,22 @@ EDM fills this gap by providing:
 
 ---
 
+## Scope and Non-Goals
+
+**EDM is:** A data format specification. It defines structure and semantics for emotional context that can be validated, exchanged, and governed.
+
+**EDM is not:**
+- An identity provider (Auth0-class systems remain external)
+- A certificate authority or regulator
+- A memory store, agent runtime, or analytics system
+- An emotion recognizer or prediction system
+
+**Tooling is non-normative.** Any tooling built around EDM (validators, SDKs, CLI tools) is reference implementation only. The canonical JSON Schema remains the sole source of truth.
+
+**See:** [Scope and Non-Goals](docs/SCOPE_AND_NONGOALS.md) | [EDM and .ddna Boundary](docs/EDM_DDNA_BOUNDARY.md)
+
+---
+
 ## Official Publication
 
 The EDM v0.4.0 whitepaper is published on Zenodo:
@@ -166,6 +182,8 @@ deepadata-edm-spec/
 │   └── multimodal_image_example.ddna.json
 ├── docs/
 │   ├── OVERVIEW.md                   # Schema architecture
+│   ├── SCOPE_AND_NONGOALS.md         # What EDM is and is not
+│   ├── EDM_DDNA_BOUNDARY.md          # Transient vs persistent
 │   ├── EU_AI_ACT_COMPLIANCE.md       # Regulatory compliance guide
 │   ├── V04_MIGRATION_GUIDE.md        # Migration instructions
 │   ├── VALIDATION.md                 # Validation guide
@@ -174,6 +192,7 @@ deepadata-edm-spec/
 │   └── validate-examples.mjs         # Validation utilities
 ├── CITATION.cff                      # Citation metadata
 ├── LICENSE                           # MIT License
+├── SECURITY.md                       # Security policy
 └── README.md
 ```
 
@@ -201,6 +220,8 @@ We welcome contributions! This is a Release Candidate seeking community feedback
 - Contact: jason@deepadata.com
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+**Security issues:** Please report vulnerabilities privately via [SECURITY.md](SECURITY.md).
 
 ---
 
