@@ -148,6 +148,20 @@ The GOVERNANCE domain provides explicit fields for:
 
 ---
 
+## Ecosystem Integration
+
+EDM is designed to complement existing AI infrastructure standards:
+
+| Protocol | EDM Role |
+|----------|----------|
+| **[MCP](https://modelcontextprotocol.io/)** | Emotional context as MCP Resource type |
+| **[A2A](https://github.com/google/a2a-protocol)** | Emotional payload in agent-to-agent communication |
+| **Mem0** | Governance-compliant schema for emotional memory |
+
+**See:** [MCP Extension Proposal](docs/MCP_EXTENSION_PROPOSAL.md) for integration details.
+
+---
+
 ## Repository Structure
 
 ```
@@ -167,6 +181,7 @@ deepadata-edm-spec/
 ├── docs/
 │   ├── OVERVIEW.md                   # Schema architecture
 │   ├── EU_AI_ACT_COMPLIANCE.md       # Regulatory compliance guide
+│   ├── MCP_EXTENSION_PROPOSAL.md     # MCP integration proposal
 │   ├── V04_MIGRATION_GUIDE.md        # Migration instructions
 │   ├── VALIDATION.md                 # Validation guide
 │   └── RELEASE-NOTES.md
