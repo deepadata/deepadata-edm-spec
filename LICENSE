@@ -1,58 +1,21 @@
-DeepaData Emotional Data Model (EDM v0.4.0 Specification)
+MIT License
+
 Copyright (c) 2025 DeepaData Pty Ltd
-All Rights Reserved.
 
-This repository, including all schemas, documentation, examples, and related materials,
-is proprietary intellectual property of DeepaData Pty Ltd (Australia).
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
----------------------------------------
-TERMS OF USE
----------------------------------------
-1. No Public License
-   This repository is distributed under CLOSED PROVENANCE.
-   No permission is granted for copying, reproduction, distribution,
-   modification, or derivative creation of any kind.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-2. Evaluation and Research Access
-   Read-only access may be granted by written agreement for private research,
-   technical evaluation, or peer review. Such access does not imply any
-   rights of redistribution or reuse.
-
-3. Commercial Use
-   Any commercial use—including but not limited to AI training,
-   schema embedding, product integration, or tool development—requires
-   a formal licensing agreement with DeepaData Pty Ltd.
-
-4. No Warranty
-   This material is provided "as is" without warranty of any kind,
-   express or implied, including but not limited to the warranties
-   of merchantability, fitness for a particular purpose, or noninfringement.
-
-5. Intended Uses (with license)
-   - Journaling, legacy, or reflective AI applications
-   - Personal media or story platforms
-   - Emotional memory infrastructure for LLMs
-   - Retrieval-augmented emotional context models
-
-6. Prohibited Uses
-   - Mass surveillance or emotional profiling without consent
-   - Behavioral manipulation or inference at population scale
-   - Commercial derivative works without written license
-
----------------------------------------
-CONTACT
----------------------------------------
-To request licensing or partnership evaluation, contact:
-jason@deepadata.com
-
----------------------------------------
-NOTICE
----------------------------------------
-This repository remains under CLOSED PROVENANCE until the v1.0 commercial release.
-At that time, a reference version of the EDM schema text may be made
-available under an MIT license for interoperability purposes.
-
----------------------------------------
-Tagline
----------------------------------------
-"DeepaData is not just metadata. It is emotional infrastructure — and must be handled with care."
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
