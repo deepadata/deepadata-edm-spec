@@ -1,3 +1,30 @@
+# Emotional Data Model (EDM) Specification
+
+**Current Version:** v0.4.1 (Release Candidate 2)
+**Released:** January 2026
+**DOI:** [10.5281/zenodo.17808652](https://doi.org/10.5281/zenodo.17808652)
+
+## 📄 Official Whitepaper
+
+The complete EDM v0.4.1 specification is published on Zenodo:
+- **Download:** [EDM v0.4.1 Whitepaper (DOCX)](https://doi.org/10.5281/zenodo.17808652)
+- **Cite as:** Harvey, J. (2026). Emotional Data Model (EDM) v0.4.1. Zenodo. https://doi.org/10.5281/zenodo.17808652
+
+## 🔧 Implementation
+
+This repository contains:
+- Canonical JSON Schema (`schema/edm.v0.4.schema.json`)
+- Example artifacts (`examples/`)
+- Implementation documentation (`docs/`)
+- Release notes
+
+Reference implementations:
+- [deepadata-ddna-tools](https://github.com/deepadata/deepadata-ddna-tools) - Sealing and verification
+- [deepadata-edm-sdk](https://github.com/deepadata/deepadata-edm-sdk) - Artifact extraction
+- [deepadata-edm-mcp-server](https://github.com/deepadata/deepadata-edm-mcp-server) - MCP adapter
+
+---
+
 # DeepaData — EDM v0.4 (Specification)
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17808652.svg)](https://doi.org/10.5281/zenodo.17808652)
