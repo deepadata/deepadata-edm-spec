@@ -113,7 +113,7 @@
         "cyclical",
         "isolated",
         "chronic",
-        "emerging; NULL when pattern cannot be determined"
+        "emerging"
       ],
       "x_constraints": "cyclical, isolated, chronic, emerging; NULL when pattern cannot be determined"
     },

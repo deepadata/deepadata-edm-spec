@@ -23,9 +23,12 @@
         "avoid",
         "repair",
         "persevere",
-        "share"
+        "share",
+        "confront",
+        "protect",
+        "process"
       ],
-      "x_constraints": "explore, approach, avoid, repair, persevere, share"
+      "x_constraints": "explore, approach, avoid, repair, persevere, share, confront, protect, process"
     },
     "motivational_orientation": {
       "description": "The foundational motivational domain guiding the individual's internal stance",

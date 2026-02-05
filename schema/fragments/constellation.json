@@ -17,9 +17,13 @@
         "wonder",
         "peace",
         "tenderness",
-        "reverence"
+        "reverence",
+        "pride",
+        "anxiety",
+        "gratitude",
+        "longing"
       ],
-      "x_constraints": "joy, sadness, fear, anger, wonder, peace, tenderness, reverence"
+      "x_constraints": "joy, sadness, fear, anger, wonder, peace, tenderness, reverence, pride, anxiety, gratitude, longing"
     },
     "emotion_subtone": {
       "description": "Secondary emotional nuances that add depth to the primary emotion",
@@ -86,9 +90,13 @@
         "reunion",
         "community_ritual",
         "grief",
-        "self_reflection"
+        "self_reflection",
+        "professional",
+        "therapeutic",
+        "service",
+        "adversarial"
       ],
-      "x_constraints": "parent_child, romantic_partnership, sibling_bond, friendship, companionship, mentorship, reunion, community_ritual, grief, self_reflection"
+      "x_constraints": "parent_child, romantic_partnership, sibling_bond, friendship, companionship, mentorship, reunion, community_ritual, grief, self_reflection, professional, therapeutic, service, adversarial"
     },
     "temporal_context": {
       "description": "The life-stage or temporal frame associated with the experience",
@@ -217,10 +225,6 @@
       "type": [
         "string",
         "null"
-      ],
-      "enum": [
-        "Short sentence. Extracted",
-        "not inferred"
       ],
       "x_constraints": "Short sentence. Extracted, not inferred"
     },
