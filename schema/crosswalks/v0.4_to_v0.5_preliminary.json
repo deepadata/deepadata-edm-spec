@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EDM v0.4 to v0.5 Migration Crosswalk (PRELIMINARY)",
+  "description": "Tracks proposed changes for v0.5. Not yet active.",
+  "status": "draft",
+  "version_from": "0.4.0",
+  "version_to": "0.5.0-draft",
+  "draft_date": "2026-02-05",
+  "breaking_changes": false,
+
+  "summary": {
+    "enum_expansions": 3,
+    "bug_fixes": 2,
+    "fields_added": 0,
+    "fields_removed": 0,
+    "fields_renamed": 0,
+    "domains_changed": 0
+  },
+
+  "enum_expansions": [
+    {
+      "field": "constellation.emotion_primary",
+      "domain": "constellation",
+      "values_before": ["joy", "sadness", "fear", "anger", "wonder", "peace", "tenderness", "reverence"],
+      "values_added": ["pride", "anxiety", "gratitude", "longing"],
+      "values_after": ["joy", "sadness", "fear", "anger", "wonder", "peace", "tenderness", "reverence", "pride", "anxiety", "gratitude", "longing"],
+      "count_before": 8,
+      "count_after": 12,
+      "rationale": "Phase 2 eval: LLMs consistently chose these over closest canonical value. Both Anthropic and OpenAI returned 'pride' for social achievement contexts, 'anxiety' for anticipatory worry (distinct from acute fear), 'gratitude' for relational appreciation (distinct from joy), and 'longing' for yearning/nostalgia-as-desire. 3-provider consensus data supports expansion."
+    },
+    {
+      "field": "constellation.relational_dynamics",
+      "domain": "constellation",
+      "values_before": ["parent_child", "romantic_partnership", "sibling_bond", "friendship", "companionship", "mentorship", "reunion", "community_ritual", "grief", "self_reflection"],
+      "values_added": ["professional", "therapeutic", "service", "adversarial"],
+      "values_after": ["parent_child", "romantic_partnership", "sibling_bond", "friendship", "companionship", "mentorship", "reunion", "community_ritual", "grief", "self_reflection", "professional", "therapeutic", "service", "adversarial"],
+      "count_before": 10,
+      "count_after": 14,
+      "rationale": "Professional/B2B and customer support use cases have no representation. Both providers returned 'customer_service' (invalid) for support interactions. Therapeutic relationship common in journaling/therapy inputs. Adversarial covers conflict dynamics distinct from grief."
+    },
+    {
+      "field": "impulse.drive_state",
+      "domain": "impulse",
+      "values_before": ["explore", "approach", "avoid", "repair", "persevere", "share"],
+      "values_added": ["confront", "protect", "process"],
+      "values_after": ["explore", "approach", "avoid", "repair", "persevere", "share", "confront", "protect", "process"],
+      "count_before": 6,
+      "count_after": 9,
+      "rationale": "Phase 2 eval: 'confront' appeared repeatedly from OpenAI (exists in coping_style but semantically needed in drive_state for behavioral direction). 'protect' captures defensive motivation distinct from 'avoid'. 'process' captures therapeutic motivation to work through/metabolize an experience - core to journaling and therapy use cases."
+    }
+  ],
+
+  "bug_fixes": [
+    {
+      "field": "constellation.expressed_insight",
+      "domain": "constellation",
+      "issue": "Erroneous enum values",
+      "before": {
+        "type": ["string", "null"],
+        "enum": ["Short sentence. Extracted", "not inferred"]
+      },
+      "after": {
+        "type": ["string", "null"]
+      },
+      "rationale": "Constraint text was accidentally parsed as enum values during schema generation. Field should be free text (short sentence). x_constraints already correctly describes the expected format."
+    },
+    {
+      "field": "gravity.recurrence_pattern",
+      "domain": "gravity",
+      "issue": "Malformed enum value",
+      "before": {
+        "enum": ["cyclical", "isolated", "chronic", "emerging; NULL when pattern cannot be determined"]
+      },
+      "after": {
+        "enum": ["cyclical", "isolated", "chronic", "emerging"]
+      },
+      "rationale": "Description text concatenated into enum value. NULL guidance belongs in x_constraints only, not as a value option."
+    }
+  ],
+
+  "fields_unchanged": "All field names, domain structure, and types remain identical to v0.4.0. This is an additive enum expansion only.",
+
+  "backward_compatibility": {
+    "v04_to_v05": "v0.4.0 artifacts remain valid under v0.5.0. All existing enum values are preserved.",
+    "v05_to_v04": "v0.5.0 artifacts using new enum values will fail v0.4.0 strict validation. Migration would require mapping new values to closest v0.4 equivalents."
+  },
+
+  "forward_compatibility": {
+    "existing_artifacts": "No migration required for existing v0.4.0 artifacts",
+    "new_extractions": "New extractions may use expanded enum values",
+    "validation": "v0.5.0 validators will accept all v0.4.0 values plus new expanded values"
+  },
+
+  "migration_notes": {
+    "automatic_upgrade": true,
+    "data_loss_risk": "none",
+    "steps": [
+      "1. Update schema references from 0.4.0 to 0.5.0",
+      "2. Update validators to accept expanded enum values",
+      "3. No field migration required - additive changes only"
+    ]
+  },
+
+  "eval_data_source": {
+    "batch_id": "golden_1770255573955",
+    "corpus": "Golden corpus (30 curated inputs)",
+    "providers_tested": ["anthropic", "openai"],
+    "phase1_compliance": {
+      "anthropic": "73%",
+      "openai": "38%"
+    },
+    "phase2_compliance_with_prompt_improvements": {
+      "anthropic": "80%",
+      "openai": "43%"
+    },
+    "decision_threshold": "If post-expansion compliance exceeds 90%, ship v0.5. Otherwise iterate."
+  }
+}
