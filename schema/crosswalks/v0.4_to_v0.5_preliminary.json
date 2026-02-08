@@ -9,7 +9,7 @@
   "breaking_changes": false,
 
   "summary": {
-    "enum_expansions": 4,
+    "enum_expansions": 5,
     "bug_fixes": 2,
     "fields_added": 0,
     "fields_removed": 0,
@@ -57,6 +57,16 @@
       "count_before": 6,
       "count_after": 7,
       "rationale": "Phase 2.5 gate run: 'process' appeared 6 times from OpenAI as the strategy of working through/metabolizing an emotional experience. Semantically valid as a coping strategy distinct from reframing, distracting, or detaching. Note: 'process' also exists in drive_state (behavioral direction) — parallel to 'confront' existing in both fields."
+    },
+    {
+      "field": "gravity.adaptation_trajectory",
+      "domain": "gravity",
+      "values_before": ["improving", "stable", "declining", "integrative"],
+      "values_added": ["emerging"],
+      "values_after": ["improving", "stable", "declining", "integrative", "emerging"],
+      "count_before": 4,
+      "count_after": 5,
+      "rationale": "Phase 2.5 gate run: 'emerging' appeared when the emotional adaptation trajectory is in early stages and direction is not yet clear. Captures the phase before improving/stable/declining can be determined."
     }
   ],
 
