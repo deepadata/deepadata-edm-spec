@@ -22,21 +22,21 @@
       "field": "constellation.emotion_primary",
       "domain": "constellation",
       "values_before": ["joy", "sadness", "fear", "anger", "wonder", "peace", "tenderness", "reverence"],
-      "values_added": ["pride", "anxiety", "gratitude", "longing"],
-      "values_after": ["joy", "sadness", "fear", "anger", "wonder", "peace", "tenderness", "reverence", "pride", "anxiety", "gratitude", "longing"],
+      "values_added": ["pride", "anxiety", "gratitude", "longing", "hope"],
+      "values_after": ["joy", "sadness", "fear", "anger", "wonder", "peace", "tenderness", "reverence", "pride", "anxiety", "gratitude", "longing", "hope"],
       "count_before": 8,
-      "count_after": 12,
-      "rationale": "Phase 2 eval: LLMs consistently chose these over closest canonical value. Both Anthropic and OpenAI returned 'pride' for social achievement contexts, 'anxiety' for anticipatory worry (distinct from acute fear), 'gratitude' for relational appreciation (distinct from joy), and 'longing' for yearning/nostalgia-as-desire. 3-provider consensus data supports expansion."
+      "count_after": 13,
+      "rationale": "Phase 2 eval: LLMs consistently chose these over closest canonical value. Both Anthropic and OpenAI returned 'pride' for social achievement contexts, 'anxiety' for anticipatory worry (distinct from acute fear), 'gratitude' for relational appreciation (distinct from joy), and 'longing' for yearning/nostalgia-as-desire. Phase 2.5 gate run: 'hope' appeared 4 times across OpenAI and Kimi as consensus violation for future-oriented optimism distinct from joy."
     },
     {
       "field": "constellation.relational_dynamics",
       "domain": "constellation",
       "values_before": ["parent_child", "romantic_partnership", "sibling_bond", "friendship", "companionship", "mentorship", "reunion", "community_ritual", "grief", "self_reflection"],
-      "values_added": ["professional", "therapeutic", "service", "adversarial"],
-      "values_after": ["parent_child", "romantic_partnership", "sibling_bond", "friendship", "companionship", "mentorship", "reunion", "community_ritual", "grief", "self_reflection", "professional", "therapeutic", "service", "adversarial"],
+      "values_added": ["professional", "therapeutic", "service", "adversarial", "family"],
+      "values_after": ["parent_child", "romantic_partnership", "sibling_bond", "friendship", "companionship", "mentorship", "reunion", "community_ritual", "grief", "self_reflection", "professional", "therapeutic", "service", "adversarial", "family"],
       "count_before": 10,
-      "count_after": 14,
-      "rationale": "Professional/B2B and customer support use cases have no representation. Both providers returned 'customer_service' (invalid) for support interactions. Therapeutic relationship common in journaling/therapy inputs. Adversarial covers conflict dynamics distinct from grief."
+      "count_after": 15,
+      "rationale": "Professional/B2B and customer support use cases have no representation. Both providers returned 'customer_service' (invalid) for support interactions. Therapeutic relationship common in journaling/therapy inputs. Adversarial covers conflict dynamics distinct from grief. Phase 2.2 + 2.5: 'family' captures multi-generational or collective family dynamics distinct from parent_child (which implies two-party, directional relationship)."
     },
     {
       "field": "impulse.drive_state",
