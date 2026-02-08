@@ -9,7 +9,7 @@
   "breaking_changes": false,
 
   "summary": {
-    "enum_expansions": 3,
+    "enum_expansions": 4,
     "bug_fixes": 2,
     "fields_added": 0,
     "fields_removed": 0,
@@ -47,6 +47,16 @@
       "count_before": 6,
       "count_after": 9,
       "rationale": "Phase 2 eval: 'confront' appeared repeatedly from OpenAI (exists in coping_style but semantically needed in drive_state for behavioral direction). 'protect' captures defensive motivation distinct from 'avoid'. 'process' captures therapeutic motivation to work through/metabolize an experience - core to journaling and therapy use cases."
+    },
+    {
+      "field": "impulse.coping_style",
+      "domain": "impulse",
+      "values_before": ["reframe_meaning", "seek_support", "distract", "ritualize", "confront", "detach"],
+      "values_added": ["process"],
+      "values_after": ["reframe_meaning", "seek_support", "distract", "ritualize", "confront", "detach", "process"],
+      "count_before": 6,
+      "count_after": 7,
+      "rationale": "Phase 2.5 gate run: 'process' appeared 6 times from OpenAI as the strategy of working through/metabolizing an emotional experience. Semantically valid as a coping strategy distinct from reframing, distracting, or detaching. Note: 'process' also exists in drive_state (behavioral direction) — parallel to 'confront' existing in both fields."
     }
   ],
 
