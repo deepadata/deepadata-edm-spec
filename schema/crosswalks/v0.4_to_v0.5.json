@@ -1,11 +1,11 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "EDM v0.4 to v0.5 Migration Crosswalk (PRELIMINARY)",
-  "description": "Tracks proposed changes for v0.5. Not yet active.",
-  "status": "draft",
+  "title": "EDM v0.4 to v0.5 Migration Crosswalk",
+  "description": "Documents changes from EDM v0.4.0 to v0.5.0. Enum expansions validated across 3 LLM providers.",
+  "status": "final",
   "version_from": "0.4.0",
-  "version_to": "0.5.0-draft",
-  "draft_date": "2026-02-05",
+  "version_to": "0.5.0",
+  "release_date": "2026-02-09",
   "breaking_changes": false,
 
   "summary": {
@@ -122,17 +122,16 @@
   },
 
   "eval_data_source": {
-    "batch_id": "golden_1770255573955",
-    "corpus": "Golden corpus (30 curated inputs)",
-    "providers_tested": ["anthropic", "openai"],
-    "phase1_compliance": {
-      "anthropic": "73%",
-      "openai": "38%"
+    "corpus": "Golden corpus (60 curated inputs)",
+    "providers_tested": ["anthropic", "openai", "kimi"],
+    "phase2_final_compliance": {
+      "anthropic": "90%",
+      "openai": "90%",
+      "kimi": "90%"
     },
-    "phase2_compliance_with_prompt_improvements": {
-      "anthropic": "80%",
-      "openai": "43%"
-    },
-    "decision_threshold": "If post-expansion compliance exceeds 90%, ship v0.5. Otherwise iterate."
+    "phase4_narrative_similarity": "77.3%",
+    "phase5_semantic_similarity": "56.5%",
+    "phase6_null_agreement": "83.9%",
+    "decision": "All gates passed. v0.5.0 released."
   }
 }

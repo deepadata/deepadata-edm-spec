@@ -155,9 +155,10 @@
         "improving",
         "stable",
         "declining",
-        "integrative"
+        "integrative",
+        "emerging"
       ],
-      "x_constraints": "improving, stable, declining, integrative"
+      "x_constraints": "improving, stable, declining, integrative, emerging"
     }
   },
   "additionalProperties": false,

@@ -21,9 +21,10 @@
         "pride",
         "anxiety",
         "gratitude",
-        "longing"
+        "longing",
+        "hope"
       ],
-      "x_constraints": "joy, sadness, fear, anger, wonder, peace, tenderness, reverence, pride, anxiety, gratitude, longing"
+      "x_constraints": "joy, sadness, fear, anger, wonder, peace, tenderness, reverence, pride, anxiety, gratitude, longing, hope"
     },
     "emotion_subtone": {
       "description": "Secondary emotional nuances that add depth to the primary emotion",
@@ -84,6 +85,7 @@
         "parent_child",
         "romantic_partnership",
         "sibling_bond",
+        "family",
         "friendship",
         "companionship",
         "mentorship",
@@ -96,7 +98,7 @@
         "service",
         "adversarial"
       ],
-      "x_constraints": "parent_child, romantic_partnership, sibling_bond, friendship, companionship, mentorship, reunion, community_ritual, grief, self_reflection, professional, therapeutic, service, adversarial"
+      "x_constraints": "parent_child, romantic_partnership, sibling_bond, family, friendship, companionship, mentorship, reunion, community_ritual, grief, self_reflection, professional, therapeutic, service, adversarial"
     },
     "temporal_context": {
       "description": "The life-stage or temporal frame associated with the experience",
