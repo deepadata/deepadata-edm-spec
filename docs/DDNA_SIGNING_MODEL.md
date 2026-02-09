@@ -27,7 +27,7 @@ The .ddna signing model adopts W3C Data Integrity Proofs rather than a custom si
 
 - **Ecosystem interoperability** — Aligns with Verifiable Credentials infrastructure
 - **Reduced implementation risk** — Leverages audited, standardized cryptographic patterns
-- **Trust services integration** — Enables AuraID and registry services without proprietary crypto
+- **Trust services integration** — Enables VitaPass and registry services without proprietary crypto
 - **No vendor lock-in** — Standard proofs work with any compliant verifier
 
 ### Separation of Integrity from Trust
@@ -268,7 +268,7 @@ public_key = resolve_did(proof.verificationMethod)
 **DID Resolution:**
 - For `did:web:` — HTTP(S) fetch of DID document
 - For `did:key:` — Decode public key from DID itself
-- For future `did:auraid:` — AuraID registry resolution
+- For future `did:vitapass:` — VitaPass registry resolution
 
 #### Step 4: Reconstruct Signing Input
 
@@ -333,7 +333,7 @@ Test vectors enable implementations to verify:
     "ddna_version": "1.1",
     "created_at": "2026-01-15T10:00:00Z",
     "edm_version": "0.4.0",
-    "owner_user_id": "auraid-000000001",
+    "owner_user_id": "vp-01HZ3GKWP7XTJY9QN4RD",
     "exportability": "allowed",
     "jurisdiction": "AU",
     "retention_policy": {
@@ -359,7 +359,7 @@ Test vectors enable implementations to verify:
       "locale": "en-au",
       "created_at": "2026-01-15T09:55:00Z",
       "updated_at": null,
-      "owner_user_id": "auraid-000000001",
+      "owner_user_id": "vp-01HZ3GKWP7XTJY9QN4RD",
       "visibility": "private",
       "pii_tier": "moderate",
       "source_type": "text",
@@ -408,7 +408,7 @@ Test vectors enable implementations to verify:
 |--------|--------|----------|
 | `did:web` | `did:web:deepadata.com#key-1` | Organization-controlled keys |
 | `did:key` | `did:key:z6Mkf5rGMoatrSj1f...` | Self-certifying keys |
-| `did:auraid` | `did:auraid:000000001#key-1` | Future AuraID integration |
+| `did:vitapass` | `did:vitapass:01HZ3GKWP7XTJY9QN4RD#key-1` | Future VitaPass integration |
 
 ### did:web Example
 
@@ -438,12 +438,12 @@ Test vectors enable implementations to verify:
 
 The public key is encoded directly in the DID. No network resolution required.
 
-### AuraID Integration Path
+### VitaPass Integration Path
 
-Future `did:auraid` method will:
-1. Map AuraID identifiers to DID documents
+Future `did:vitapass` method will:
+1. Map VitaPass identifiers to DID documents
 2. Enable cross-vendor identity binding
-3. Support key rotation via AuraID registry
+3. Support key rotation via VitaPass registry
 
 ---
 

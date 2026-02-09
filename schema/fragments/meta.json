@@ -38,12 +38,12 @@
       "x_constraints": "BCP-47 language tag (e.g., \"en-au\", \"en-us\"), lowercase"
     },
     "owner_user_id": {
-      "description": "The artifact owner identifier. AuraID enables cross-vendor identity resolution; vendor-specific IDs limit portability. MUST be null in stateless mode",
+      "description": "The artifact owner identifier. VitaPass enables cross-vendor identity resolution; vendor-specific IDs limit portability. MUST be null in stateless mode",
       "type": [
         "string",
         "null"
       ],
-      "x_constraints": "AuraID (recommended), UUID, or free-text; null for stateless"
+      "x_constraints": "VitaPass (recommended), UUID, or free-text; null for stateless"
     },
     "parent_id": {
       "description": "Links this artifact to its parent in multi-step extractions or threaded sequences",

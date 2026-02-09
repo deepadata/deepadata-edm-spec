@@ -133,7 +133,7 @@ EDM does not authenticate users or establish identity:
 - Authentication remains the responsibility of external identity providers
 - EDM provides no identity verification mechanisms
 
-The planned AuraID system will provide cross-vendor identity for emotional data, but this is external to the EDM specification.
+The planned VitaPass system will provide cross-vendor identity for emotional data, but this is external to the EDM specification.
 
 ### Not a Certificate Authority
 

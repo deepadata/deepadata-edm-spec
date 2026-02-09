@@ -49,7 +49,7 @@
         },
         "owner_user_id": {
           "type": ["string", "null"],
-          "description": "The artifact owner identifier. AuraID enables cross-vendor identity resolution; vendor-specific IDs limit portability. MUST be null in stateless mode."
+          "description": "The artifact owner identifier. VitaPass enables cross-vendor identity resolution; vendor-specific IDs limit portability. MUST be null in stateless mode."
         },
         "parent_id": {
           "type": ["string", "null"],
