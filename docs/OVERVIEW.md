@@ -1,6 +1,6 @@
 ## Normative vs Informative
 
-- **Normative definition:** `schema/edm.v0.4.schema.json`  
+- **Normative definition:** `schema/edm.v0.5.schema.json`  
   The single source of truth. Automated validation MUST use this file.
 
 - **Informative** — everything else (docs, fragments, examples, reference pages).  
@@ -14,7 +14,7 @@ EDM v0.3 converges DeepaData’s emotional architecture into a modular JSON obje
 meta • core • constellation • milky_way • gravity • impulse • governance • telemetry • system • crosswalks
 
 
-- **Normative definition:** `schema/edm.v0.4.schema.json`
+- **Normative definition:** `schema/edm.v0.5.schema.json`
 - **Closed provenance:** This spec is private and proprietary until v1.0 commercial release.
 
 ## Normalization (contract)

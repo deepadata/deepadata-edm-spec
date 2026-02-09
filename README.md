@@ -13,7 +13,7 @@ The complete EDM v0.4.1 specification is published on Zenodo:
 ## 🔧 Implementation
 
 This repository contains:
-- Canonical JSON Schema (`schema/edm.v0.4.schema.json`)
+- Canonical JSON Schema (`schema/edm.v0.5.schema.json`)
 - Example artifacts (`examples/`)
 - Implementation documentation (`docs/`)
 - Release notes
@@ -108,14 +108,14 @@ cd deepadata-edm-spec
 
 # Validate an artifact
 npm install -g ajv-cli
-ajv validate -s schema/edm.v0.4.schema.json -d examples/simple_memory.ddna.json
+ajv validate -s schema/edm.v0.5.schema.json -d examples/simple_memory.ddna.json
 ```
 
 ### Using in Your Project
 
 **JavaScript/TypeScript:**
 ```javascript
-import edmSchema from 'deepadata-edm-spec/schema/edm.v0.4.schema.json';
+import edmSchema from 'deepadata-edm-spec/schema/edm.v0.5.schema.json';
 import Ajv from 'ajv';
 
 const ajv = new Ajv();
@@ -133,7 +133,7 @@ if (validate(artifact)) {
 import json
 import jsonschema
 
-with open('schema/edm.v0.4.schema.json') as f:
+with open('schema/edm.v0.5.schema.json') as f:
     schema = json.load(f)
 
 with open('artifact.json') as f:
@@ -196,7 +196,7 @@ The GOVERNANCE domain provides explicit fields for:
 ```
 deepadata-edm-spec/
 ├── schema/
-│   ├── edm.v0.4.schema.json          # Master schema
+│   ├── edm.v0.5.schema.json          # Master schema
 │   ├── fragments/                     # Domain-specific schemas
 │   │   ├── core.json
 │   │   ├── constellation.json

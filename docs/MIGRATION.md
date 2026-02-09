@@ -7,7 +7,7 @@ This guide explains how to migrate EDM data and code between schema versions.
 ## v0.3 → v0.4
 
 **Canonical crosswalk:** [`schema/crosswalks/v0.3_to_v0.4.json`](../schema/crosswalks/v0.3_to_v0.4.json)  
-**Normative schema:** [`schema/edm.v0.4.schema.json`](../schema/edm.v0.4.schema.json)
+**Normative schema:** [`schema/edm.v0.5.schema.json`](../schema/edm.v0.5.schema.json)
 
 ### Summary of Changes
 

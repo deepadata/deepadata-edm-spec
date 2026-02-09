@@ -4,7 +4,7 @@ import { globby } from "globby";
 import Ajv from "ajv";
 import addFormats from "ajv-formats";
 
-const SCHEMA_PATH = new URL("../schema/edm.v0.4.schema.json", import.meta.url);
+const SCHEMA_PATH = new URL("../schema/edm.v0.5.schema.json", import.meta.url);
 
 async function main() {
   const schema = JSON.parse(await readFile(SCHEMA_PATH, "utf8"));
@@ -44,7 +44,7 @@ async function main() {
     console.error(`\n✖ ${failures} file(s) failed validation.`);
     process.exit(1);
   } else {
-    console.log("\n All example files are valid against edm.v0.4.");
+    console.log("\n All example files are valid against edm.v0.5.");
   }
 }
 

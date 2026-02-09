@@ -249,7 +249,7 @@ The `attachment_style` field must be null unless the user explicitly describes t
 
 ### The Canonical Source of Truth
 
-The JSON Schema file `schema/edm.v0.4.schema.json` is the sole normative definition of EDM.
+The JSON Schema file `schema/edm.v0.5.schema.json` is the sole normative definition of EDM.
 
 - All validation MUST use this schema or a conformant implementation
 - Documentation, examples, and tooling are informative
@@ -338,6 +338,6 @@ EDM defines how emotional data should be structured and governed. Everything els
 
 ---
 
-**Normative Reference:** `schema/edm.v0.4.schema.json`
+**Normative Reference:** `schema/edm.v0.5.schema.json`
 **Contact:** jason@deepadata.com
 **Repository:** https://github.com/deepadata/deepadata-edm-spec
