@@ -1,14 +1,14 @@
 # Emotional Data Model (EDM) Specification
 
-**Current Version:** v0.4.1 (Release Candidate 2)
-**Released:** January 2026
-**DOI:** [10.5281/zenodo.17808652](https://doi.org/10.5281/zenodo.17808652)
+**Current Version:** v0.5.1
+**Released:** March 2026
+**DOI:** [10.5281/zenodo.18883392](https://doi.org/10.5281/zenodo.18883392)
 
 ## 📄 Official Whitepaper
 
-The complete EDM v0.4.1 specification is published on Zenodo:
-- **Download:** [EDM v0.4.1 Whitepaper (DOCX)](https://doi.org/10.5281/zenodo.17808652)
-- **Cite as:** Harvey, J. (2026). Emotional Data Model (EDM) v0.4.1. Zenodo. https://doi.org/10.5281/zenodo.17808652
+The complete EDM v0.5.1 specification is published on Zenodo:
+- **Download:** [EDM v0.5.1 Whitepaper (DOCX)](https://doi.org/10.5281/zenodo.18883392)
+- **Cite as:** Harvey, J. (2026). Emotional Data Model (EDM) v0.5.1. Zenodo. https://doi.org/10.5281/zenodo.18883392
 
 ## 🔧 Implementation
 
@@ -25,14 +25,14 @@ Reference implementations:
 
 ---
 
-# DeepaData — EDM v0.4 (Specification)
+# DeepaData — EDM v0.5 (Specification)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17808652.svg)](https://doi.org/10.5281/zenodo.17808652)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18883392.svg)](https://doi.org/10.5281/zenodo.18883392)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.4.0_RC-green.svg)](https://github.com/deepadata/deepadata-edm-spec/releases/tag/v0.4.0)
-[![Status](https://img.shields.io/badge/status-Release_Candidate-orange.svg)]()
+[![Version](https://img.shields.io/badge/version-0.5.1-green.svg)](https://github.com/deepadata/deepadata-edm-spec/releases/tag/v0.5.1)
+[![Status](https://img.shields.io/badge/status-Stable-brightgreen.svg)]()
 
-**Status:** Release Candidate (v0.4.0) — Seeking community feedback before v1.0
+**Status:** Stable (v0.5.1) — Production ready
 
 ---
 
@@ -68,18 +68,18 @@ EDM fills this gap by providing:
 
 ## Official Publication
 
-The EDM v0.4.0 whitepaper is published on Zenodo:
+The EDM v0.5.1 whitepaper is published on Zenodo:
 
 **Citation:**
-> Harvey, J. (2025). Emotional Data Model (EDM) v0.4.0 (Version v2). Zenodo. https://doi.org/10.5281/zenodo.17808652
+> Harvey, J. (2026). Emotional Data Model (EDM) v0.5.1. Zenodo. https://doi.org/10.5281/zenodo.18883392
 
-**Full Whitepaper:** [Download PDF from Zenodo](https://zenodo.org/records/17808878)
+**Full Whitepaper:** [Download from Zenodo](https://doi.org/10.5281/zenodo.18883392)
 
 ---
 
 ## Overview
 
-The **Emotional Data Model (EDM) v0.4.0** is a governance-first schema for representing emotional context in AI systems. It defines a domain-complete, schema-bound format that externalizes affective context as a deterministic, model-agnostic data object.
+The **Emotional Data Model (EDM) v0.5.1** is a governance-first schema for representing emotional context in AI systems. It defines a domain-complete, schema-bound format that externalizes affective context as a deterministic, model-agnostic data object.
 
 **Key principles:**
 - **Transient by default** — EDM artifacts should not persist beyond session windows (24 hours max) unless explicitly sealed in a .ddna envelope
@@ -89,9 +89,9 @@ The **Emotional Data Model (EDM) v0.4.0** is a governance-first schema for repre
 
 This repository contains:
 
-- Canonical JSON Schema for EDM v0.4.0
+- Canonical JSON Schema for EDM v0.5.1
 - Domain Fragment Schemas (10 domains, 96 fields)
-- Migration Crosswalks (v0.3 to v0.4)
+- Migration Crosswalks (v0.4 to v0.5)
 - Complete Documentation
 - Validation Tools & Examples
 
@@ -122,7 +122,7 @@ const ajv = new Ajv();
 const validate = ajv.compile(edmSchema);
 
 if (validate(artifact)) {
-  console.log('Valid EDM v0.4 artifact');
+  console.log('Valid EDM v0.5.1 artifact');
 } else {
   console.error('Validation failed:', validate.errors);
 }
@@ -140,14 +140,14 @@ with open('artifact.json') as f:
     artifact = json.load(f)
 
 jsonschema.validate(instance=artifact, schema=schema)
-print("Valid EDM v0.4 artifact")
+print("Valid EDM v0.5.1 artifact")
 ```
 
 ---
 
 ## Schema Structure
 
-EDM v0.4.0 defines **10 mandatory domains** (96 fields total):
+EDM v0.5.1 defines **10 mandatory domains** (96 fields total):
 
 ### Representational Layer (57 fields)
 
@@ -166,6 +166,25 @@ EDM v0.4.0 defines **10 mandatory domains** (96 fields total):
 - **CROSSWALKS** (5 fields) - Interoperability: Plutchik, Geneva Emotion Wheel, DSM-5, ISO mappings
 
 [Complete Field Reference](docs/OVERVIEW.md)
+
+---
+
+## Key Enum Values (v0.5.1)
+
+### emotion_primary
+`joy`, `sadness`, `fear`, `anger`, `wonder`, `peace`, `tenderness`, `reverence`, `pride`, `anxiety`, `gratitude`, `longing`, `hope`, `shame`
+
+### relational_dynamics
+`parent_child`, `grandparent_grandchild`, `romantic_partnership`, `couple`, `sibling_bond`, `family`, `friendship`, `friend`, `companionship`, `colleague`, `mentorship`, `reunion`, `community_ritual`, `grief`, `self_reflection`, `professional`, `therapeutic`, `service`, `adversarial`
+
+### narrative_archetype
+`hero`, `caregiver`, `seeker`, `sage`, `lover`, `outlaw`, `innocent`, `orphan`, `magician`, `creator`, `everyman`, `jester`, `ruler`, `mentor`
+
+### tether_type
+`person`, `symbol`, `event`, `place`, `ritual`, `object`, `tradition`, `identity`, `self`
+
+### motivational_orientation
+`belonging`, `safety`, `mastery`, `meaning`, `autonomy`, `authenticity`
 
 ---
 
@@ -203,7 +222,8 @@ deepadata-edm-spec/
 │   │   ├── governance.json           # Compliance & rights
 │   │   └── ... (10 total)
 │   └── crosswalks/
-│       └── v0.3_to_v0.4.json         # Migration mapping
+│       ├── v0.3_to_v0.4.json         # Migration mapping
+│       └── v0.4_to_v0.5.json         # Migration mapping
 ├── examples/
 │   ├── simple_memory.ddna.json       # Basic example
 │   └── multimodal_image_example.ddna.json
@@ -212,7 +232,8 @@ deepadata-edm-spec/
 │   ├── SCOPE_AND_NONGOALS.md         # What EDM is and is not
 │   ├── EDM_DDNA_BOUNDARY.md          # Transient vs persistent
 │   ├── EU_AI_ACT_COMPLIANCE.md       # Regulatory compliance guide
-│   ├── V04_MIGRATION_GUIDE.md        # Migration instructions
+│   ├── V04_MIGRATION_GUIDE.md        # v0.3 → v0.4 migration
+│   ├── V05_MIGRATION_GUIDE.md        # v0.4 → v0.5 migration
 │   ├── VALIDATION.md                 # Validation guide
 │   └── RELEASE-NOTES.md
 ├── scripts/
@@ -225,9 +246,28 @@ deepadata-edm-spec/
 
 ---
 
-## Migration from v0.3
+## Migration Guide
 
-If upgrading from EDM v0.3.x:
+### v0.5.0 → v0.5.1 (March 2026)
+
+v0.5.1 is a backwards-compatible release that adds enum values discovered during production extraction runs. No breaking changes.
+
+**Enum additions:**
+| Field | Values Added |
+|-------|--------------|
+| emotion_primary | `shame` |
+| relational_dynamics | `grandparent_grandchild`, `friend`, `couple`, `colleague` |
+| narrative_archetype | `orphan` |
+| tether_type | `identity`, `self` |
+| motivational_orientation | `authenticity` |
+
+**Rationale:** These values were consistently returned by LLM extractors (Anthropic, OpenAI, Kimi) when processing therapeutic, legacy, and reflective content. Adding them to the schema prevents unnecessary validation failures for semantically correct extractions.
+
+### v0.4.x → v0.5.0 (February 2026)
+
+See [V05_MIGRATION_GUIDE.md](docs/V05_MIGRATION_GUIDE.md) for full details.
+
+### v0.3.x → v0.4.x
 
 1. **Review changes:** 6 fields removed, GOVERNANCE domain added
 2. **Migration guide:** [V04_MIGRATION_GUIDE.md](docs/V04_MIGRATION_GUIDE.md)
@@ -238,13 +278,13 @@ If upgrading from EDM v0.3.x:
 
 ## Contributing
 
-We welcome contributions! This is a Release Candidate seeking community feedback.
+We welcome contributions!
 
 **Ways to contribute:**
 - Open an [Issue](https://github.com/deepadata/deepadata-edm-spec/issues) for bugs or suggestions
 - Submit a Pull Request for schema improvements
 - Join [Discussions](https://github.com/deepadata/deepadata-edm-spec/discussions) for design questions
-- Contact: jason@deepadata.com
+- Contact: jason@emotionaldatamodel.org
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
@@ -257,13 +297,13 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 If you use EDM in your research, please cite:
 
 ```bibtex
-@software{harvey2025edm,
+@software{harvey2026edm,
   author = {Harvey, Jason},
-  title = {Emotional Data Model (EDM) v0.4.0},
-  year = {2025},
+  title = {Emotional Data Model (EDM) v0.5.1},
+  year = {2026},
   publisher = {Zenodo},
-  version = {v0.4.0},
-  doi = {10.5281/zenodo.17808652},
+  version = {v0.5.1},
+  doi = {10.5281/zenodo.18883392},
   url = {https://github.com/deepadata/deepadata-edm-spec}
 }
 ```
@@ -278,31 +318,32 @@ EDM is open source to enable proliferation and interoperability. The schema is f
 
 ---
 
-## About DeepaData
+## About
 
-DeepaData builds governance-first infrastructure for emotional AI:
+EDM is maintained by DeepaData and the emotionaldatamodel.org standards body.
 
 - **EDM** — Emotional Data Model (this specification)
 - **.ddna** — Portable, signed emotional identity artifact
-- **Control Governor** — Coherence regulation for agentic workflows
+- **ESAA** — Emotional Safety Attestation Artifact
 
 **Mission:** Make emotional AI safe, governed, and user-sovereign.
 
-Website: [deepadata.com](https://deepadata.com)
+Website: [emotionaldatamodel.org](https://emotionaldatamodel.org) | [deepadata.com](https://deepadata.com)
 GitHub: [@deepadata](https://github.com/deepadata)
-Contact: jason@deepadata.com
+Contact: jason@emotionaldatamodel.org
 
 ---
 
 ## Links
 
-- **Whitepaper:** [Zenodo Record](https://zenodo.org/records/17808878)
-- **DOI:** [10.5281/zenodo.17808652](https://doi.org/10.5281/zenodo.17808652)
+- **Whitepaper:** [Zenodo Record](https://doi.org/10.5281/zenodo.18883392)
+- **DOI:** [10.5281/zenodo.18883392](https://doi.org/10.5281/zenodo.18883392)
+- **Parent DOI (all versions):** [10.5281/zenodo.17808652](https://doi.org/10.5281/zenodo.17808652)
 - **Repository:** https://github.com/deepadata/deepadata-edm-spec
 - **Issues:** https://github.com/deepadata/deepadata-edm-spec/issues
 
 ---
 
-**Last Updated:** January 2026
-**Version:** 0.4.0 (Release Candidate)
+**Last Updated:** March 2026
+**Version:** 0.5.1
 **License:** MIT

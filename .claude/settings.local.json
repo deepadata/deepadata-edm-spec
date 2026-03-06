@@ -24,7 +24,14 @@
       "Bash(cat:*)",
       "Bash(git rm:*)",
       "Bash(git restore:*)",
-      "Bash(git tag:*)"
+      "Bash(git tag:*)",
+      "Bash(pip install:*)",
+      "Bash(python:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm test)",
+      "Bash(git mv:*)",
+      "Bash(dir /s /b \"C:\\\\Users\\\\JasonHarvey-ModularW\\\\Documents\\\\GitHub\\\\emotional_data_model_org\\\\src\\\\*.tsx\")",
+      "Bash(dir:*)"
     ]
   }
 }
