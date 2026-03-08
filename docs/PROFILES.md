@@ -105,7 +105,7 @@ The Extended Profile includes all Core Profile requirements, plus:
 
 ## 3.7.5 Full Profile
 
-The Full Profile (96 fields) provides the complete representational manifold across all ten domains. It is required for regulated contexts, enterprise compliance, and VitaPass issuance.
+The Full Profile (96 fields) provides the complete representational manifold across all ten domains. It is required for regulated contexts and enterprise compliance.
 
 ### Required Domains and Fields
 
@@ -117,10 +117,10 @@ All ten domains MUST be fully populated. No field may be null unless the source 
 - Clinical documentation
 - EU AI Act Article 5(1)(f) compliance documentation
 - Enterprise audit and compliance
-- VitaPass longitudinal registry entry (Full + Certified, future capability)
+- Longitudinal subject registry entry (Full + Certified, future capability)
 - DeepaData Certified conformance (see Section 3.8)
 
-Note: VitaPass binding — cross-vendor portability of sealed artifacts — is available at Sealed conformance for all profiles, not Full only. Full Profile is required only for the longitudinal registry layer.
+Note: Cross-vendor subject binding — portability of sealed artifacts across system boundaries — is available at Sealed conformance for all profiles, not Full only. Full Profile is required only for the longitudinal registry layer.
 
 ## 3.7.6 Profile Invariants
 
@@ -147,4 +147,4 @@ The following invariants apply to all profiles:
 | Workplace wellness | Extended | Coaching context with relational dynamics |
 | Therapy platform | Full | Regulatory compliance, clinical completeness |
 | Clinical tool | Full | Full manifold required |
-| VitaPass binding | Any (Sealed) | Binding requires Sealed conformance, not a specific profile |
+| Cross-vendor subject binding | Any (Sealed) | Binding requires Sealed conformance, not a specific profile |
