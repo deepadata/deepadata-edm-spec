@@ -126,9 +126,9 @@ Note: Cross-vendor subject binding — portability of sealed artifacts across sy
 
 The following invariants apply to all profiles:
 
-1. **Domain Completeness**: All ten domains MUST be structurally present in every artifact, regardless of profile. An artifact missing any domain is non-conforming.
+1. **Profile Completeness**: An artifact MUST contain only the domains defined for its declared profile. Domains not defined for the declared profile MUST be omitted. Inclusion of undeclared domains renders the artifact non-conforming.
 
-2. **Explicit Null Requirement**: Fields not required by a profile MUST be set to explicit `null` values. Field omission is prohibited. This preserves schema stability and enables consistent validation.
+2. **Exact Field Set**: An artifact MUST contain only the fields defined for its declared profile. Fields not defined for the declared profile MUST be omitted. Omission of required fields is prohibited.
 
 3. **Profile Immutability**: The `meta.profile` value MUST be set at extraction time and MUST NOT be modified thereafter. An artifact's profile is fixed for its lifetime.
 
