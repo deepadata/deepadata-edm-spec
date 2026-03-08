@@ -64,4 +64,4 @@ Additive patch release with nine canonical enumeration values across five fields
 
 ---
 
-© 2025–2026 DeepaData Pty Ltd — Released under MIT License.
+© 2025–2026 DeepaData Pty Ltd — All Rights Reserved. MIT License pending v0.6.0 release.

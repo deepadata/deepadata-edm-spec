@@ -15,7 +15,7 @@ meta • core • constellation • milky_way • gravity • impulse • govern
 
 
 - **Normative definition:** `schema/edm.v0.5.schema.json`
-- **License:** Released under MIT License. See [LICENSE](../LICENSE).
+- **License:** Proprietary — MIT License pending v0.6.0 release.
 
 ## Normalization (contract)
 1. Include **all keys** (use `null`/empty arrays if unknown).  
@@ -29,4 +29,4 @@ meta • core • constellation • milky_way • gravity • impulse • govern
 - **DeepaData-v2** (EDM v0.2, April 29, 2025): Milky Way + Gravity.  
 - **DeepaData-v2** (Oct–Nov 2025): Impulse + outer layers (Meta, Governance, Telemetry, System, Crosswalks).
 
-© 2025–2026 DeepaData Pty Ltd — Released under MIT License.
+© 2025–2026 DeepaData Pty Ltd — All Rights Reserved. MIT License pending v0.6.0 release.
