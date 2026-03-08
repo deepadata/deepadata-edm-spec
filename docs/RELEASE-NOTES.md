@@ -1,6 +1,20 @@
 # Release Notes — Emotional Data Model (EDM)
 
-## EDM v0.5.1 (March 2026) — Current
+## EDM v0.6.0 (March 2026) — Current
+
+**DOI:** [pending Zenodo assignment]
+
+- Implementation Profiles: Core (~20 fields), Extended (~45 fields), Full (96 fields)
+- Conformance Levels: Compliant, Sealed, Certified
+- New field: `meta.profile` — profile declaration at extraction time
+- Only Full Profile is eligible for Certified conformance
+- Schema file: `edm.v0.6.schema.json`
+
+See [PROFILES.md](PROFILES.md) and [CONFORMANCE.md](CONFORMANCE.md) for details.
+
+---
+
+## EDM v0.5.1 (March 2026)
 
 **DOI:** [10.5281/zenodo.18883392](https://doi.org/10.5281/zenodo.18883392)
 
@@ -57,11 +71,12 @@ Additive patch release with nine canonical enumeration values across five fields
 
 | Version | Date | Status |
 |---------|------|--------|
-| v0.5.1 | March 2026 | **Current** |
+| v0.6.0 | March 2026 | **Current** |
+| v0.5.1 | March 2026 | Published |
 | v0.5.0 | February 2026 | Published |
 | v0.4.0 | December 2025 | Published |
 | v0.3-pre | November 2025 | Pre-release |
 
 ---
 
-© 2025–2026 DeepaData Pty Ltd — All Rights Reserved. MIT License pending v0.6.0 release.
+© 2025–2026 DeepaData Pty Ltd — Released under MIT License.
