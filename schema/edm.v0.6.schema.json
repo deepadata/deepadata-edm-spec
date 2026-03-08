@@ -98,7 +98,7 @@
         },
         "profile": {
           "type": ["string", "null"],
-          "enum": ["core", "extended", "full", null],
+          "enum": ["essential", "extended", "full", null],
           "description": "Implementation profile declaration. Determines minimum required fields per EDM v0.6.0 Section 3.7."
         }
       },
@@ -140,7 +140,7 @@
       "status": "stable",
       "changes_from_v05": [
         "Added meta.profile field for implementation profile declaration",
-        "Introduced Implementation Profiles: Core (~20 fields), Extended (~45 fields), Full (96 fields)",
+        "Introduced Implementation Profiles: Essential (~20 fields), Extended (~45 fields), Full (96 fields)",
         "Introduced Conformance Levels: Compliant, Sealed, Certified",
         "Only Full Profile is eligible for Certified conformance"
       ]

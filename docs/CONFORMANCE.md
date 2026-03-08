@@ -20,7 +20,7 @@ A Compliant artifact is a valid EDM JSON object that conforms to the declared pr
 4. The `meta.profile` field MUST be present and valid
 5. All profile-required fields MUST be populated per Section 3.7
 
-**Eligible Profiles:** Core, Extended, Full
+**Eligible Profiles:** Essential, Extended, Full
 
 **Use Cases:**
 - Development and testing environments
@@ -45,11 +45,11 @@ A Sealed artifact is encapsulated in a `.ddna` envelope with a W3C Data Integrit
 4. The `meta.owner_user_id` field MUST be populated with a valid subject identifier
 5. The proof MUST be verifiable using the declared verification method
 
-**Eligible Profiles:** Core, Extended, Full
+**Eligible Profiles:** Essential, Extended, Full
 
 **Cross-Vendor Subject Binding:**
 
-Sealed artifacts at any profile are eligible for cross-vendor subject binding. The `meta.owner_user_id` field carries the subject identifier, making the artifact discoverable and presentable across vendor boundaries via the implementing identity system. Profile depth does not affect binding eligibility — a Core Profile Sealed artifact is equally addressable as a Full Profile Sealed artifact.
+Sealed artifacts at any profile are eligible for cross-vendor subject binding. The `meta.owner_user_id` field carries the subject identifier, making the artifact discoverable and presentable across vendor boundaries via the implementing identity system. Profile depth does not affect binding eligibility — a Essential Profile Sealed artifact is equally addressable as a Full Profile Sealed artifact.
 
 **Use Cases:**
 - Platforms storing emotional data beyond session boundaries
@@ -80,7 +80,7 @@ A Certified artifact is a Sealed artifact that has been countersigned by DeepaDa
 
 **Eligible Profiles:** Full only
 
-Core and Extended profiles are NOT eligible for Certified conformance. This restriction ensures that regulatory compliance claims are backed by complete representational depth.
+Essential and Extended profiles are NOT eligible for Certified conformance. This restriction ensures that regulatory compliance claims are backed by complete representational depth.
 
 **Use Cases:**
 - EU AI Act Article 5(1)(f) compliance documentation
@@ -101,13 +101,13 @@ The following matrix shows all valid combinations of profile and conformance lev
 
 | Profile | Compliant | Sealed | Certified |
 |---------|-----------|--------|-----------|
-| Core | ✓ | ✓ | ✗ |
+| Essential | ✓ | ✓ | ✗ |
 | Extended | ✓ | ✓ | ✗ |
 | Full | ✓ | ✓ | ✓ |
 
 **Key:**
 - ✓ — Valid combination
-- ✗ — Invalid combination (Core and Extended are ineligible for Certified)
+- ✗ — Invalid combination (Essential and Extended are ineligible for Certified)
 
 ## 3.8.4 Conformance Verification
 

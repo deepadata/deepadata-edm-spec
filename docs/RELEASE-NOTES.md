@@ -4,7 +4,7 @@
 
 **DOI:** [pending Zenodo assignment]
 
-- Implementation Profiles: Core (~20 fields), Extended (~45 fields), Full (96 fields)
+- Implementation Profiles: Essential (~20 fields), Extended (~45 fields), Full (96 fields)
 - Conformance Levels: Compliant, Sealed, Certified
 - New field: `meta.profile` — profile declaration at extraction time
 - Only Full Profile is eligible for Certified conformance

@@ -2,7 +2,7 @@
 
 ## 3.7.1 Overview
 
-EDM defines three implementation profiles that specify the minimum required fields for a conforming artifact. Profiles enable graduated adoption: memory platforms and agent frameworks may implement the lightweight Core Profile, while regulated therapeutic applications require the Full Profile.
+EDM defines three implementation profiles that specify the minimum required fields for a conforming artifact. Profiles enable graduated adoption: memory platforms and agent frameworks may implement the lightweight Essential Profile, while regulated therapeutic applications require the Full Profile.
 
 **Profiles are orthogonal to conformance levels (Section 3.8).** A profile defines WHAT is extracted — the depth of emotional representation. A conformance level defines HOW an artifact is governed — the trust and verification posture. Any profile may achieve any conformance level for which it is eligible.
 
@@ -12,22 +12,22 @@ A conforming artifact MUST declare its profile in the `meta.profile` field. Vali
 
 | Value | Profile |
 |-------|---------|
-| `"core"` | Core Profile |
+| `"essential"` | Essential Profile |
 | `"extended"` | Extended Profile |
 | `"full"` | Full Profile |
 
 The `meta.profile` field MUST be present and MUST contain one of the above values. Omission of this field renders the artifact non-conforming to EDM v0.6.0 and later.
 
-## 3.7.3 Core Profile
+## 3.7.3 Essential Profile
 
-The Core Profile (~20 required fields) defines the minimum viable artifact for session coherence and real-time retrieval. It is designed for memory platforms, agent frameworks, and AI assistants that require affective context without therapeutic depth.
+The Essential Profile (~20 required fields) defines the minimum viable artifact for session coherence and real-time retrieval. It is designed for memory platforms, agent frameworks, and AI assistants that require affective context without therapeutic depth.
 
 ### Required Domains and Fields
 
 **Meta Domain** (8 fields):
 - `id` — artifact identifier (required)
 - `version` — EDM version string (required)
-- `profile` — profile declaration (required; value: `"core"`)
+- `profile` — profile declaration (required; value: `"essential"`)
 - `created_at` — ISO-8601 timestamp (required)
 - `owner_user_id` — subject identifier (required)
 - `consent_basis` — legal basis for processing (required)
@@ -59,7 +59,7 @@ The Core Profile (~20 required fields) defines the minimum viable artifact for s
 - Structural presence required
 - All fields MUST be explicitly null
 
-### Core Profile Use Cases
+### Essential Profile Use Cases
 
 - Companion AI session context
 - Memory compression and summarisation
@@ -72,7 +72,7 @@ The Extended Profile (~45 required fields) provides full narrative and emotional
 
 ### Required Domains and Fields
 
-The Extended Profile includes all Core Profile requirements, plus:
+The Extended Profile includes all Essential Profile requirements, plus:
 
 **Constellation Domain** (all fields required):
 - Full population of all 18 Constellation fields
@@ -132,16 +132,16 @@ The following invariants apply to all profiles:
 
 3. **Profile Immutability**: The `meta.profile` value MUST be set at extraction time and MUST NOT be modified thereafter. An artifact's profile is fixed for its lifetime.
 
-4. **Upward Compatibility**: A Core Profile artifact may be re-extracted as Extended or Full. A Full Profile artifact may not be downgraded. Profile changes require re-extraction from source content.
+4. **Upward Compatibility**: A Essential Profile artifact may be re-extracted as Extended or Full. A Full Profile artifact may not be downgraded. Profile changes require re-extraction from source content.
 
-5. **Governance Independence**: Profile selection does not affect governance treatment. A Core Profile artifact is subject to the same governance rules as a Full Profile artifact. Governance is determined by the Governance domain fields, not by profile.
+5. **Governance Independence**: Profile selection does not affect governance treatment. A Essential Profile artifact is subject to the same governance rules as a Full Profile artifact. Governance is determined by the Governance domain fields, not by profile.
 
 ## 3.7.7 Profile Selection Guidance
 
 | Use Case | Recommended Profile | Rationale |
 |----------|---------------------|-----------|
-| Memory platform | Core | Minimal footprint, session coherence |
-| Agent framework | Core | Lightweight emotional grounding |
+| Memory platform | Essential | Minimal footprint, session coherence |
+| Agent framework | Essential | Lightweight emotional grounding |
 | Journaling app | Extended | Narrative depth without clinical overhead |
 | Companion AI | Extended | Longitudinal context with emotional topology |
 | Workplace wellness | Extended | Coaching context with relational dynamics |
