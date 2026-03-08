@@ -167,9 +167,9 @@ Stateless mode (Section 3.6) interacts with conformance levels as follows:
 
 Stateless mode is a governance decision, not a conformance level. Any profile can operate in stateless mode at Compliant level.
 
-## 3.8.7 Commercial Considerations
+## 3.8.7 Certification Authority Requirements
 
-- **Compliant** and **Sealed** conformance may be achieved using open-source tooling (deepadata-ddna-tools) without DeepaData involvement
-- **Sealed** artifacts may be created using self-managed keys or DeepaData-provisioned keys
-- **Certified** conformance requires DeepaData certification API access, which is a commercial service
-- Certification pricing is available at https://deepadata.com/pricing
+- **Compliant** and **Sealed** conformance may be achieved using open-source tooling without involvement from a certification authority
+- **Sealed** artifacts may be created using self-managed keys or keys provisioned by a trusted certification authority
+- **Certified** conformance requires countersignature from a trusted certification authority recognised by the relying party
+- Certification services and pricing are defined by the certification authority, not by this specification
