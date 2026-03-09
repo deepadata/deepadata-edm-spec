@@ -18,90 +18,63 @@ A conforming artifact MUST declare its profile in the `meta.profile` field. Vali
 
 The `meta.profile` field MUST be present and MUST contain one of the above values. Omission of this field renders the artifact non-conforming to EDM v0.6.0 and later.
 
-## 3.7.3 Essential Profile
+## 3.7.3 Essential Profile (25 fields)
 
-The Essential Profile (~20 required fields) defines the minimum viable artifact for session coherence and real-time retrieval. It is designed for memory platforms, agent frameworks, and AI assistants that require affective context without therapeutic depth.
+The Essential Profile defines the minimum viable artifact for session coherence and real-time retrieval. It is designed for memory platforms, agent frameworks, and AI assistants that require affective context without therapeutic depth.
 
-### Required Domains and Fields
+### Included Fields
 
-**Meta Domain** (8 fields):
-- `id` — artifact identifier (required)
-- `version` — EDM version string (required)
-- `profile` — profile declaration (required; value: `"essential"`)
-- `created_at` — ISO-8601 timestamp (required)
-- `owner_user_id` — subject identifier (required)
-- `consent_basis` — legal basis for processing (required)
-- `visibility` — access control level (required)
-- `pii_tier` — data sensitivity classification (required)
+**Core**
+- `anchor` — central theme
+- `spark` — what triggered the memory
+- `wound` — vulnerability or loss
+- `fuel` — what energized the experience
+- `bridge` — connection between past and present
+- `echo` — what still resonates
+- `narrative` — 3–5 sentence summary
 
-**Core Domain** (7 fields — all required):
-- `anchor`, `spark`, `wound`, `fuel`, `bridge`, `echo`, `narrative`
-
-**Constellation Domain** (3 fields required; remainder null):
-- `emotion_primary` — primary emotional classification (required)
-- `emotion_subtone` — array of supporting tones (required; may be empty)
-- `narrative_arc` — narrative structure (required)
-- All other Constellation fields MUST be explicitly null
-
-**Governance Domain** (minimum required):
-- `jurisdiction` — applicable legal regime (required)
-- `retention_policy.basis` — retention justification (required)
-- `retention_policy.ttl_days` — retention period (required)
-- `retention_policy.on_expiry` — expiry action (required)
-- `subject_rights.portable` — portability flag (required)
-- `subject_rights.erasable` — erasability flag (required)
-- `subject_rights.explainable` — explainability flag (required)
-
-**Telemetry Domain** (structural presence required):
-- All fields may be null but the domain MUST be present
-
-**Milky_Way, Gravity, Impulse, System, Crosswalks Domains**:
-- Structural presence required
-- All fields MUST be explicitly null
+**Constellation**
+- `emotion_primary` — primary emotional classification
+- `emotion_subtone` — array of supporting tones (may be empty)
+- `narrative_arc` — narrative structure
 
 ### Essential Profile Use Cases
 
-- Companion AI session context
-- Memory compression and summarisation
-- Stateless session coherence
+- Stateful session alignment
+- Memory platform integration (Mem0, Zep, LangChain)
 - Agent framework emotional grounding
+- Memory compression and summarisation
 
-## 3.7.4 Extended Profile
+## 3.7.4 Extended Profile (50 fields)
 
-The Extended Profile (~45 required fields) provides full narrative and emotional topology without the complete salience geometry of the Full Profile. It is designed for journaling applications, companion AI with longitudinal context, and workplace wellness platforms.
+The Extended Profile provides full narrative and emotional topology without the complete salience geometry of the Full Profile. It is designed for journaling applications, companion AI with longitudinal context, and workplace wellness platforms.
 
-### Required Domains and Fields
+### Included Fields
 
-The Extended Profile includes all Essential Profile requirements, plus:
+All Essential Profile fields, plus:
 
-**Constellation Domain** (all fields required):
-- Full population of all 18 Constellation fields
+**Constellation** — all 18 fields required
 
-**Milky_Way Domain** (key fields required):
-- `event_type` — event classification (required)
-- `location_context` — spatial context (required)
-- `associated_people` — array of related persons (required; may be empty)
-- `visibility_context` — sharing scope (required)
-- `tone_shift` — tonal transition (may be null)
+**Milky_Way**
+- `event_type` — event classification
+- `location_context` — spatial context
+- `associated_people` — array of related persons (may be empty)
+- `visibility_context` — sharing scope
+- `tone_shift` — tonal transition
 
-**Gravity Domain** (key fields required):
-- `emotional_weight` — salience score 0.0–1.0 (required)
-- `valence` — affective polarity (required)
-- `tether_type` — attachment classification (required)
-- `recurrence_pattern` — temporal pattern (required)
-- `strength_score` — retrieval strength 0.0–1.0 (required)
-- Other Gravity fields may be null
-
-**Impulse Domain**:
-- Structural presence required
-- All fields may be null
+**Gravity**
+- `emotional_weight` — salience score 0.0–1.0
+- `valence` — affective polarity
+- `tether_type` — attachment classification
+- `recurrence_pattern` — temporal pattern
+- `strength_score` — retrieval strength 0.0–1.0
 
 ### Extended Profile Use Cases
 
-- Journaling and reflective writing applications
 - Companion AI with longitudinal memory
+- Journaling and reflective writing applications
 - Workplace wellness and coaching platforms
-- Therapy session capture (non-clinical)
+- Relational and temporal depth contexts
 
 ## 3.7.5 Full Profile
 
@@ -126,9 +99,9 @@ Note: Cross-vendor subject binding — portability of sealed artifacts across sy
 
 The following invariants apply to all profiles:
 
-1. **Domain Completeness**: All ten domains MUST be structurally present in every artifact, regardless of profile. An artifact missing any domain is non-conforming.
+1. **Profile Completeness**: An artifact MUST contain only the domains defined for its declared profile. Domains not defined for the declared profile MUST be omitted. Inclusion of undeclared domains renders the artifact non-conforming.
 
-2. **Explicit Null Requirement**: Fields not required by a profile MUST be set to explicit `null` values. Field omission is prohibited. This preserves schema stability and enables consistent validation.
+2. **Exact Field Set**: An artifact MUST contain only the fields defined for its declared profile. Fields not defined for the declared profile MUST be omitted. Omission of required fields is prohibited.
 
 3. **Profile Immutability**: The `meta.profile` value MUST be set at extraction time and MUST NOT be modified thereafter. An artifact's profile is fixed for its lifetime.
 
