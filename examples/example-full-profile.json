@@ -1,0 +1,162 @@
+{
+  "meta": {
+    "id": "c41c7878-48f4-40f2-a7ee-9817a2a837de",
+    "version": "0.6.0",
+    "profile": "full",
+    "created_at": "2026-03-09T11:45:09.455Z",
+    "updated_at": null,
+    "locale": null,
+    "owner_user_id": " vp-02HZ4GKWP7XTJY9QN7BN",
+    "parent_id": null,
+    "visibility": "private",
+    "pii_tier": "moderate",
+    "source_type": "text",
+    "source_context": null,
+    "consent_basis": "consent",
+    "consent_scope": null,
+    "consent_revoked_at": null,
+    "tags": []
+  },
+  "core": {
+    "anchor": "physie competition",
+    "spark": "receiving competition photos",
+    "wound": "body betrayal through arthritis",
+    "fuel": "supportive women community",
+    "bridge": "dance connecting past performer to present self",
+    "echo": "feeling young on stage",
+    "narrative": "Weekend physie competition photos arrived, capturing the joy of performing despite psoriatic arthritis diagnosis eight years ago. The supportive community of women and weekly classes keep both joints mobile and spirits high. Dancing in front of crowds resurrects the professional dancer within, defying physical limitations. What began as Jason's encouragement four years ago has become essential self-care for this working single mum."
+  },
+  "constellation": {
+    "emotion_primary": "joy",
+    "emotion_subtone": [
+      "triumphant",
+      "grateful",
+      "empowered",
+      "nostalgic"
+    ],
+    "higher_order_emotion": "self-actualization",
+    "meta_emotional_state": "empowered",
+    "interpersonal_affect": "belonging",
+    "narrative_arc": "overcoming",
+    "relational_dynamics": "community_ritual",
+    "temporal_context": "midlife",
+    "memory_type": "milestone",
+    "media_format": "photo_with_story",
+    "narrative_archetype": "hero",
+    "symbolic_anchor": "dance stage",
+    "relational_perspective": "community",
+    "temporal_rhythm": "rising",
+    "identity_thread": "dancer despite physical limitations",
+    "expressed_insight": "we all need something in our lives that we can do just for us",
+    "transformational_pivot": true,
+    "somatic_signature": "mobile joints"
+  },
+  "governance": {
+    "jurisdiction": null,
+    "retention_policy": {
+      "basis": "user_defined",
+      "ttl_days": null,
+      "on_expiry": "soft_delete"
+    },
+    "subject_rights": {
+      "portable": true,
+      "erasable": true,
+      "explainable": false
+    },
+    "exportability": "allowed",
+    "k_anonymity": {
+      "k": null,
+      "groups": []
+    },
+    "policy_labels": [],
+    "masking_rules": []
+  },
+  "telemetry": {
+    "entry_confidence": 1,
+    "extraction_model": "claude-sonnet-4-20250514",
+    "extraction_provider": "anthropic",
+    "extraction_notes": null,
+    "alignment_delta": null
+  },
+  "milky_way": {
+    "event_type": "competition",
+    "location_context": "physie competition venue",
+    "associated_people": [
+      "Jason",
+      "xt Physie Club",
+      "Bxx Physie",
+      "dance sisters"
+    ],
+    "visibility_context": "shared_publicly",
+    "tone_shift": "struggle to triumph"
+  },
+  "gravity": {
+    "emotional_weight": 0.8,
+    "emotional_density": "high",
+    "valence": "positive",
+    "viscosity": "high",
+    "gravity_type": "identity restoration",
+    "tether_type": "identity",
+    "recall_triggers": [
+      "physie photos",
+      "stage lights",
+      "supportive cheers"
+    ],
+    "retrieval_keys": [
+      "physie competition",
+      "arthritis warrior",
+      "dance community",
+      "stage performance"
+    ],
+    "nearby_themes": [
+      "chronic illness",
+      "single motherhood",
+      "self-care",
+      "community support"
+    ],
+    "legacy_embed": true,
+    "recurrence_pattern": "cyclical",
+    "strength_score": 0.9,
+    "temporal_decay": "slow",
+    "resilience_markers": [
+      "acceptance",
+      "community",
+      "adaptation"
+    ],
+    "adaptation_trajectory": "improving"
+  },
+  "impulse": {
+    "primary_energy": "empowerment",
+    "drive_state": "share",
+    "motivational_orientation": "meaning",
+    "temporal_focus": "present",
+    "directionality": "outward",
+    "social_visibility": "collective",
+    "urgency": "elevated",
+    "risk_posture": "bold",
+    "agency_level": "high",
+    "regulation_state": "regulated",
+    "attachment_style": "secure",
+    "coping_style": "seek_support"
+  },
+  "system": {
+    "embeddings": [],
+    "indices": {
+      "waypoint_ids": [],
+      "sector_weights": {
+        "episodic": 0,
+        "semantic": 0,
+        "procedural": 0,
+        "emotional": 0,
+        "reflective": 0
+      }
+    }
+  },
+  "crosswalks": {
+    "plutchik_primary": "joy",
+    "geneva_emotion_wheel": null,
+    "DSM5_specifiers": null,
+    "HMD_v2_memory_type": "flashbulb",
+    "ISO_27557_labels": null
+  }
+}
