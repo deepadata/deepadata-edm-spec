@@ -249,7 +249,10 @@ The `attachment_style` field must be null unless the user explicitly describes t
 
 ### The Canonical Source of Truth
 
-The JSON Schema file `schema/edm.v0.6.schema.json` is the sole normative definition of EDM.
+The profile JSON Schema files are the normative definitions of EDM:
+- `schema/edm.v0.6.essential.schema.json` — Essential profile
+- `schema/edm.v0.6.extended.schema.json` — Extended profile
+- `schema/edm.v0.6.full.schema.json` — Full profile
 
 - All validation MUST use this schema or a conformant implementation
 - Documentation, examples, and tooling are informative
@@ -338,6 +341,6 @@ EDM defines how emotional data should be structured and governed. Everything els
 
 ---
 
-**Normative Reference:** `schema/edm.v0.6.schema.json`
+**Normative References:** `schema/edm.v0.6.{essential,extended,full}.schema.json`
 **Contact:** jason@deepadata.com
 **Repository:** https://github.com/emotional-data-model/edm-spec

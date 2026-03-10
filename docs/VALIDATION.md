@@ -1,6 +1,9 @@
 # Validation — EDM v0.6.0
 
-The normative schema is `schema/edm.v0.6.schema.json`.
+The normative schemas are profile-specific:
+- `schema/edm.v0.6.essential.schema.json` — Essential profile (5 domains, 24 fields)
+- `schema/edm.v0.6.extended.schema.json` — Extended profile (7 domains, 50 fields)
+- `schema/edm.v0.6.full.schema.json` — Full profile (10 domains, 96 fields)
 
 ## Quick checks
 - All domains and fields defined for the declared profile are present.
@@ -15,7 +18,7 @@ The normative schema is `schema/edm.v0.6.schema.json`.
 
 All example files in `examples/*.ddna.json` are validated in CI against the canonical schema:
 
-- **Normative schema:** `schema/edm.v0.6.schema.json`
+- **Normative schemas:** `schema/edm.v0.6.{essential,extended,full}.schema.json`
 - **CI workflow:** `.github/workflows/validate-examples.yml`
 
 **What is enforced**

@@ -138,7 +138,7 @@ An EDM artifact is a JSON object conforming to the EDM v0.4 schema. It represent
 
 **Structural completeness:** All 10 domains must be present. Fields may be null, but domain structure is required.
 
-**Schema validation:** Validity is determined by conformance to `schema/edm.v0.5.schema.json`. No cryptographic verification.
+**Schema validation:** Validity is determined by conformance to the profile-specific schema (e.g., `schema/edm.v0.6.full.schema.json`). No cryptographic verification.
 
 **Mutability:** EDM artifacts can be freely edited, enriched, or corrected. There is no integrity seal.
 
@@ -519,6 +519,6 @@ When EDM is sealed into .ddna, governance fields are **inherited and locked**:
 
 ---
 
-**Normative Reference:** `schema/edm.v0.5.schema.json`
+**Normative References:** `schema/edm.v0.6.{essential,extended,full}.schema.json`
 **Contact:** jason@deepadata.com
 **Repository:** https://github.com/emotional-data-model/edm-spec

@@ -1,10 +1,14 @@
 ## Normative vs Informative
 
-- **Normative definition:** `schema/edm.v0.6.schema.json`
-  The single source of truth. Automated validation MUST use this file.
+- **Normative definitions:** Profile-specific schemas
+  - `schema/edm.v0.6.essential.schema.json` — Essential profile (5 domains, 24 fields)
+  - `schema/edm.v0.6.extended.schema.json` — Extended profile (7 domains, 50 fields)
+  - `schema/edm.v0.6.full.schema.json` — Full profile (10 domains, 96 fields)
+
+  Automated validation MUST use the schema matching the artifact's `meta.profile` value.
 
 - **Informative** — everything else (docs, fragments, examples, reference pages).
-  These exist to help humans understand and implement the model but do not replace the canonical schema.
+  These exist to help humans understand and implement the model but do not replace the canonical schemas.
 
 
 # EDM v0.6.0 — Overview
@@ -14,7 +18,7 @@ EDM defines a modular JSON object with coordinated domains for representing affe
 meta • core • constellation • milky_way • gravity • impulse • governance • telemetry • system • crosswalks
 
 
-- **Normative definition:** `schema/edm.v0.6.schema.json`
+- **Normative definitions:** `schema/edm.v0.6.{essential,extended,full}.schema.json`
 - **License:** Released under MIT License. See [LICENSE](../LICENSE).
 
 **New in v0.6.0:** Implementation Profiles (Essential/Extended/Full) and Conformance Levels (Compliant/Sealed/Certified). See [PROFILES.md](PROFILES.md) and [CONFORMANCE.md](CONFORMANCE.md).

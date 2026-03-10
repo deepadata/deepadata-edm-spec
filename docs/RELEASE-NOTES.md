@@ -8,7 +8,7 @@
 - Conformance Levels: Compliant, Sealed, Certified
 - New field: `meta.profile` — profile declaration at extraction time
 - Only Full Profile is eligible for Certified conformance
-- Schema file: `edm.v0.6.schema.json`
+- Schema files: `edm.v0.6.{essential,extended,full}.schema.json`
 
 See [PROFILES.md](PROFILES.md) and [CONFORMANCE.md](CONFORMANCE.md) for details.
 

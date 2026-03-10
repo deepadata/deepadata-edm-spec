@@ -6,7 +6,10 @@ This guide explains how to migrate EDM data and code between schema versions.
 
 ## v0.5.1 → v0.6.0
 
-**Normative schema:** [`schema/edm.v0.6.schema.json`](../schema/edm.v0.6.schema.json)
+**Normative schemas:**
+- [`schema/edm.v0.6.essential.schema.json`](../schema/edm.v0.6.essential.schema.json) — Essential profile
+- [`schema/edm.v0.6.extended.schema.json`](../schema/edm.v0.6.extended.schema.json) — Extended profile
+- [`schema/edm.v0.6.full.schema.json`](../schema/edm.v0.6.full.schema.json) — Full profile
 
 ### Breaking Changes
 

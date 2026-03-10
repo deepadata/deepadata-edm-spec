@@ -278,8 +278,8 @@ After migration, validate your artifacts:
 # Install ajv-cli
 npm install -g ajv-cli
 
-# Validate artifact
-ajv validate -s schema/edm.v0.5.schema.json -d artifact.v04.json
+# Validate artifact (use profile schema matching artifact's meta.profile)
+ajv validate -s schema/edm.v0.6.full.schema.json -d artifact.v04.json
 ```
 
 ### Using Python jsonschema
@@ -288,7 +288,7 @@ ajv validate -s schema/edm.v0.5.schema.json -d artifact.v04.json
 import jsonschema
 import json
 
-with open('schema/edm.v0.5.schema.json') as f:
+with open('schema/edm.v0.6.full.schema.json') as f:
     schema = json.load(f)
 
 with open('artifact.v04.json') as f:

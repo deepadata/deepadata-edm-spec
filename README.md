@@ -13,7 +13,7 @@ The complete EDM v0.6.0 specification is published on Zenodo:
 ## 🔧 Implementation
 
 This repository contains:
-- Canonical JSON Schema (`schema/edm.v0.6.schema.json`)
+- Profile-based JSON Schemas (`schema/edm.v0.6.{essential,extended,full}.schema.json`)
 - Example artifacts (`examples/`)
 - Implementation documentation (`docs/`)
 - Release notes
@@ -108,20 +108,24 @@ This repository contains:
 git clone https://github.com/emotional-data-model/edm-spec.git
 cd deepadata-edm-spec
 
-# Validate an artifact
+# Validate an artifact (choose profile schema)
 npm install -g ajv-cli
-ajv validate -s schema/edm.v0.6.schema.json -d examples/simple_memory.ddna.json
+ajv validate -s schema/edm.v0.6.full.schema.json -d examples/example-full-profile.json
+ajv validate -s schema/edm.v0.6.essential.schema.json -d examples/example-essential-profile.json
 ```
 
 ### Using in Your Project
 
 **JavaScript/TypeScript:**
 ```javascript
-import edmSchema from 'deepadata-edm-spec/schema/edm.v0.6.schema.json';
+// Import the profile schema matching your artifact's meta.profile
+import essentialSchema from 'deepadata-edm-spec/schema/edm.v0.6.essential.schema.json';
+import extendedSchema from 'deepadata-edm-spec/schema/edm.v0.6.extended.schema.json';
+import fullSchema from 'deepadata-edm-spec/schema/edm.v0.6.full.schema.json';
 import Ajv from 'ajv';
 
 const ajv = new Ajv();
-const validate = ajv.compile(edmSchema);
+const validate = ajv.compile(fullSchema); // or essentialSchema, extendedSchema
 
 if (validate(artifact)) {
   console.log('Valid EDM v0.6.0 artifact');
@@ -135,7 +139,8 @@ if (validate(artifact)) {
 import json
 import jsonschema
 
-with open('schema/edm.v0.6.schema.json') as f:
+# Choose profile schema matching artifact's meta.profile
+with open('schema/edm.v0.6.full.schema.json') as f:
     schema = json.load(f)
 
 with open('artifact.json') as f:
@@ -217,8 +222,10 @@ The GOVERNANCE domain provides explicit fields for:
 ```
 deepadata-edm-spec/
 ├── schema/
-│   ├── edm.v0.6.schema.json          # Master schema
-│   ├── fragments/                     # Domain-specific schemas
+│   ├── edm.v0.6.essential.schema.json # Essential profile (5 domains, 24 fields)
+│   ├── edm.v0.6.extended.schema.json  # Extended profile (7 domains, 50 fields)
+│   ├── edm.v0.6.full.schema.json      # Full profile (10 domains, 96 fields)
+│   ├── fragments/                     # Shared domain schemas
 │   │   ├── core.json
 │   │   ├── constellation.json
 │   │   ├── governance.json           # Compliance & rights
