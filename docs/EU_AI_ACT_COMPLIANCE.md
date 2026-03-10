@@ -320,4 +320,4 @@ This guide provides general information about EU AI Act compliance as it relates
 ---
 
 **Contact:** jason@deepadata.com
-**Repository:** https://github.com/deepadata/deepadata-edm-spec
+**Repository:** https://github.com/emotional-data-model/edm-spec

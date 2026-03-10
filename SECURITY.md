@@ -397,7 +397,7 @@ We value the security research community's contributions to EDM's security postu
 |---------|---------|
 | **Security vulnerabilities** | security@deepadata.com |
 | **General inquiries** | jason@deepadata.com |
-| **Public issues (non-security)** | [GitHub Issues](https://github.com/deepadata/deepadata-edm-spec/issues) |
+| **Public issues (non-security)** | [GitHub Issues](https://github.com/emotional-data-model/edm-spec/issues) |
 
 **Response hours:** Business hours, Australian Eastern Time
 **Emergency contact:** For critical vulnerabilities, include "URGENT" in subject line
@@ -412,5 +412,5 @@ We value the security research community's contributions to EDM's security postu
 
 ---
 
-**Repository:** https://github.com/deepadata/deepadata-edm-spec
+**Repository:** https://github.com/emotional-data-model/edm-spec
 **Specification Version:** EDM v0.4.0 (Release Candidate)

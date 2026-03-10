@@ -361,8 +361,8 @@ describe('EDM v0.3 → v0.4 Migration', () => {
 
 ## Support
 
-- **GitHub Issues:** https://github.com/deepadata/deepadata-edm-spec/issues
-- **Documentation:** https://github.com/deepadata/deepadata-edm-spec/tree/main/docs
+- **GitHub Issues:** https://github.com/emotional-data-model/edm-spec/issues
+- **Documentation:** https://github.com/emotional-data-model/edm-spec/tree/main/docs
 - **Crosswalk Reference:** `schema/crosswalks/v0.3_to_v0.4.json`
 
 ---

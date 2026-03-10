@@ -750,4 +750,4 @@ ddna verify <input.ddna>
 
 **Normative Reference:** W3C Data Integrity 1.0, eddsa-jcs-2022 cryptosuite
 **Contact:** jason@deepadata.com
-**Repository:** https://github.com/deepadata/deepadata-edm-spec
+**Repository:** https://github.com/emotional-data-model/edm-spec

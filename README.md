@@ -19,7 +19,7 @@ This repository contains:
 - Release notes
 
 Reference implementations:
-- [deepadata-ddna-tools](https://github.com/deepadata/deepadata-ddna-tools) - Sealing and verification
+- [deepadata-ddna-tools](https://github.com/emotional-data-model/ddna-tools) - Sealing and verification
 - [deepadata-edm-sdk](https://github.com/deepadata/deepadata-edm-sdk) - Artifact extraction
 - [deepadata-edm-mcp-server](https://github.com/deepadata/deepadata-edm-mcp-server) - MCP adapter
 
@@ -29,7 +29,7 @@ Reference implementations:
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.PENDING.svg)](https://doi.org/10.5281/zenodo.PENDING)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.6.0-green.svg)](https://github.com/deepadata/deepadata-edm-spec/releases/tag/v0.6.0)
+[![Version](https://img.shields.io/badge/version-0.6.0-green.svg)](https://github.com/emotional-data-model/edm-spec/releases/tag/v0.6.0)
 [![Status](https://img.shields.io/badge/status-Stable-brightgreen.svg)]()
 
 **Status:** Stable (v0.6.0) — Production ready
@@ -105,7 +105,7 @@ This repository contains:
 
 ```bash
 # Clone the repository
-git clone https://github.com/deepadata/deepadata-edm-spec.git
+git clone https://github.com/emotional-data-model/edm-spec.git
 cd deepadata-edm-spec
 
 # Validate an artifact
@@ -283,9 +283,9 @@ See [V05_MIGRATION_GUIDE.md](docs/V05_MIGRATION_GUIDE.md) for full details.
 We welcome contributions!
 
 **Ways to contribute:**
-- Open an [Issue](https://github.com/deepadata/deepadata-edm-spec/issues) for bugs or suggestions
+- Open an [Issue](https://github.com/emotional-data-model/edm-spec/issues) for bugs or suggestions
 - Submit a Pull Request for schema improvements
-- Join [Discussions](https://github.com/deepadata/deepadata-edm-spec/discussions) for design questions
+- Join [Discussions](https://github.com/emotional-data-model/edm-spec/discussions) for design questions
 - Contact: jason@emotionaldatamodel.org
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
@@ -306,7 +306,7 @@ If you use EDM in your research, please cite:
   publisher = {Zenodo},
   version = {v0.6.0},
   doi = {10.5281/zenodo.PENDING},
-  url = {https://github.com/deepadata/deepadata-edm-spec}
+  url = {https://github.com/emotional-data-model/edm-spec}
 }
 ```
 
@@ -341,8 +341,8 @@ Contact: jason@emotionaldatamodel.org
 - **Whitepaper:** [Zenodo Record](https://doi.org/10.5281/zenodo.PENDING)
 - **DOI:** [10.5281/zenodo.PENDING](https://doi.org/10.5281/zenodo.PENDING)
 - **Parent DOI (all versions):** [10.5281/zenodo.17808652](https://doi.org/10.5281/zenodo.17808652)
-- **Repository:** https://github.com/deepadata/deepadata-edm-spec
-- **Issues:** https://github.com/deepadata/deepadata-edm-spec/issues
+- **Repository:** https://github.com/emotional-data-model/edm-spec
+- **Issues:** https://github.com/emotional-data-model/edm-spec/issues
 
 ---
 

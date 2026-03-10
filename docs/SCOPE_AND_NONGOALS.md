@@ -340,4 +340,4 @@ EDM defines how emotional data should be structured and governed. Everything els
 
 **Normative Reference:** `schema/edm.v0.6.schema.json`
 **Contact:** jason@deepadata.com
-**Repository:** https://github.com/deepadata/deepadata-edm-spec
+**Repository:** https://github.com/emotional-data-model/edm-spec

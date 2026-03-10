@@ -521,4 +521,4 @@ When EDM is sealed into .ddna, governance fields are **inherited and locked**:
 
 **Normative Reference:** `schema/edm.v0.5.schema.json`
 **Contact:** jason@deepadata.com
-**Repository:** https://github.com/deepadata/deepadata-edm-spec
+**Repository:** https://github.com/emotional-data-model/edm-spec

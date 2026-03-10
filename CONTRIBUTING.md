@@ -12,14 +12,14 @@ EDM v0.4 is a **Release Candidate** actively seeking community feedback before v
 
 Found a bug, inconsistency, or unclear documentation?
 
-- Open an [Issue](https://github.com/deepadata/deepadata-edm-spec/issues)
+- Open an [Issue](https://github.com/emotional-data-model/edm-spec/issues)
 - Include: what you expected, what happened, and relevant context
 
 ### 2. Suggest Improvements
 
 Have ideas for schema improvements?
 
-- Open a [Discussion](https://github.com/deepadata/deepadata-edm-spec/discussions) first
+- Open a [Discussion](https://github.com/emotional-data-model/edm-spec/discussions) first
 - Explain the use case and proposed change
 - Consider backward compatibility implications
 

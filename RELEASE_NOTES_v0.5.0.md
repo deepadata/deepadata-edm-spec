@@ -58,7 +58,7 @@ Reference implementations updated:
 | Package | Version | Repository |
 |---------|---------|------------|
 | deepadata-edm-sdk | 0.5.0 | [github.com/deepadata/deepadata-edm-sdk](https://github.com/deepadata/deepadata-edm-sdk) |
-| deepadata-ddna-tools | 0.1.0+ | [github.com/deepadata/deepadata-ddna-tools](https://github.com/deepadata/deepadata-ddna-tools) |
+| deepadata-ddna-tools | 0.1.0+ | [github.com/emotional-data-model/ddna-tools](https://github.com/emotional-data-model/ddna-tools) |
 | deepadata-edm-mcp-server | 0.1.0+ | [github.com/deepadata/deepadata-edm-mcp-server](https://github.com/deepadata/deepadata-edm-mcp-server) |
 
 ## Breaking Changes

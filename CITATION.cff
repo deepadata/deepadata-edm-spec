@@ -9,9 +9,9 @@ title: "Emotional Data Model (EDM) v0.6.0"
 version: v0.6.0
 doi: 10.5281/zenodo.PENDING
 date-released: 2026-03-08
-url: "https://github.com/deepadata/deepadata-edm-spec"
+url: "https://github.com/emotional-data-model/edm-spec"
 license: MIT
-repository-code: "https://github.com/deepadata/deepadata-edm-spec"
+repository-code: "https://github.com/emotional-data-model/edm-spec"
 type: software
 keywords:
   - emotional data
