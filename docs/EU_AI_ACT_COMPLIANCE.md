@@ -1,7 +1,7 @@
 # EDM Compliance Guide for the EU AI Act
 
 **Version:** 1.0
-**Last Updated:** January 2026
+**Last Updated:** March 2026
 **Applicable Regulation:** EU Artificial Intelligence Act (Regulation 2024/1689)
 **Key Deadline:** August 2, 2026 (High-Risk AI provisions)
 
@@ -9,7 +9,7 @@
 
 ## Executive Summary
 
-The EU AI Act introduces the world's first comprehensive legal framework for artificial intelligence, with specific prohibitions on emotional recognition in workplace and educational contexts. This guide demonstrates how the Emotional Data Model (EDM) v0.4 provides **compliance-by-design** for organizations processing emotional data in AI systems.
+The EU AI Act introduces the world's first comprehensive legal framework for artificial intelligence, with specific prohibitions on emotional recognition in workplace and educational contexts. This guide demonstrates how the Emotional Data Model (EDM) v0.6.0 provides **compliance-by-design** for organizations processing emotional data in AI systems.
 
 **Key takeaway:** EDM's architectural principles—non-inferential representation, explicit consent, and governance-first design—directly address the EU AI Act's requirements for emotional AI systems.
 
@@ -95,7 +95,8 @@ EDM is designed for **individual emotional context**, not population-level scori
 ```json
 {
   "meta": {
-    "source_type": "text",           // Not biometric
+    "profile": "essential",           // Profile declaration
+    "source_type": "text",            // Not biometric
     "consent_basis": "consent",       // Explicit consent
     "source_context": "user_provided" // User-declared, not inferred
   },
@@ -125,7 +126,7 @@ For AI systems classified as high-risk (e.g., employment, education, essential s
 | Requirement | EDM Implementation |
 |-------------|-------------------|
 | Understandable information | `telemetry.extraction_notes` |
-| Appropriate level of detail | 96-field structured schema |
+| Appropriate level of detail | 24–96 field structured schema (profile-dependent) |
 | Intended purpose disclosure | `meta.source_context` |
 
 ### Human Oversight (Article 14)
@@ -204,6 +205,7 @@ Emotional recognition for patient care, mental health assessment, or therapeutic
 ```json
 {
   "meta": {
+    "profile": "full",
     "source_context": "therapy_session",
     "consent_basis": "consent"
   },
@@ -226,6 +228,7 @@ Fatigue detection for drivers, stress monitoring for safety-critical roles.
 ```json
 {
   "meta": {
+    "profile": "essential",
     "source_context": "safety_monitoring",
     "consent_basis": "legitimate_interest"
   },
@@ -248,6 +251,7 @@ Personal journaling, companion chatbots, legacy/memoir applications.
 ```json
 {
   "meta": {
+    "profile": "essential",
     "source_type": "text",
     "source_context": "personal_journaling",
     "consent_basis": "consent"
@@ -309,7 +313,7 @@ For long-term emotional memory storage (beyond EDM's 24-hour session window), th
 - [EU AI Act Full Text](https://artificialintelligenceact.eu/)
 - [Article 5: Prohibited Practices](https://artificialintelligenceact.eu/article/5/)
 - [European Commission Guidelines (Feb 2025)](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai)
-- [EDM v0.4 Whitepaper](https://zenodo.org/records/17808878)
+- [EDM v0.6.0 Whitepaper](https://zenodo.org/records/18951891)
 
 ---
 
@@ -319,5 +323,5 @@ This guide provides general information about EU AI Act compliance as it relates
 
 ---
 
-**Contact:** jason@deepadata.com
+**Contact:** jason@emotionaldatamodel.org
 **Repository:** https://github.com/emotional-data-model/edm-spec

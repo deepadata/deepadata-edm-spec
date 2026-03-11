@@ -2,9 +2,9 @@
 
 ## EDM v0.6.0 (March 2026) — Current
 
-**DOI:** [pending Zenodo assignment]
+**DOI:** [10.5281/zenodo.18951891](https://doi.org/10.5281/zenodo.18951891)
 
-- Implementation Profiles: Essential (~20 fields), Extended (~45 fields), Full (96 fields)
+- Implementation Profiles: Essential (24 fields), Extended (50 fields), Full (96 fields)
 - Conformance Levels: Compliant, Sealed, Certified
 - New field: `meta.profile` — profile declaration at extraction time
 - Only Full Profile is eligible for Certified conformance

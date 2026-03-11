@@ -60,7 +60,7 @@ See [PROFILES.md](PROFILES.md) and [CONFORMANCE.md](CONFORMANCE.md) for full det
 ## v0.3 → v0.4
 
 **Canonical crosswalk:** [`schema/crosswalks/v0.3_to_v0.4.json`](../schema/crosswalks/v0.3_to_v0.4.json)  
-**Normative schema:** [`schema/edm.v0.5.schema.json`](../schema/edm.v0.5.schema.json)
+**Normative schema:** [`schema/versions/edm.v0.4.0.schema.json`](../schema/versions/edm.v0.4.0.schema.json)
 
 ### Summary of Changes
 

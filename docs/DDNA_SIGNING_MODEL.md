@@ -1,7 +1,7 @@
 # .ddna Signing Model
 
 **Version:** 1.0
-**Last Updated:** January 2026
+**Last Updated:** March 2026
 **Status:** Normative Specification
 
 ---
@@ -85,7 +85,7 @@ The .ddna envelope uses the **DataIntegrityProof** format with the **eddsa-jcs-2
     "type": "DataIntegrityProof",
     "cryptosuite": "eddsa-jcs-2022",
     "created": "2026-01-15T10:00:00Z",
-    "verificationMethod": "did:web:deepadata.com#key-1",
+    "verificationMethod": "did:web:example.com#key-1",
     "proofPurpose": "assertionMethod",
     "proofValue": "z3FXQhGhMhPc8sTz..."
   }
@@ -182,7 +182,7 @@ Create the proof options object containing all proof fields except `proofValue`:
   "type": "DataIntegrityProof",
   "cryptosuite": "eddsa-jcs-2022",
   "created": "2026-01-15T10:00:00Z",
-  "verificationMethod": "did:web:deepadata.com#key-1",
+  "verificationMethod": "did:web:example.com#key-1",
   "proofPurpose": "assertionMethod"
 }
 ```
@@ -319,7 +319,7 @@ Test vectors enable implementations to verify:
 3. Signing input construction correctness
 4. Signature verification correctness
 
-**Reference implementation:** `deepadata-ddna-tools` will serve as the canonical test suite.
+**Reference implementation:** `ddna-tools` will serve as the canonical test suite.
 
 ---
 
@@ -332,7 +332,7 @@ Test vectors enable implementations to verify:
   "ddna_header": {
     "ddna_version": "1.1",
     "created_at": "2026-01-15T10:00:00Z",
-    "edm_version": "0.4.0",
+    "edm_version": "0.6.0",
     "owner_user_id": "vp-01HZ3GKWP7XTJY9QN4RD",
     "exportability": "allowed",
     "jurisdiction": "AU",
@@ -343,19 +343,20 @@ Test vectors enable implementations to verify:
     },
     "consent_basis": "consent",
     "masking_rules": [],
-    "payload_type": "edm.v0.4.0",
+    "payload_type": "edm.v0.6.0",
     "audit_chain": [
       {
         "at": "2026-01-15T10:00:00Z",
         "event": "created",
-        "agent": "ddna-tools-v1.0"
+        "agent": "ddna-tools"
       }
     ]
   },
   "edm_payload": {
     "meta": {
       "id": "c3e1d6a7-8f2b-410a-9d3c-5e6f7a8b9c0d",
-      "version": "0.4.0",
+      "version": "0.6.0",
+      "profile": "essential",
       "locale": "en-au",
       "created_at": "2026-01-15T09:55:00Z",
       "updated_at": null,
@@ -391,7 +392,7 @@ Test vectors enable implementations to verify:
     "type": "DataIntegrityProof",
     "cryptosuite": "eddsa-jcs-2022",
     "created": "2026-01-15T10:00:00Z",
-    "verificationMethod": "did:web:deepadata.com#key-1",
+    "verificationMethod": "did:web:example.com#key-1",
     "proofPurpose": "assertionMethod",
     "proofValue": "z3FXQhGhMhPc8sTzJfkXkEuL8PxN5Fp2H8r9tKw7Zy3mGdN4"
   }
@@ -406,29 +407,29 @@ Test vectors enable implementations to verify:
 
 | Method | Format | Use Case |
 |--------|--------|----------|
-| `did:web` | `did:web:deepadata.com#key-1` | Organization-controlled keys |
+| `did:web` | `did:web:example.com#key-1` | Organization-controlled keys |
 | `did:key` | `did:key:z6Mkf5rGMoatrSj1f...` | Self-certifying keys |
 | `did:vitapass` | `did:vitapass:01HZ3GKWP7XTJY9QN4RD#key-1` | Future VitaPass integration |
 
 ### did:web Example
 
-**DID URL:** `did:web:deepadata.com#key-1`
+**DID URL:** `did:web:example.com#key-1`
 
-**Resolution:** Fetch `https://deepadata.com/.well-known/did.json`:
+**Resolution:** Fetch `https://example.com/.well-known/did.json`:
 
 ```json
 {
   "@context": ["https://www.w3.org/ns/did/v1"],
-  "id": "did:web:deepadata.com",
+  "id": "did:web:example.com",
   "verificationMethod": [
     {
-      "id": "did:web:deepadata.com#key-1",
+      "id": "did:web:example.com#key-1",
       "type": "Ed25519VerificationKey2020",
-      "controller": "did:web:deepadata.com",
+      "controller": "did:web:example.com",
       "publicKeyMultibase": "z6Mkf5rGMoatrSj1f4QH..."
     }
   ],
-  "assertionMethod": ["did:web:deepadata.com#key-1"]
+  "assertionMethod": ["did:web:example.com#key-1"]
 }
 ```
 
@@ -749,5 +750,5 @@ ddna verify <input.ddna>
 ---
 
 **Normative Reference:** W3C Data Integrity 1.0, eddsa-jcs-2022 cryptosuite
-**Contact:** jason@deepadata.com
+**Contact:** jason@emotionaldatamodel.org
 **Repository:** https://github.com/emotional-data-model/edm-spec

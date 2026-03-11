@@ -1,7 +1,7 @@
 # EDM Scope and Non-Goals
 
 **Version:** 1.0
-**Last Updated:** January 2026
+**Last Updated:** March 2026
 **Status:** Normative guidance for EDM v0.6.0
 
 ---
@@ -143,7 +143,7 @@ EDM does not issue certificates or establish trust hierarchies:
 - Verification proves "this data was signed by this key" — not "this signer is trustworthy"
 - Trust decisions belong to consuming systems
 
-EDM is not a PKI. It does not define certificate chains, revocation lists, or trust anchors.
+EDM is not a PKI. It does not define certificate chains, revocation lists, or trust anchors. Any party may seal an artifact using their own keys. Certified trust attestation is a separate layer provided by a certification authority operating over the open standard.
 
 ### Not a Regulator
 
@@ -342,5 +342,5 @@ EDM defines how emotional data should be structured and governed. Everything els
 ---
 
 **Normative References:** `schema/edm.v0.6.{essential,extended,full}.schema.json`
-**Contact:** jason@deepadata.com
+**Contact:** jason@emotionaldatamodel.org
 **Repository:** https://github.com/emotional-data-model/edm-spec

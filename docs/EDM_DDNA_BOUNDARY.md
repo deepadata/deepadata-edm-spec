@@ -1,8 +1,8 @@
 # EDM and .ddna Boundary
 
 **Version:** 1.0
-**Last Updated:** January 2026
-**Status:** Normative guidance for EDM v0.4.x
+**Last Updated:** March 2026
+**Status:** Normative guidance for EDM v0.6.0
 
 ---
 
@@ -120,7 +120,7 @@ Computation is explicitly outside EDM and .ddna scope:
 │                    LAYER 1: REPRESENTATION                      │
 │                    (EDM)                                        │
 │                                                                 │
-│  10 Domains    96 Fields    Schema Validation    Governance     │
+│  5–10 Domains    24–96 Fields    Schema Validation    Governance │
 │  Non-Inferential           Transient by Default                 │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
@@ -179,7 +179,8 @@ An EDM artifact is a JSON object conforming to the EDM v0.4 schema. It represent
 {
   "meta": {
     "id": null,
-    "version": "0.4.0",
+    "version": "0.6.0",
+    "profile": "essential",
     "created_at": "2026-01-14T10:30:00Z",
     "owner_user_id": null,
     "visibility": "private",
@@ -520,5 +521,5 @@ When EDM is sealed into .ddna, governance fields are **inherited and locked**:
 ---
 
 **Normative References:** `schema/edm.v0.6.{essential,extended,full}.schema.json`
-**Contact:** jason@deepadata.com
+**Contact:** jason@emotionaldatamodel.org
 **Repository:** https://github.com/emotional-data-model/edm-spec

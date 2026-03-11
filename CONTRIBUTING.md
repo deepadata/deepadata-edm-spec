@@ -2,9 +2,9 @@
 
 Thank you for your interest in contributing to the Emotional Data Model (EDM) specification.
 
-## Status: Release Candidate
+## Status: Current Release
 
-EDM v0.4 is a **Release Candidate** actively seeking community feedback before v1.0. Your input helps shape the standard.
+EDM v0.6.0 is the **current stable release**. Your input helps shape the standard.
 
 ## Ways to Contribute
 
