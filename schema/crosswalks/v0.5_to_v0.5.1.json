@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EDM v0.5 to v0.5.1 Migration Crosswalk",
+  "description": "Documents enum additions from EDM v0.5.0 to v0.5.1. Additive changes based on SDK evaluation (CANDIDATE 004-010).",
+  "status": "final",
+  "version_from": "0.5.0",
+  "version_to": "0.5.1",
+  "release_date": "2026-02-15",
+  "breaking_changes": false,
+
+  "summary": {
+    "enum_expansions": 5,
+    "fields_added": 0,
+    "fields_removed": 0,
+    "fields_renamed": 0,
+    "domains_changed": 0
+  },
+
+  "enum_expansions": [
+    {
+      "field": "constellation.emotion_primary",
+      "domain": "constellation",
+      "values_before": ["joy", "sadness", "fear", "anger", "wonder", "peace", "tenderness", "reverence", "pride", "anxiety", "gratitude", "longing", "hope"],
+      "values_added": ["shame"],
+      "values_after": ["joy", "sadness", "fear", "anger", "wonder", "peace", "tenderness", "reverence", "pride", "anxiety", "gratitude", "longing", "hope", "shame"],
+      "count_before": 13,
+      "count_after": 14,
+      "rationale": "SDK evaluation CANDIDATE: 'shame' captures self-conscious emotion distinct from sadness or guilt. Frequent in therapeutic and journaling contexts where self-evaluation is prominent."
+    },
+    {
+      "field": "constellation.relational_dynamics",
+      "domain": "constellation",
+      "values_before": ["parent_child", "romantic_partnership", "sibling_bond", "family", "friendship", "companionship", "mentorship", "reunion", "community_ritual", "grief", "self_reflection", "professional", "therapeutic", "service", "adversarial"],
+      "values_added": ["grandparent_grandchild", "friend", "colleague", "couple"],
+      "values_after": ["parent_child", "grandparent_grandchild", "romantic_partnership", "couple", "sibling_bond", "family", "friendship", "friend", "companionship", "colleague", "mentorship", "reunion", "community_ritual", "grief", "self_reflection", "professional", "therapeutic", "service", "adversarial"],
+      "count_before": 15,
+      "count_after": 19,
+      "rationale": "SDK evaluation CANDIDATE 004-010: 'grandparent_grandchild' captures multi-generational bond distinct from parent_child. 'friend' as singular noun alongside 'friendship' for clarity. 'colleague' for professional peer relationships distinct from mentorship. 'couple' as alternative to romantic_partnership for broader applicability."
+    },
+    {
+      "field": "gravity.tether_type",
+      "domain": "gravity",
+      "values_before": ["person", "symbol", "event", "place", "ritual", "object", "tradition", "identity"],
+      "values_added": ["self"],
+      "values_after": ["person", "symbol", "event", "place", "ritual", "object", "tradition", "identity", "self"],
+      "count_before": 8,
+      "count_after": 9,
+      "rationale": "SDK evaluation: 'self' captures experiences anchored to self-identity, self-concept, or self-reflection rather than external entities."
+    },
+    {
+      "field": "impulse.motivational_orientation",
+      "domain": "impulse",
+      "values_before": ["belonging", "safety", "mastery", "meaning", "autonomy"],
+      "values_added": ["authenticity"],
+      "values_after": ["belonging", "safety", "mastery", "meaning", "autonomy", "authenticity"],
+      "count_before": 5,
+      "count_after": 6,
+      "rationale": "SDK evaluation: 'authenticity' captures drive toward genuine self-expression and alignment with core values, distinct from autonomy (freedom) or meaning (purpose)."
+    },
+    {
+      "field": "constellation.narrative_archetype",
+      "domain": "constellation",
+      "values_before": ["hero", "caregiver", "seeker", "sage", "lover", "outlaw", "innocent", "magician", "creator", "everyman", "jester", "ruler", "mentor"],
+      "values_added": ["orphan"],
+      "values_after": ["hero", "caregiver", "seeker", "sage", "lover", "outlaw", "innocent", "orphan", "magician", "creator", "everyman", "jester", "ruler", "mentor"],
+      "count_before": 13,
+      "count_after": 14,
+      "rationale": "SDK evaluation: 'orphan' archetype captures experiences of abandonment, displacement, or searching for belonging — common in therapeutic and journaling contexts."
+    }
+  ],
+
+  "fields_unchanged": "All field names, domain structure, and types remain identical to v0.5.0. This is an additive enum expansion only.",
+
+  "backward_compatibility": {
+    "v05_to_v051": "v0.5.0 artifacts remain valid under v0.5.1. All existing enum values are preserved.",
+    "v051_to_v05": "v0.5.1 artifacts using new enum values will fail v0.5.0 strict validation. Migration would require mapping new values to closest v0.5 equivalents."
+  },
+
+  "forward_compatibility": {
+    "existing_artifacts": "No migration required for existing v0.5.0 artifacts",
+    "new_extractions": "New extractions may use expanded enum values",
+    "validation": "v0.5.1 validators will accept all v0.5.0 values plus new expanded values"
+  },
+
+  "migration_notes": {
+    "automatic_upgrade": true,
+    "data_loss_risk": "none",
+    "steps": [
+      "1. Update schema references from 0.5.0 to 0.5.1",
+      "2. Update validators to accept expanded enum values",
+      "3. No field migration required - additive changes only"
+    ]
+  }
+}

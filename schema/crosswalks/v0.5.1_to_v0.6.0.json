@@ -1,0 +1,146 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EDM v0.5.1 to v0.6.0 Migration Crosswalk",
+  "description": "Documents structural changes from EDM v0.5.1 to v0.6.0 including profile system, field renames, and three-schema model.",
+  "status": "final",
+  "version_from": "0.5.1",
+  "version_to": "0.6.0",
+  "release_date": "2026-03-11",
+  "breaking_changes": true,
+
+  "summary": {
+    "fields_added": 1,
+    "fields_removed": 0,
+    "fields_renamed": 2,
+    "enum_expansions": 0,
+    "schema_model_change": "Single schema → Three-profile model (FHIR-style)"
+  },
+
+  "profile_system": {
+    "description": "v0.6.0 introduces FHIR-style implementation profiles. Artifacts must declare meta.profile to validate against the appropriate schema.",
+    "profiles": [
+      {
+        "name": "essential",
+        "domains": ["meta", "core", "constellation", "governance", "telemetry"],
+        "field_count": 24,
+        "use_cases": ["journaling", "companion_ai", "lightweight_memory"]
+      },
+      {
+        "name": "extended",
+        "domains": ["meta", "core", "constellation", "milky_way", "gravity", "governance", "telemetry"],
+        "field_count": 50,
+        "use_cases": ["therapy_apps", "memory_platforms", "relational_context"]
+      },
+      {
+        "name": "full",
+        "domains": ["meta", "core", "constellation", "milky_way", "gravity", "impulse", "governance", "telemetry", "system", "crosswalks"],
+        "field_count": 96,
+        "use_cases": ["clinical_applications", "research", "full_affective_context", "interoperability"]
+      }
+    ],
+    "conformance_levels": [
+      {
+        "level": "Compliant",
+        "description": "Passes JSON Schema validation for declared profile"
+      },
+      {
+        "level": "Sealed",
+        "description": "Compliant + cryptographically signed .ddna envelope"
+      },
+      {
+        "level": "Certified",
+        "description": "Sealed + issuer in DeepaData trust registry"
+      }
+    ]
+  },
+
+  "fields_added": [
+    {
+      "field": "meta.profile",
+      "domain": "meta",
+      "type": "string",
+      "enum": ["essential", "extended", "full"],
+      "required": true,
+      "description": "Implementation profile declaration. Required in v0.6.0 to select validation schema.",
+      "migration_action": "ADD - set to 'full' for existing v0.5.1 artifacts to maintain full domain coverage"
+    }
+  ],
+
+  "fields_renamed": [
+    {
+      "field_before": "meta.aura_id",
+      "field_after": "meta.vita_pass",
+      "domain": "meta",
+      "reason": "Rebranding: AuraID renamed to VitaPass as the subject identifier standard",
+      "migration_action": "RENAME meta.aura_id → meta.vita_pass (preserve value)"
+    },
+    {
+      "field_before": "governance.domain_completeness",
+      "field_after": "governance.profile_completeness",
+      "domain": "governance",
+      "reason": "Semantic alignment: 'profile_completeness' reflects the new profile-based architecture",
+      "migration_action": "RENAME governance.domain_completeness → governance.profile_completeness (preserve value)"
+    }
+  ],
+
+  "schema_hosting": {
+    "description": "v0.6.0 schemas are hosted at canonical URLs for remote fetching",
+    "base_url": "https://deepadata.com/schemas/edm/v0.6.0/",
+    "schemas": [
+      "edm.essential.schema.json",
+      "edm.extended.schema.json",
+      "edm.full.schema.json"
+    ],
+    "fragments_url": "https://deepadata.com/schemas/edm/v0.6.0/fragments/"
+  },
+
+  "repository_transfer": {
+    "from": "github.com/deepadata/deepadata-edm-spec",
+    "to": "github.com/emotional-data-model/edm-spec",
+    "reason": "Organization restructuring for open governance"
+  },
+
+  "backward_compatibility": {
+    "v051_to_v06": "v0.5.1 artifacts require migration: add meta.profile and apply field renames",
+    "v06_to_v051": "v0.6.0 artifacts cannot be downgraded - profile system is not backward compatible"
+  },
+
+  "migration_notes": {
+    "automatic_upgrade": false,
+    "data_loss_risk": "none",
+    "steps": [
+      "1. Add meta.profile field (set to 'full' for complete v0.5.1 artifacts)",
+      "2. Rename meta.aura_id → meta.vita_pass (if present)",
+      "3. Rename governance.domain_completeness → governance.profile_completeness (if present)",
+      "4. Update meta.version to '0.6.0'",
+      "5. Validate against appropriate v0.6.0 profile schema",
+      "6. Update schema $ref URLs to use canonical deepadata.com URLs"
+    ]
+  },
+
+  "migration_script_template": {
+    "description": "Pseudocode for migrating v0.5.1 artifacts to v0.6.0",
+    "code": [
+      "// Detect profile based on present domains",
+      "const domains = Object.keys(artifact).filter(k => !['meta'].includes(k));",
+      "let profile = 'full';",
+      "if (!domains.includes('impulse') && !domains.includes('system') && !domains.includes('crosswalks')) {",
+      "  profile = domains.includes('milky_way') ? 'extended' : 'essential';",
+      "}",
+      "",
+      "// Apply changes",
+      "artifact.meta.profile = profile;",
+      "artifact.meta.version = '0.6.0';",
+      "",
+      "if (artifact.meta.aura_id !== undefined) {",
+      "  artifact.meta.vita_pass = artifact.meta.aura_id;",
+      "  delete artifact.meta.aura_id;",
+      "}",
+      "",
+      "if (artifact.governance?.domain_completeness !== undefined) {",
+      "  artifact.governance.profile_completeness = artifact.governance.domain_completeness;",
+      "  delete artifact.governance.domain_completeness;",
+      "}"
+    ]
+  }
+}
